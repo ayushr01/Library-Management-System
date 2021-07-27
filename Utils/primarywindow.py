@@ -1,8 +1,7 @@
 from PyQt5.QtCore import QSize
 from PyQt5.QtWidgets import *
 import UI.myapp as myapp
-import UI.bookdetails as bookdetails
-import UI.issuebook as issuebook
+
 import Utils.pwd as pwd
 import Utils.admin as admin
 import Utils.books as book
@@ -20,8 +19,8 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
         # Password dialog boxes
         self.pwddialog = pwd.PwdDialog(mainwindow=self)
         self.pwddialognew = pwd.PwdDialogNew(mainwindow=self)
-        self.bookdialog = BookDetailsDialog(mainwindow=self)
-        self.issuedialog = IssueBooksDialog(mainwindow=self)
+        self.bookdialog = book.BookDetailsDialog(mainwindow=self)
+        self.issuedialog = book.IssueBooksDialog(mainwindow=self)
 
         # Button actions
         self.adminbutton.clicked.connect(self.loadpwd)
@@ -140,71 +139,3 @@ Returned on {row[3]}''')
         }
         genrefilter = self.genrebox.currentText()
         return [viewfilter, sortfilter, genrefilter]
-
-
-class BookDetailsDialog(QDialog, bookdetails.Ui_bookdetaildialog):
-    def __init__(self, mainwindow):
-        super().__init__()
-
-        self.dialog = QDialog(mainwindow)  # Creates a dialog window under the mainwindow
-        self.setupUi(self.dialog)  # Calls the function to create all the elements in the dialog window
-
-    def makedialog(self, item):
-        self.setfields(item)  # Sets the detail fields in the dialog window
-        self.dialog.exec_()  # Runs the dialog window
-
-    def setfields(self, item):
-        text = item.text()
-        beg = text.find('<') + 5
-        end = text.find('>')
-        idtodisplay = int(text[beg:end])
-        data = book.readwithid(idtodisplay)
-        self.idfield.setText(str(data[0][0]))
-        self.titlefield.setText(data[0][1])
-        self.authorfield.setText(data[0][2])
-        self.ratingfield.setText(str(data[0][3]))
-        self.genrefield.setText(data[0][4])
-        self.datefield.setText(data[0][5])
-        self.totalfield.setText(str(data[0][6]))
-        self.issuedfield.setText(str(data[0][7]))
-
-
-class IssueBooksDialog(QDialog, issuebook.Ui_issuebookdialog):
-    def __init__(self, mainwindow):
-        super().__init__()
-
-        self.dialog = QDialog(mainwindow)  # Creates a dialog window under the mainwindow
-        self.setupUi(self.dialog)  # Calls the function to create all the elements in the dialog window
-
-        self.item = None  # This field will contain the book that is to be issued
-
-        # Button actions
-        self.closebutton.clicked.connect(self.dialog.close)
-        self.issuebutton.clicked.connect(self.issuebook)
-
-    def makedialog(self, item):
-        self.item = item
-        self.getlist()  # Populates the list as soon as the dialog box is displayed
-        self.issuelabel.setText('')
-        self.dialog.exec_()  # Runs the dialog window
-
-    def getlist(self):
-        self.memlist.clear()
-        memdata = mem.readall()
-        position = 0
-        for row in memdata:
-            self.memlist.insertItem(position, f"{row[0]} - {row[1]} - ({row[2]})")
-            position = position + 1
-        self.memlist.item(0).setSelected(True)
-
-    def issuebook(self):
-        memdata = self.memlist.currentItem()
-        text = self.item.text()
-        beg = text.find('<') + 5
-        end = text.find('>')
-        bookid = int(text[beg:end])
-        text = memdata.text()
-        splittext = text.split('-')
-        memid = int(splittext[0])
-        lib.insert(memid, bookid)
-        self.issuelabel.setText(f'Book issued to {splittext[1].strip()}')

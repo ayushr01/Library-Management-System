@@ -21,6 +21,21 @@ def initialise():
     connection.close()
 
 
+def initialiserating():
+    connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
+    cursor = connection.cursor()
+
+    cursor.execute('''CREATE TABLE IF NOT EXISTS Rating(
+    id_book INTEGER NOT NULL,
+    rating INTEGER,
+    CHECK(rating > 0 AND rating < 6)
+    )
+    ''')
+
+    connection.commit()
+    connection.close()
+
+
 def insert(id_user, id_book):
     connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
     connection.execute('PRAGMA foreign_keys = ON')  # We need this because foreign keys are disabled by default
@@ -55,3 +70,4 @@ def checkstock(item):
 
 
 initialise()  # Makes sure the table is available
+initialiserating()
