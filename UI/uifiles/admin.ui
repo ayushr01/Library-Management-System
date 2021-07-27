@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AdminWindow</class>
+ <widget class="QWidget" name="AdminWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>900</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>900</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>Calibri</family>
+    <pointsize>12</pointsize>
+    <weight>75</weight>
+    <bold>true</bold>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Admin</string>
+  </property>
+  <layout class="QFormLayout" name="formLayout">
+   <item row="0" column="0" colspan="2">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="font">
+      <font>
+       <family>Calibri</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="memtab">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <attribute name="title">
+       <string>Members</string>
+      </attribute>
+      <widget class="QTableWidget" name="memtable">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>851</width>
+         <height>341</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Calibri</family>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <attribute name="horizontalHeaderVisible">
+        <bool>true</bool>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <column>
+        <property name="text">
+         <string>ID</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Name</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>DOB</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>DOR</string>
+        </property>
+       </column>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>380</y>
+         <width>851</width>
+         <height>36</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="addmem">
+          <property name="font">
+           <font>
+            <family>Calibri</family>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color : blue;
+color: white;</string>
+          </property>
+          <property name="text">
+           <string>Add</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="refreshmem">
+          <property name="font">
+           <font>
+            <family>Calibri</family>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color : green;
+color: white;</string>
+          </property>
+          <property name="text">
+           <string>Refresh</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="deletemem">
+          <property name="font">
+           <font>
+            <family>Calibri</family>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color : red;
+color: white;</string>
+          </property>
+          <property name="text">
+           <string>Delete</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="booktab">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <attribute name="title">
+       <string>Books</string>
+      </attribute>
+      <widget class="QTableWidget" name="booktable">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>851</width>
+         <height>341</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Calibri</family>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <attribute name="horizontalHeaderVisible">
+        <bool>true</bool>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <column>
+        <property name="text">
+         <string>ID</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Title</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Author</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Genre</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Total</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Issued</string>
+        </property>
+       </column>
+      </widget>
+      <widget class="QWidget" name="layoutWidget_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>380</y>
+         <width>851</width>
+         <height>36</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QPushButton" name="addbook">
+          <property name="font">
+           <font>
+            <family>Calibri</family>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color : blue;
+color: white;</string>
+          </property>
+          <property name="text">
+           <string>Add</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="refreshbook">
+          <property name="font">
+           <font>
+            <family>Calibri</family>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color : green;
+color: white;</string>
+          </property>
+          <property name="text">
+           <string>Refresh</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="deletebook">
+          <property name="font">
+           <font>
+            <family>Calibri</family>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color : red;
+color: white;</string>
+          </property>
+          <property name="text">
+           <string>Delete</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

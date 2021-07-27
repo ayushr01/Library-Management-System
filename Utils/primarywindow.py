@@ -1,0 +1,113 @@
+from PyQt5.QtCore import QSize
+from PyQt5.QtWidgets import *
+import UI.myapp as myapp
+import UI.bookdetails as bookdetails
+import Utils.pwd as pwd
+import Utils.admin as admin
+import Utils.books as book
+
+
+class MainWindow(QMainWindow, myapp.Ui_MainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)  # Calls the function to create all the elements in the window
+
+        # Password dialog boxes
+        self.pwddialog = pwd.PwdDialog(mainwindow=self)
+        self.pwddialognew = pwd.PwdDialogNew(mainwindow=self)
+        self.bookdialog = BookDetailsDialog(mainwindow=self)
+
+        # Button actions
+        self.adminbutton.clicked.connect(self.loadpwd)
+        self.refreshbutton.clicked.connect(self.loadbooks)
+        self.detailsbutton.clicked.connect(self.loaddetails)
+
+        # Radio buttons
+        self.allbooksbutton.setChecked(True)
+        self.titlebutton.setChecked(True)
+
+        self.adminwindow = admin.AdminWindow(self)  # Creates the admin window on launch
+        # I pass self so that the genre function can be called
+
+        # Functions to run on startup
+        self.loadgenre()  # Populates genres on launch
+        self.loadbooks()  # Populates list on launch
+
+    def loadadmin(self):
+        self.adminwindow.show()  # Shows the admin window
+
+    def loadpwd(self):
+        if pwd.checkadmin():
+            self.pwddialog.makedialog()
+        else:
+            self.pwddialognew.makedialog()
+
+    def loaddetails(self):
+        if self.booklist.currentItem() is None:
+            pass
+        else:
+            self.bookdialog.makedialog(self.booklist.currentItem())
+
+    def loadbooks(self):
+        self.booklist.clear()
+        sortingdata = self.filters()
+        bookdata = book.readsorted(sortingdata)
+        position = 0
+        for row in bookdata:
+            rating = ''
+            if row[3] is not None:
+                rating = ' - '
+                for num in range(1, int(row[3]) + 1):
+                    rating = rating + '⭐'
+            item = QListWidgetItem()
+            item.setSizeHint(QSize(0, 50))
+            item.setText(f" <ID: {row[0]}>  {row[1]} by {row[2]} - {row[4]}{rating}")
+            self.booklist.insertItem(position, item)
+            position = position + 1
+
+    def loadgenre(self):
+        self.genrebox.clear()
+        self.genrebox.addItem("No Genre")
+        data = book.readgenre()
+        for row in data:
+            self.genrebox.addItem(row[0])
+
+    def filters(self):
+        viewfilter = {
+            'all': self.allbooksbutton.isChecked(),
+            'available': self.avaiablebooksbutton.isChecked(),
+        }
+        sortfilter = {
+            'title': self.titlebutton.isChecked(),
+            'author': self.authorbutton.isChecked(),
+            'rating': self.ratingbutton.isChecked()
+        }
+        genrefilter = self.genrebox.currentText()
+        return [viewfilter, sortfilter, genrefilter]
+
+
+class BookDetailsDialog(QDialog, bookdetails.Ui_bookdetaildialog):
+    def __init__(self, mainwindow):
+        super().__init__()
+
+        self.dialog = QDialog(mainwindow)  # Creates a dialog window under the mainwindow
+        self.setupUi(self.dialog)  # Calls the function to create all the elements in the dialog window
+
+    def makedialog(self, item):
+        self.setfields(item)  # Sets the detail fields in the dialog window
+        self.dialog.exec_()  # Runs the dialog window
+
+    def setfields(self, item):
+        text = item.text()
+        beg = text.find('<') + 5
+        end = text.find('>')
+        idtodisplay = int(text[beg:end])
+        data = book.readwithid(idtodisplay)
+        self.idfield.setText(str(data[0][0]))
+        self.titlefield.setText(data[0][1])
+        self.authorfield.setText(data[0][2])
+        self.ratingfield.setText(str(data[0][3]))
+        self.genrefield.setText(data[0][4])
+        self.datefield.setText(data[0][5])
+        self.totalfield.setText(str(data[0][6]))
+        self.issuedfield.setText(str(data[0][7]))

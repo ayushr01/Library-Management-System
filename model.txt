@@ -1,0 +1,41 @@
+Members table:
+id
+name
+dob
+registration date
+
+Books table:
+id
+title
+author
+rating
+genre
+date of adding
+number of copies
+number of copies issued
+
+Issuing table:
+id of user
+id of book
+issue date
+return date
+
+
+Abilities:
+Register books
+Register users
+Issue books
+Deposit books
+Check all users
+Check all books
+View Avaiability
+Rate books
+amount of fine to be paid
+View books to be returned
+
+Files:
+app cmd
+app using qt
+member functions
+table functions
+issuing functions
