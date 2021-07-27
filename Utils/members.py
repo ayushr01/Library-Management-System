@@ -153,4 +153,43 @@ def readall():
     return data
 
 
+def checkid(idtodisplay):
+    connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
+    cursor = connection.cursor()
+
+    cursor.execute("SELECT id FROM Members")
+    data = cursor.fetchall()
+
+    connection.close()
+
+    ids = [num[0] for num in data]
+    if idtodisplay in ids:
+        return True
+    else:
+        return False
+
+
+def booksissuedbymem(idtodisplay, flag):
+    connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
+    cursor = connection.cursor()
+
+    if flag == 'norm':
+        cursor.execute('''SELECT Members.name, Books.title, Issue.issue_date, Issue.return_date 
+        FROM Books JOIN Members JOIN Issue
+        ON Members.id = Issue.id_user AND Books.id = Issue.id_book 
+        WHERE Members.id = ? AND Issue.return_date is NULL
+        ''', (idtodisplay,))
+    else:
+        cursor.execute('''SELECT Members.name, Books.title, Issue.issue_date, Issue.return_date 
+        FROM Books JOIN Members JOIN Issue
+        ON Members.id = Issue.id_user AND Books.id = Issue.id_book 
+        WHERE Members.id = ?
+        ''', (idtodisplay,))
+
+    data = cursor.fetchall()
+    connection.close()
+
+    return data
+
+
 initialise()  # Makes sure the table is available

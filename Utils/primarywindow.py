@@ -15,6 +15,8 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
         super().__init__()
         self.setupUi(self)  # Calls the function to create all the elements in the window
 
+        # Issue Tab
+
         # Password dialog boxes
         self.pwddialog = pwd.PwdDialog(mainwindow=self)
         self.pwddialognew = pwd.PwdDialogNew(mainwindow=self)
@@ -33,6 +35,12 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
 
         self.adminwindow = admin.AdminWindow(self)  # Creates the admin window on launch
         # I pass self so that the genre function can be called
+
+        # Deposit tab
+
+        # Button actions
+        self.viewbookbutton.clicked.connect(lambda: self.loadissuedbooks('norm'))
+        self.viewbookhistorybutton.clicked.connect(lambda: self.loadissuedbooks('hist'))
 
         # Functions to run on startup
         self.loadgenre()  # Populates genres on launch
@@ -60,7 +68,41 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
             self.errorlabel.setText('')
             self.issuedialog.makedialog(self.booklist.currentItem())
         else:
-            self.errorlabel.setText('This book is out of stock!')
+            self.errorlabel.setText('Error: This book is out of stock!')
+
+    def loadissuedbooks(self, flag):
+        text = self.idfield.text()
+        if text == '':
+            self.errorlabel_2.setText('Error: Enter your member id!')
+        elif text.isnumeric() is False:
+            self.errorlabel_2.setText('Error: Enter a number!')
+        else:
+            self.errorlabel_2.setText('')
+            if mem.checkid(int(text)) and flag == 'norm':
+                position = 0
+                self.memlist.clear()
+                for row in mem.booksissuedbymem(int(text), flag):
+                    self.errorlabel_2.setText(f"Viewing books issued by {row[0]}")
+                    item = QListWidgetItem()
+                    item.setSizeHint(QSize(500, 50))
+                    item.setText(f'''{row[1]}
+Issued on {row[2]}''')
+                    self.memlist.insertItem(position, item)
+                    position = position + 1
+            elif mem.checkid(int(text)) and flag == 'hist':
+                position = 0
+                self.memlist.clear()
+                for row in mem.booksissuedbymem(int(text), flag):
+                    self.errorlabel_2.setText(f"Viewing history of books issued by {row[0]}")
+                    item = QListWidgetItem()
+                    item.setSizeHint(QSize(500, 75))
+                    item.setText(f'''{row[1]}
+Issued on {row[2]}
+Returned on {row[3]}''')
+                    self.memlist.insertItem(position, item)
+                    position = position + 1
+            else:
+                self.errorlabel_2.setText('Member not found in database!')
 
     def loadbooks(self):
         self.booklist.clear()
@@ -87,7 +129,6 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
             self.genrebox.addItem(row[0])
 
     def filters(self):
-
         viewfilter = {
             'all': self.allbooksbutton.isChecked(),
             'available': self.avaiablebooksbutton.isChecked(),

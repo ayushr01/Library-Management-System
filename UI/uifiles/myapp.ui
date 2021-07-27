@@ -44,7 +44,7 @@
     <item row="0" column="0" colspan="2">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="issuetab">
        <attribute name="title">
@@ -320,6 +320,189 @@ color: white;</string>
        <attribute name="title">
         <string>Deposit Book</string>
        </attribute>
+       <widget class="QLabel" name="memberlabel">
+        <property name="geometry">
+         <rect>
+          <x>590</x>
+          <y>10</y>
+          <width>149</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Enter Member ID:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="idfield">
+        <property name="geometry">
+         <rect>
+          <x>750</x>
+          <y>10</y>
+          <width>211</width>
+          <height>41</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="viewbookbutton">
+        <property name="geometry">
+         <rect>
+          <x>590</x>
+          <y>110</y>
+          <width>371</width>
+          <height>29</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>View books issued</string>
+        </property>
+       </widget>
+       <widget class="QListWidget" name="memlist">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>551</width>
+          <height>511</height>
+         </rect>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="errorlabel_2">
+        <property name="geometry">
+         <rect>
+          <x>590</x>
+          <y>70</y>
+          <width>371</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: red
+</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="Line" name="line_2">
+        <property name="geometry">
+         <rect>
+          <x>560</x>
+          <y>200</y>
+          <width>421</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="returnbutton">
+        <property name="geometry">
+         <rect>
+          <x>690</x>
+          <y>450</y>
+          <width>171</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Return Book</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="viewbookhistorybutton">
+        <property name="geometry">
+         <rect>
+          <x>590</x>
+          <y>160</y>
+          <width>371</width>
+          <height>29</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>View history of books issued</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="onestar">
+        <property name="geometry">
+         <rect>
+          <x>590</x>
+          <y>270</y>
+          <width>140</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>⭐</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="twostar">
+        <property name="geometry">
+         <rect>
+          <x>590</x>
+          <y>300</y>
+          <width>140</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>⭐⭐</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="threestar">
+        <property name="geometry">
+         <rect>
+          <x>590</x>
+          <y>330</y>
+          <width>140</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>⭐⭐⭐</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="fourstar">
+        <property name="geometry">
+         <rect>
+          <x>590</x>
+          <y>360</y>
+          <width>140</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>⭐⭐⭐⭐</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="fivestar">
+        <property name="geometry">
+         <rect>
+          <x>590</x>
+          <y>390</y>
+          <width>140</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>⭐⭐⭐⭐⭐</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="ratinglabel">
+        <property name="geometry">
+         <rect>
+          <x>590</x>
+          <y>230</y>
+          <width>371</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Leave a rating for the book:</string>
+        </property>
+       </widget>
       </widget>
      </widget>
     </item>
