@@ -2,9 +2,12 @@ from PyQt5.QtCore import QSize
 from PyQt5.QtWidgets import *
 import UI.myapp as myapp
 import UI.bookdetails as bookdetails
+import UI.issuebook as issuebook
 import Utils.pwd as pwd
 import Utils.admin as admin
 import Utils.books as book
+import Utils.members as mem
+import Utils.library as lib
 
 
 class MainWindow(QMainWindow, myapp.Ui_MainWindow):
@@ -16,14 +19,16 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
         self.pwddialog = pwd.PwdDialog(mainwindow=self)
         self.pwddialognew = pwd.PwdDialogNew(mainwindow=self)
         self.bookdialog = BookDetailsDialog(mainwindow=self)
+        self.issuedialog = IssueBooksDialog(mainwindow=self)
 
         # Button actions
         self.adminbutton.clicked.connect(self.loadpwd)
         self.refreshbutton.clicked.connect(self.loadbooks)
         self.detailsbutton.clicked.connect(self.loaddetails)
+        self.issuebutton.clicked.connect(self.loadissue)
 
         # Radio buttons
-        self.allbooksbutton.setChecked(True)
+        self.avaiablebooksbutton.setChecked(True)
         self.titlebutton.setChecked(True)
 
         self.adminwindow = admin.AdminWindow(self)  # Creates the admin window on launch
@@ -47,6 +52,15 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
             pass
         else:
             self.bookdialog.makedialog(self.booklist.currentItem())
+
+    def loadissue(self):
+        if self.booklist.currentItem() is None:
+            pass
+        elif lib.checkstock(self.booklist.currentItem()):
+            self.errorlabel.setText('')
+            self.issuedialog.makedialog(self.booklist.currentItem())
+        else:
+            self.errorlabel.setText('This book is out of stock!')
 
     def loadbooks(self):
         self.booklist.clear()
@@ -73,6 +87,7 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
             self.genrebox.addItem(row[0])
 
     def filters(self):
+
         viewfilter = {
             'all': self.allbooksbutton.isChecked(),
             'available': self.avaiablebooksbutton.isChecked(),
@@ -111,3 +126,44 @@ class BookDetailsDialog(QDialog, bookdetails.Ui_bookdetaildialog):
         self.datefield.setText(data[0][5])
         self.totalfield.setText(str(data[0][6]))
         self.issuedfield.setText(str(data[0][7]))
+
+
+class IssueBooksDialog(QDialog, issuebook.Ui_issuebookdialog):
+    def __init__(self, mainwindow):
+        super().__init__()
+
+        self.dialog = QDialog(mainwindow)  # Creates a dialog window under the mainwindow
+        self.setupUi(self.dialog)  # Calls the function to create all the elements in the dialog window
+
+        self.item = None  # This field will contain the book that is to be issued
+
+        # Button actions
+        self.closebutton.clicked.connect(self.dialog.close)
+        self.issuebutton.clicked.connect(self.issuebook)
+
+    def makedialog(self, item):
+        self.item = item
+        self.getlist()  # Populates the list as soon as the dialog box is displayed
+        self.issuelabel.setText('')
+        self.dialog.exec_()  # Runs the dialog window
+
+    def getlist(self):
+        self.memlist.clear()
+        memdata = mem.readall()
+        position = 0
+        for row in memdata:
+            self.memlist.insertItem(position, f"{row[0]} - {row[1]} - ({row[2]})")
+            position = position + 1
+        self.memlist.item(0).setSelected(True)
+
+    def issuebook(self):
+        memdata = self.memlist.currentItem()
+        text = self.item.text()
+        beg = text.find('<') + 5
+        end = text.find('>')
+        bookid = int(text[beg:end])
+        text = memdata.text()
+        splittext = text.split('-')
+        memid = int(splittext[0])
+        lib.insert(memid, bookid)
+        self.issuelabel.setText(f'Book issued to {splittext[1].strip()}')

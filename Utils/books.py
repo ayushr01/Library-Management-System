@@ -102,6 +102,7 @@ class DeleteBookDialog(QDialog, delbkdialog.Ui_deletebookdialog):
         for row in bookdata:
             self.booklist.insertItem(position, f"{row[0]} - {row[1]} by {row[2]}")
             position = position + 1
+        self.booklist.item(0).setSelected(True)
 
     def deletebook(self):
         bookdata = self.booklist.currentItem()
@@ -183,7 +184,6 @@ def delete(idtodelete):
 
 
 def readall():
-    initialise()  # Needs to be only in this function as it is called as soon as the window is created
     connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
     cursor = connection.cursor()
 
@@ -195,19 +195,18 @@ def readall():
 
 
 def readsorted(sortingdata):
-    initialise()  # Needs to be only in this function as it is called as soon as the window is created
     connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
     cursor = connection.cursor()
 
     # viewfilter and genre
     constraint = ''
-    if sortingdata[0]['all']:
-        if sortingdata[2] != 'No Genre':
-            constraint = ' WHERE genre = ' + f"\'{sortingdata[2]}\'"
-    elif sortingdata[0]['available']:
+    if sortingdata[0]['available']:
         constraint = ' WHERE copies_issued < copies_total'
         if sortingdata[2] != 'No Genre':
             constraint = constraint + ' AND genre = ' + f"\'{sortingdata[2]}\'"
+    elif sortingdata[0]['all']:
+        if sortingdata[2] != 'No Genre':
+            constraint = ' WHERE genre = ' + f"\'{sortingdata[2]}\'"
 
     # sortfilter
     sortconstraint = ' ORDER BY '
@@ -246,3 +245,6 @@ def readwithid(idtodisplay):
 
     connection.close()
     return data
+
+
+initialise()  # Makes sure the table is available

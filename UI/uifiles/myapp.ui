@@ -102,7 +102,7 @@
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>60</y>
+           <y>30</y>
            <width>251</width>
            <height>28</height>
           </rect>
@@ -115,7 +115,7 @@
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>30</y>
+           <y>60</y>
            <width>251</width>
            <height>28</height>
           </rect>
@@ -295,8 +295,24 @@ color: white;</string>
           <x>15</x>
           <y>11</y>
           <width>631</width>
-          <height>521</height>
+          <height>491</height>
          </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="errorlabel">
+        <property name="geometry">
+         <rect>
+          <x>14</x>
+          <y>510</y>
+          <width>631</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: red</string>
+        </property>
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </widget>

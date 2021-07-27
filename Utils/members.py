@@ -72,9 +72,11 @@ class DeleteMemberDialog(QDialog, deletememdialog.Ui_deletememdialog):
         for row in memdata:
             self.memlist.insertItem(position, f"{row[0]} - {row[1]} - ({row[2]})")
             position = position + 1
+        self.memlist.item(0).setSelected(True)
 
     def deletemember(self):
         memdata = self.memlist.currentItem()
+        print(memdata)
         if memdata is not None:
             self.errorlabel.setText('')
             idtodelete = memdata.text().split('-')[0].rstrip()
@@ -141,7 +143,6 @@ def delete(idtodelete):
 
 
 def readall():
-    initialise()  # Needs to be only in this function as it is called as soon as the window is created
     connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
     cursor = connection.cursor()
 
@@ -150,3 +151,6 @@ def readall():
 
     connection.close()
     return data
+
+
+initialise()  # Makes sure the table is available

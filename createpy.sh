@@ -8,3 +8,4 @@ pyuic5 UI/uifiles/pwdnew.ui -o UI/pwddialognew.py
 pyuic5 UI/uifiles/addbooks.ui -o UI/addbooksdialog.py
 pyuic5 UI/uifiles/deletebooks.ui -o UI/deletebooksdialog.py
 pyuic5 UI/uifiles/bookdetails.ui -o UI/bookdetails.py
+pyuic5 UI/uifiles/issuebook.ui -o UI/issuebook.py
