@@ -179,15 +179,16 @@ class IssueBooksDialog(QDialog, issuebook.Ui_issuebookdialog):
 
     def issuebook(self):
         memdata = self.memlist.currentItem()
-        text = self.item.text()
-        beg = text.find('<') + 5
-        end = text.find('>')
-        bookid = int(text[beg:end])
-        text = memdata.text()
-        splittext = text.split('-')
-        memid = int(splittext[0])
-        lib.insert(memid, bookid)
-        self.issuelabel.setText(f'Book issued to {splittext[1].strip()}')
+        if memdata is not None:
+            text = self.item.text()
+            beg = text.find('<') + 5
+            end = text.find('>')
+            bookid = int(text[beg:end])
+            text = memdata.text()
+            splittext = text.split('-')
+            memid = int(splittext[0])
+            lib.insert(memid, bookid)
+            self.issuelabel.setText(f'Book issued to {splittext[1].strip()}')
 
 
 ###############################################

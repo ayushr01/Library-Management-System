@@ -76,7 +76,6 @@ class DeleteMemberDialog(QDialog, deletememdialog.Ui_deletememdialog):
 
     def deletemember(self):
         memdata = self.memlist.currentItem()
-        print(memdata)
         if memdata is not None:
             self.errorlabel.setText('')
             idtodelete = memdata.text().split('-')[0].rstrip()
