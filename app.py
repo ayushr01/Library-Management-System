@@ -7,3 +7,7 @@ window = MainWindow()
 window.show()
 
 app.exec_()
+
+#######################
+# Wriiten by: Ayush Rao
+#######################

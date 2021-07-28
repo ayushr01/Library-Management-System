@@ -4,6 +4,11 @@ import Utils.members as member
 import Utils.books as book
 
 
+#######################
+# Wriiten by: Ayush Rao
+#######################
+
+
 # Admin window with 2 tabs
 class AdminWindow(QWidget, admin.Ui_AdminWindow):
     def __init__(self, mainwindow):

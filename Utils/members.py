@@ -7,6 +7,11 @@ import UI.addmembersdialog as addmemdialog
 import UI.deletemembersdialog as deletememdialog
 
 
+#######################
+# Wriiten by: Ayush Rao
+#######################
+
+
 # Dialog window to add more users to the member table
 class AddMemberDialog(QDialog, addmemdialog.Ui_addmemdialog):
     def __init__(self, adminwindow):

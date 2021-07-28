@@ -2,6 +2,10 @@ import sqlite3
 import os
 
 
+#######################
+# Wriiten by: Ayush Rao
+#######################
+
 def initialise():
     connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
     connection.execute('PRAGMA foreign_keys = ON')  # We need this because foreign keys are disabled by default
