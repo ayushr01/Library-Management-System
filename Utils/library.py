@@ -23,12 +23,14 @@ def initialise():
 
 def initialiserating():
     connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
+    connection.execute('PRAGMA foreign_keys = ON')  # We need this because foreign keys are disabled by default
     cursor = connection.cursor()
 
     cursor.execute('''CREATE TABLE IF NOT EXISTS Rating(
     id_book INTEGER NOT NULL,
     rating INTEGER,
-    CHECK(rating > 0 AND rating < 6)
+    CHECK(rating > 0 AND rating < 6),
+    FOREIGN KEY(id_book) REFERENCES Books(id)
     )
     ''')
 
@@ -53,6 +55,7 @@ def insert(id_user, id_book):
 
 def returnbook(id_user, id_book, dateissued):
     connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
+    connection.execute('PRAGMA foreign_keys = ON')  # We need this because foreign keys are disabled by default
     cursor = connection.cursor()
 
     cursor.execute('''UPDATE Issue SET return_date = datetime('now','localtime') 
@@ -95,6 +98,7 @@ def setrating(id_book, rating):
         rate = 5
 
     connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
+    connection.execute('PRAGMA foreign_keys = ON')  # We need this because foreign keys are disabled by default
     cursor = connection.cursor()
 
     cursor.execute('INSERT INTO Rating VALUES(?, ?)', (id_book, rate))
@@ -106,6 +110,7 @@ def setrating(id_book, rating):
 
 def updaterating(id_book):
     connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
+    connection.execute('PRAGMA foreign_keys = ON')  # We need this because foreign keys are disabled by default
     cursor = connection.cursor()
 
     cursor.execute('SELECT rating FROM Rating WHERE id_book = ?', (id_book,))
