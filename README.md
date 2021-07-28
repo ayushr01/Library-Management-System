@@ -25,4 +25,3 @@ A library management system built using Python and Sqlite3 with PyQt5 for the fr
 #### Rating:
 - id_book (Foreign from Books)
 - rating 
-
