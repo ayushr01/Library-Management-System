@@ -40,6 +40,7 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
         # Button actions
         self.viewbookbutton.clicked.connect(lambda: self.loadissuedbooks('norm'))
         self.viewbookhistorybutton.clicked.connect(lambda: self.loadissuedbooks('hist'))
+        self.returnbutton.clicked.connect(self.returnbook)
 
         # Functions to run on startup
         self.loadgenre()  # Populates genres on launch
@@ -70,6 +71,7 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
             self.errorlabel.setText('Error: This book is out of stock!')
 
     def loadissuedbooks(self, flag):
+        self.returnbooklist.clear()
         text = self.idfield.text()
         if text == '':
             self.errorlabel_2.setText('Error: Enter your member id!')
@@ -79,26 +81,24 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
             self.errorlabel_2.setText('')
             if mem.checkid(int(text)) and flag == 'norm':
                 position = 0
-                self.memlist.clear()
                 for row in mem.booksissuedbymem(int(text), flag):
-                    self.errorlabel_2.setText(f"Viewing books issued by {row[0]}")
+                    self.errorlabel_2.setText(f"Viewing books issued by {row[1]}")
                     item = QListWidgetItem()
                     item.setSizeHint(QSize(500, 50))
-                    item.setText(f'''{row[1]}
-Issued on {row[2]}''')
-                    self.memlist.insertItem(position, item)
+                    item.setText(f'''<ID: {row[0]}> {row[2]}
+Issued on {row[3]}''')
+                    self.returnbooklist.insertItem(position, item)
                     position = position + 1
             elif mem.checkid(int(text)) and flag == 'hist':
                 position = 0
-                self.memlist.clear()
                 for row in mem.booksissuedbymem(int(text), flag):
-                    self.errorlabel_2.setText(f"Viewing history of books issued by {row[0]}")
+                    self.errorlabel_2.setText(f"Viewing history of books issued by {row[1]}")
                     item = QListWidgetItem()
                     item.setSizeHint(QSize(500, 75))
-                    item.setText(f'''{row[1]}
-Issued on {row[2]}
-Returned on {row[3]}''')
-                    self.memlist.insertItem(position, item)
+                    item.setText(f'''<ID: {row[0]}> {row[2]}
+Issued on {row[3]}
+Returned on {row[4]}''')
+                    self.returnbooklist.insertItem(position, item)
                     position = position + 1
             else:
                 self.errorlabel_2.setText('Member not found in database!')
@@ -139,3 +139,18 @@ Returned on {row[3]}''')
         }
         genrefilter = self.genrebox.currentText()
         return [viewfilter, sortfilter, genrefilter]
+
+    def returnbook(self):
+        bookdata = self.returnbooklist.currentItem()
+        if bookdata is not None:
+            text = bookdata.text()
+            beg = text.find('<') + 5
+            end = text.find('>')
+            bookid = int(text[beg:end])
+            memid = int(self.idfield.text())
+            beg = text.find('Issued on ')
+            dateissued = text[beg + 10:]
+            lib.returnbook(memid, bookid, dateissued)
+            self.loadissuedbooks('norm')
+            # TODO: Make a message
+            # self.issuelabel.setText(f'Book issued to {splittext[1].strip()}')

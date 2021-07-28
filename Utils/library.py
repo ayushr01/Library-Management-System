@@ -51,6 +51,18 @@ def insert(id_user, id_book):
     connection.close()
 
 
+def returnbook(id_user, id_book, dateissued):
+    connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
+    cursor = connection.cursor()
+
+    cursor.execute('''UPDATE Issue SET return_date = datetime('now','localtime') 
+    WHERE id_user = ? AND id_book = ? and issue_date = ?''', (id_user, id_book, dateissued))
+
+    cursor.execute('UPDATE Books SET copies_issued = copies_issued - 1 WHERE id = ?', (id_book,))
+    connection.commit()
+    connection.close()
+
+
 def checkstock(item):
     connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
     cursor = connection.cursor()

@@ -142,10 +142,10 @@ class Ui_MainWindow(object):
         self.viewbookbutton = QtWidgets.QPushButton(self.deposittab)
         self.viewbookbutton.setGeometry(QtCore.QRect(590, 110, 371, 29))
         self.viewbookbutton.setObjectName("viewbookbutton")
-        self.memlist = QtWidgets.QListWidget(self.deposittab)
-        self.memlist.setGeometry(QtCore.QRect(10, 10, 551, 511))
-        self.memlist.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-        self.memlist.setObjectName("memlist")
+        self.returnbooklist = QtWidgets.QListWidget(self.deposittab)
+        self.returnbooklist.setGeometry(QtCore.QRect(10, 10, 551, 511))
+        self.returnbooklist.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.returnbooklist.setObjectName("returnbooklist")
         self.errorlabel_2 = QtWidgets.QLabel(self.deposittab)
         self.errorlabel_2.setGeometry(QtCore.QRect(590, 70, 371, 22))
         self.errorlabel_2.setStyleSheet("color: red\n"
@@ -186,7 +186,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

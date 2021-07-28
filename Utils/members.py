@@ -174,16 +174,18 @@ def booksissuedbymem(idtodisplay, flag):
     cursor = connection.cursor()
 
     if flag == 'norm':
-        cursor.execute('''SELECT Members.name, Books.title, Issue.issue_date, Issue.return_date 
+        cursor.execute('''SELECT Books.id, Members.name, Books.title, Issue.issue_date, Issue.return_date 
         FROM Books JOIN Members JOIN Issue
         ON Members.id = Issue.id_user AND Books.id = Issue.id_book 
         WHERE Members.id = ? AND Issue.return_date is NULL
+        ORDER BY Issue.issue_date DESC
         ''', (idtodisplay,))
     else:
-        cursor.execute('''SELECT Members.name, Books.title, Issue.issue_date, Issue.return_date 
+        cursor.execute('''SELECT Books.id, Members.name, Books.title, Issue.issue_date, Issue.return_date 
         FROM Books JOIN Members JOIN Issue
         ON Members.id = Issue.id_user AND Books.id = Issue.id_book 
-        WHERE Members.id = ?
+        WHERE Members.id = ? 
+        ORDER BY Issue.return_date ASC
         ''', (idtodisplay,))
 
     data = cursor.fetchall()
