@@ -43,6 +43,7 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
         self.returnbutton.clicked.connect(self.returnbook)
 
         # Functions to run on startup
+        self.fivestar.setChecked(True)
         self.loadgenre()  # Populates genres on launch
         self.loadbooks()  # Populates list on launch
 
@@ -150,6 +151,16 @@ Returned on {row[4]}''')
             memid = int(self.idfield.text())
             beg = text.find('Issued on ')
             dateissued = text[beg + 10:]
+
+            rating = {
+                'one': self.onestar.isChecked(),
+                'two': self.twostar.isChecked(),
+                'three': self.threestar.isChecked(),
+                'four': self.fourstar.isChecked(),
+                'five': self.fivestar.isChecked()
+            }
+
+            lib.setrating(bookid, rating)
             lib.returnbook(memid, bookid, dateissued)
             self.loadissuedbooks('norm')
             # TODO: Make a message
