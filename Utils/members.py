@@ -13,7 +13,7 @@ import UI.deletemembersdialog as deletememdialog
 
 
 # Dialog window to add more users to the member table
-class AddMemberDialog(QDialog, addmemdialog.Ui_addmemdialog):
+class AddMemberDialog(addmemdialog.Ui_addmemdialog):
     def __init__(self, adminwindow):
         super().__init__()
 
@@ -52,7 +52,7 @@ class AddMemberDialog(QDialog, addmemdialog.Ui_addmemdialog):
 
 
 # Dialog window to Remove users from the member table
-class DeleteMemberDialog(QDialog, deletememdialog.Ui_deletememdialog):
+class DeleteMemberDialog(deletememdialog.Ui_deletememdialog):
     def __init__(self, adminwindow):
         super().__init__()
 

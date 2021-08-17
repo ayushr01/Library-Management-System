@@ -18,7 +18,7 @@ import Utils.library as lib
 
 
 # Dialog window to add more users to the member table
-class AddBookDialog(QDialog, addbkdialog.Ui_addbkdialog):
+class AddBookDialog(addbkdialog.Ui_addbkdialog):
     def __init__(self, adminwindow):
         super().__init__()
 
@@ -87,7 +87,7 @@ class AddBookDialog(QDialog, addbkdialog.Ui_addbkdialog):
             self.dialog.close()
 
 
-class DeleteBookDialog(QDialog, delbkdialog.Ui_deletebookdialog):
+class DeleteBookDialog(delbkdialog.Ui_deletebookdialog):
     def __init__(self, adminwindow):
         super().__init__()
 
@@ -127,7 +127,7 @@ class DeleteBookDialog(QDialog, delbkdialog.Ui_deletebookdialog):
             self.errorlabel.setText('Error: Select an entry!')
 
 
-class BookDetailsDialog(QDialog, bookdetails.Ui_bookdetaildialog):
+class BookDetailsDialog(bookdetails.Ui_bookdetaildialog):
     def __init__(self, mainwindow):
         super().__init__()
 
@@ -154,7 +154,7 @@ class BookDetailsDialog(QDialog, bookdetails.Ui_bookdetaildialog):
         self.issuedfield.setText(str(data[0][7]))
 
 
-class IssueBooksDialog(QDialog, issuebook.Ui_issuebookdialog):
+class IssueBooksDialog(issuebook.Ui_issuebookdialog):
     def __init__(self, mainwindow):
         super().__init__()
 

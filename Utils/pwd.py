@@ -11,7 +11,7 @@ import UI.pwddialognew as pwddialognew
 #######################
 
 
-class PwdDialog(QDialog, pwddialog.Ui_passworddialog):
+class PwdDialog(pwddialog.Ui_passworddialog):
     def __init__(self, mainwindow):
         super().__init__()
 
@@ -41,7 +41,7 @@ class PwdDialog(QDialog, pwddialog.Ui_passworddialog):
             self.error.setText('Error: Username or Password is incorrect!')
 
 
-class PwdDialogNew(QDialog, pwddialognew.Ui_passworddialog):
+class PwdDialogNew(pwddialognew.Ui_passworddialog):
     def __init__(self, mainwindow):
         super().__init__()
 
