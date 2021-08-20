@@ -167,5 +167,3 @@ Returned on {row[4]}''')
             lib.setrating(bookid, rating)
             lib.returnbook(memid, bookid, dateissued)
             self.loadissuedbooks('norm')
-            # TODO: Make a message
-            # self.issuelabel.setText(f'Book issued to {splittext[1].strip()}')
