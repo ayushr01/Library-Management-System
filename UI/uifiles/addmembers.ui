@@ -30,8 +30,8 @@
   </property>
   <property name="font">
    <font>
-    <family>Calibri</family>
-    <pointsize>12</pointsize>
+    <family>Trebuchet MS</family>
+    <pointsize>13</pointsize>
     <weight>75</weight>
     <bold>true</bold>
    </font>
@@ -50,8 +50,8 @@
    </property>
    <property name="font">
     <font>
-     <family>Calibri</family>
-     <pointsize>12</pointsize>
+     <family>Trebuchet MS</family>
+     <pointsize>13</pointsize>
      <weight>50</weight>
      <bold>false</bold>
     </font>
@@ -61,8 +61,8 @@
      <widget class="QLabel" name="namefield">
       <property name="font">
        <font>
-        <family>Calibri</family>
-        <pointsize>12</pointsize>
+        <family>Trebuchet MS</family>
+        <pointsize>13</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -76,8 +76,8 @@
      <widget class="QLabel" name="datefield">
       <property name="font">
        <font>
-        <family>Calibri</family>
-        <pointsize>12</pointsize>
+        <family>Trebuchet MS</family>
+        <pointsize>13</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -100,8 +100,8 @@
    </property>
    <property name="font">
     <font>
-     <family>Tahoma</family>
-     <pointsize>12</pointsize>
+     <family>Trebuchet MS</family>
+     <pointsize>13</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -126,8 +126,8 @@
       </property>
       <property name="font">
        <font>
-        <family>Calibri</family>
-        <pointsize>12</pointsize>
+        <family>Trebuchet MS</family>
+        <pointsize>13</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -151,8 +151,8 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Calibri</family>
-        <pointsize>12</pointsize>
+        <family>Trebuchet MS</family>
+        <pointsize>13</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -176,8 +176,8 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Calibri</family>
-        <pointsize>12</pointsize>
+        <family>Trebuchet MS</family>
+        <pointsize>13</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -203,8 +203,8 @@ color: white;</string>
    </property>
    <property name="font">
     <font>
-     <family>Calibri</family>
-     <pointsize>12</pointsize>
+     <family>Trebuchet MS</family>
+     <pointsize>13</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -225,6 +225,14 @@ color: white;</string>
      <height>211</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Trebuchet MS</family>
+     <pointsize>13</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <layout class="QVBoxLayout" name="entryfield">
     <property name="spacing">
      <number>40</number>
@@ -242,8 +250,8 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Calibri</family>
-        <pointsize>12</pointsize>
+        <family>Trebuchet MS</family>
+        <pointsize>13</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -260,8 +268,8 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Calibri</family>
-        <pointsize>12</pointsize>
+        <family>Trebuchet MS</family>
+        <pointsize>13</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>

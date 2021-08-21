@@ -30,8 +30,8 @@
   </property>
   <property name="font">
    <font>
-    <family>Calibri</family>
-    <pointsize>12</pointsize>
+    <family>Trebuchet MS</family>
+    <pointsize>13</pointsize>
     <weight>75</weight>
     <bold>true</bold>
    </font>
@@ -50,7 +50,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Calibri</family>
+     <family>Trebuchet MS</family>
      <pointsize>12</pointsize>
      <weight>50</weight>
      <bold>false</bold>
@@ -64,7 +64,7 @@
      <widget class="QLabel" name="username">
       <property name="font">
        <font>
-        <family>Calibri</family>
+        <family>Trebuchet MS</family>
         <pointsize>12</pointsize>
         <weight>75</weight>
         <bold>true</bold>
@@ -79,7 +79,7 @@
      <widget class="QLabel" name="password">
       <property name="font">
        <font>
-        <family>Calibri</family>
+        <family>Trebuchet MS</family>
         <pointsize>12</pointsize>
         <weight>75</weight>
         <bold>true</bold>
@@ -94,7 +94,7 @@
      <widget class="QLabel" name="passwordagain">
       <property name="font">
        <font>
-        <family>Calibri</family>
+        <family>Trebuchet MS</family>
         <pointsize>12</pointsize>
         <weight>75</weight>
         <bold>true</bold>
@@ -118,7 +118,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Tahoma</family>
+     <family>Trebuchet MS</family>
      <pointsize>12</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -144,7 +144,7 @@
       </property>
       <property name="font">
        <font>
-        <family>Calibri</family>
+        <family>Trebuchet MS</family>
         <pointsize>12</pointsize>
         <weight>75</weight>
         <bold>true</bold>
@@ -169,7 +169,7 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Calibri</family>
+        <family>Trebuchet MS</family>
         <pointsize>12</pointsize>
         <weight>75</weight>
         <bold>true</bold>
@@ -194,7 +194,7 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Calibri</family>
+        <family>Trebuchet MS</family>
         <pointsize>12</pointsize>
         <weight>75</weight>
         <bold>true</bold>
@@ -221,8 +221,8 @@ color: white;</string>
    </property>
    <property name="font">
     <font>
-     <family>Calibri</family>
-     <pointsize>13</pointsize>
+     <family>Trebuchet MS</family>
+     <pointsize>14</pointsize>
      <weight>75</weight>
      <bold>true</bold>
      <underline>false</underline>
@@ -241,6 +241,14 @@ color: white;</string>
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Trebuchet MS</family>
+     <pointsize>13</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true">color: red</string>
    </property>
@@ -256,6 +264,14 @@ color: white;</string>
      <width>232</width>
      <height>181</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Trebuchet MS</family>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
    <layout class="QVBoxLayout" name="passwordfield">
     <property name="spacing">
@@ -277,7 +293,7 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Calibri</family>
+        <family>Trebuchet MS</family>
         <pointsize>12</pointsize>
         <weight>75</weight>
         <bold>true</bold>
@@ -295,7 +311,7 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Calibri</family>
+        <family>Trebuchet MS</family>
         <pointsize>12</pointsize>
         <weight>75</weight>
         <bold>true</bold>
@@ -319,7 +335,7 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Calibri</family>
+        <family>Trebuchet MS</family>
         <pointsize>12</pointsize>
         <weight>75</weight>
         <bold>true</bold>
@@ -344,6 +360,14 @@ color: white;</string>
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Trebuchet MS</family>
+     <pointsize>13</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true">color: red</string>
    </property>
@@ -359,6 +383,14 @@ color: white;</string>
      <width>351</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Trebuchet MS</family>
+     <pointsize>13</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">color: red</string>

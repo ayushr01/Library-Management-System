@@ -30,8 +30,8 @@
   </property>
   <property name="font">
    <font>
-    <family>Calibri</family>
-    <pointsize>12</pointsize>
+    <family>Trebuchet MS</family>
+    <pointsize>13</pointsize>
     <weight>75</weight>
     <bold>true</bold>
    </font>
@@ -61,8 +61,8 @@
      <widget class="QLabel" name="titlefield">
       <property name="font">
        <font>
-        <family>Calibri</family>
-        <pointsize>12</pointsize>
+        <family>Trebuchet MS</family>
+        <pointsize>13</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -76,8 +76,8 @@
      <widget class="QLabel" name="authofield">
       <property name="font">
        <font>
-        <family>Calibri</family>
-        <pointsize>12</pointsize>
+        <family>Trebuchet MS</family>
+        <pointsize>13</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -91,8 +91,8 @@
      <widget class="QLabel" name="genrefield">
       <property name="font">
        <font>
-        <family>Calibri</family>
-        <pointsize>12</pointsize>
+        <family>Trebuchet MS</family>
+        <pointsize>13</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -106,8 +106,8 @@
      <widget class="QLabel" name="totalfield">
       <property name="font">
        <font>
-        <family>Calibri</family>
-        <pointsize>12</pointsize>
+        <family>Trebuchet MS</family>
+        <pointsize>13</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -156,8 +156,8 @@
       </property>
       <property name="font">
        <font>
-        <family>Calibri</family>
-        <pointsize>12</pointsize>
+        <family>Trebuchet MS</family>
+        <pointsize>13</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -181,8 +181,8 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Calibri</family>
-        <pointsize>12</pointsize>
+        <family>Trebuchet MS</family>
+        <pointsize>13</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -206,8 +206,8 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Calibri</family>
-        <pointsize>12</pointsize>
+        <family>Trebuchet MS</family>
+        <pointsize>13</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -248,8 +248,8 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Calibri</family>
-        <pointsize>12</pointsize>
+        <family>Trebuchet MS</family>
+        <pointsize>13</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -266,8 +266,8 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Calibri</family>
-        <pointsize>12</pointsize>
+        <family>Trebuchet MS</family>
+        <pointsize>13</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -284,8 +284,8 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Calibri</family>
-        <pointsize>12</pointsize>
+        <family>Trebuchet MS</family>
+        <pointsize>13</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -302,8 +302,8 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Calibri</family>
-        <pointsize>12</pointsize>
+        <family>Trebuchet MS</family>
+        <pointsize>13</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -321,6 +321,14 @@ color: white;</string>
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Trebuchet MS</family>
+     <pointsize>13</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true">color: red</string>
    </property>
@@ -336,6 +344,14 @@ color: white;</string>
      <width>351</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Trebuchet MS</family>
+     <pointsize>13</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">color: red</string>
@@ -353,6 +369,14 @@ color: white;</string>
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Trebuchet MS</family>
+     <pointsize>13</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true">color: red</string>
    </property>
@@ -368,6 +392,14 @@ color: white;</string>
      <width>351</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Trebuchet MS</family>
+     <pointsize>13</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">color: red</string>
