@@ -13,14 +13,13 @@ import UI.deletemembersdialog as deletememdialog
 
 
 # Dialog window to add more users to the member table
-class AddMemberDialog(addmemdialog.Ui_addmemdialog):
+class AddMemberDialog(QDialog, addmemdialog.Ui_addmemdialog):
     def __init__(self, adminwindow):
         super().__init__()
 
         self.adminwindow = adminwindow  # To refresh the member table
 
-        self.dialog = QDialog(adminwindow)  # Creates a dialog window under the mainwindow
-        self.setupUi(self.dialog)  # Calls the function to create all the elements in the dialog window
+        self.setupUi(self)  # Calls the function to create all the elements in the dialog window
 
         # Default date to clear the input field
         self.defaultdate = self.datepicker.dateTime()
@@ -28,11 +27,11 @@ class AddMemberDialog(addmemdialog.Ui_addmemdialog):
         # Button actions
         self.clearbutton.clicked.connect(self.clearfields)
         self.submitbutton.clicked.connect(self.getfields)
-        self.closebutton.clicked.connect(self.dialog.close)
+        self.closebutton.clicked.connect(self.close)
 
     def makedialog(self):
         self.clearfields()  # Clears the fields before opening up the dialog window
-        self.dialog.exec_()  # Runs the dialog window
+        self.exec_()  # Runs the dialog window
 
     def clearfields(self):
         self.inputname.setText('')
@@ -46,38 +45,38 @@ class AddMemberDialog(addmemdialog.Ui_addmemdialog):
             dob = self.datepicker.dateTime().date().toPyDate().strftime('%d-%m-%Y')
             insert(name, dob)
             self.adminwindow.loadmem()  # Refreshes the member table after adding memberss
-            self.dialog.close()
+            self.close()
         else:
             self.errorlabel.setText('Error: Enter a valid First and Last Name!')
 
 
 # Dialog window to Remove users from the member table
-class DeleteMemberDialog(deletememdialog.Ui_deletememdialog):
+class DeleteMemberDialog(QDialog, deletememdialog.Ui_deletememdialog):
     def __init__(self, adminwindow):
         super().__init__()
 
         self.adminwindow = adminwindow  # To refresh the member table
 
-        self.dialog = QDialog(adminwindow)  # Creates a dialog window under the mainwindow
-        self.setupUi(self.dialog)  # Calls the function to create all the elements in the dialog window
+        self.setupUi(self)  # Calls the function to create all the elements in the dialog window
 
         # Button actions
         self.deletebutton.clicked.connect(self.deletemember)
-        self.closebutton.clicked.connect(self.dialog.close)
+        self.closebutton.clicked.connect(self.close)
 
     def makedialog(self):
         self.getlist()  # Populates the list as soon as the dialog box is displayed
         self.errorlabel.setText('')
-        self.dialog.exec_()  # Runs the dialog window
+        self.exec_()  # Runs the dialog window
 
     def getlist(self):
         self.memlist.clear()
         memdata = readall()
-        position = 0
-        for row in memdata:
-            self.memlist.insertItem(position, f"{row[0]} - {row[1]} - ({row[2]})")
-            position = position + 1
-        self.memlist.item(0).setSelected(True)
+        if len(memdata) != 0:
+            position = 0
+            for row in memdata:
+                self.memlist.insertItem(position, f"{row[0]} - {row[1]} - ({row[2]})")
+                position = position + 1
+            self.memlist.item(0).setSelected(True)
 
     def deletemember(self):
         memdata = self.memlist.currentItem()

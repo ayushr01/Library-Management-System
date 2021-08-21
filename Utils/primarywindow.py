@@ -23,8 +23,8 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
         # Password dialog boxes
         self.pwddialog = pwd.PwdDialog(mainwindow=self)
         self.pwddialognew = pwd.PwdDialogNew(mainwindow=self)
-        self.bookdialog = book.BookDetailsDialog(mainwindow=self)
-        self.issuedialog = book.IssueBooksDialog(mainwindow=self)
+        self.bookdialog = book.BookDetailsDialog()
+        self.issuedialog = book.IssueBooksDialog()
 
         # Button actions
         self.adminbutton.clicked.connect(self.loadpwd)
@@ -124,6 +124,8 @@ Returned on {row[4]}''')
             item.setText(f" <ID: {row[0]}>  {row[1]} by {row[2]} - {row[4]}{rating}")
             self.booklist.insertItem(position, item)
             position = position + 1
+        if len(bookdata) != 0:
+            self.booklist.item(0).setSelected(True)
 
     def loadgenre(self):
         self.genrebox.clear()

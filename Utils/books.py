@@ -18,23 +18,22 @@ import Utils.library as lib
 
 
 # Dialog window to add more users to the member table
-class AddBookDialog(addbkdialog.Ui_addbkdialog):
+class AddBookDialog(QDialog, addbkdialog.Ui_addbkdialog):
     def __init__(self, adminwindow):
         super().__init__()
 
         self.adminwindow = adminwindow  # To refresh the book table
 
-        self.dialog = QDialog(adminwindow)  # Creates a dialog window under the mainwindow
-        self.setupUi(self.dialog)  # Calls the function to create all the elements in the dialog window
+        self.setupUi(self)  # Calls the function to create all the elements in the dialog window
 
         # Button actions
         self.clearbutton.clicked.connect(self.clearfields)
         self.submitbutton.clicked.connect(self.getfields)
-        self.closebutton.clicked.connect(self.dialog.close)
+        self.closebutton.clicked.connect(self.close)
 
     def makedialog(self):
         self.clearfields()  # Clears the fields before opening up the dialog window
-        self.dialog.exec_()  # Runs the dialog window
+        self.exec_()  # Runs the dialog window
 
     def clearfields(self):
         self.inputtitle.setText('')
@@ -84,35 +83,35 @@ class AddBookDialog(addbkdialog.Ui_addbkdialog):
         if issue is False:
             insert(title, author, genre, totalcopies)
             self.adminwindow.loadbook()  # Refreshes the book table after adding books
-            self.dialog.close()
+            self.close()
 
 
-class DeleteBookDialog(delbkdialog.Ui_deletebookdialog):
+class DeleteBookDialog(QDialog, delbkdialog.Ui_deletebookdialog):
     def __init__(self, adminwindow):
         super().__init__()
 
         self.adminwindow = adminwindow  # To refresh the book table
 
-        self.dialog = QDialog(adminwindow)  # Creates a dialog window under the mainwindow
-        self.setupUi(self.dialog)  # Calls the function to create all the elements in the dialog window
+        self.setupUi(self)  # Calls the function to create all the elements in the dialog window
 
         # Button actions
         self.deletebutton.clicked.connect(self.deletebook)
-        self.closebutton.clicked.connect(self.dialog.close)
+        self.closebutton.clicked.connect(self.close)
 
     def makedialog(self):
         self.getlist()  # Populates the list as soon as the dialog box is displayed
         self.errorlabel.setText('')
-        self.dialog.exec_()  # Runs the dialog window
+        self.exec_()  # Runs the dialog window
 
     def getlist(self):
         self.booklist.clear()
         bookdata = readall()
-        position = 0
-        for row in bookdata:
-            self.booklist.insertItem(position, f"{row[0]} - {row[1]} by {row[2]}")
-            position = position + 1
-        self.booklist.item(0).setSelected(True)
+        if len(bookdata) != 0:
+            position = 0
+            for row in bookdata:
+                self.booklist.insertItem(position, f"{row[0]} - {row[1]} by {row[2]}")
+                position = position + 1
+            self.booklist.item(0).setSelected(True)
 
     def deletebook(self):
         bookdata = self.booklist.currentItem()
@@ -127,16 +126,15 @@ class DeleteBookDialog(delbkdialog.Ui_deletebookdialog):
             self.errorlabel.setText('Error: Select an entry!')
 
 
-class BookDetailsDialog(bookdetails.Ui_bookdetaildialog):
-    def __init__(self, mainwindow):
+class BookDetailsDialog(QDialog, bookdetails.Ui_bookdetaildialog):
+    def __init__(self):
         super().__init__()
 
-        self.dialog = QDialog(mainwindow)  # Creates a dialog window under the mainwindow
-        self.setupUi(self.dialog)  # Calls the function to create all the elements in the dialog window
+        self.setupUi(self)  # Calls the function to create all the elements in the dialog window
 
     def makedialog(self, item):
         self.setfields(item)  # Sets the detail fields in the dialog window
-        self.dialog.exec_()  # Runs the dialog window
+        self.exec_()  # Runs the dialog window
 
     def setfields(self, item):
         text = item.text()
@@ -154,33 +152,33 @@ class BookDetailsDialog(bookdetails.Ui_bookdetaildialog):
         self.issuedfield.setText(str(data[0][7]))
 
 
-class IssueBooksDialog(issuebook.Ui_issuebookdialog):
-    def __init__(self, mainwindow):
+class IssueBooksDialog(QDialog, issuebook.Ui_issuebookdialog):
+    def __init__(self):
         super().__init__()
 
-        self.dialog = QDialog(mainwindow)  # Creates a dialog window under the mainwindow
-        self.setupUi(self.dialog)  # Calls the function to create all the elements in the dialog window
+        self.setupUi(self)  # Calls the function to create all the elements in the dialog window
 
         self.item = None  # This field will contain the book that is to be issued
 
         # Button actions
-        self.closebutton.clicked.connect(self.dialog.close)
+        self.closebutton.clicked.connect(self.close)
         self.issuebutton.clicked.connect(self.issuebook)
 
     def makedialog(self, item):
         self.item = item
         self.getlist()  # Populates the list as soon as the dialog box is displayed
         self.issuelabel.setText('')
-        self.dialog.exec_()  # Runs the dialog window
+        self.exec_()  # Runs the dialog window
 
     def getlist(self):
         self.memlist.clear()
         memdata = mem.readall()
-        position = 0
-        for row in memdata:
-            self.memlist.insertItem(position, f"{row[0]} - {row[1]} - ({row[2]})")
-            position = position + 1
-        self.memlist.item(0).setSelected(True)
+        if len(memdata) != 0:
+            position = 0
+            for row in memdata:
+                self.memlist.insertItem(position, f"{row[0]} - {row[1]} - ({row[2]})")
+                position = position + 1
+            self.memlist.item(0).setSelected(True)
 
     def issuebook(self):
         memdata = self.memlist.currentItem()

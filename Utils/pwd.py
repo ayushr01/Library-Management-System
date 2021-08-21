@@ -11,22 +11,21 @@ import UI.pwddialognew as pwddialognew
 #######################
 
 
-class PwdDialog(pwddialog.Ui_passworddialog):
+class PwdDialog(QDialog, pwddialog.Ui_passworddialog):
     def __init__(self, mainwindow):
         super().__init__()
 
         self.mainwindow = mainwindow  # Used to launch the admin window after closing the dialog
-        self.dialog = QDialog(mainwindow)  # Creates a dialog window under the mainwindow
-        self.setupUi(self.dialog)  # Calls the function to create all the elements in the dialog window
+        self.setupUi(self)  # Calls the function to create all the elements in the dialog window
 
         # Button actions
         self.clearbutton.clicked.connect(self.clearfields)
         self.submitbutton.clicked.connect(self.getfields)
-        self.closebutton.clicked.connect(self.dialog.close)
+        self.closebutton.clicked.connect(self.close)
 
     def makedialog(self):
         self.clearfields()  # Clears the fields before opening up the dialog window
-        self.dialog.exec_()  # Runs the dialog window
+        self.exec_()  # Runs the dialog window
 
     def clearfields(self):
         self.userfield.setText('')
@@ -35,28 +34,27 @@ class PwdDialog(pwddialog.Ui_passworddialog):
 
     def getfields(self):
         if checkusrpwd(self.userfield.text(), self.pwdfield.text()):
-            self.dialog.close()
+            self.close()
             self.mainwindow.loadadmin()  # Launches the admin window after setting pwd
         else:
             self.error.setText('Error: Username or Password is incorrect!')
 
 
-class PwdDialogNew(pwddialognew.Ui_passworddialog):
+class PwdDialogNew(QDialog, pwddialognew.Ui_passworddialog):
     def __init__(self, mainwindow):
         super().__init__()
 
         self.mainwindow = mainwindow  # Used to launch the admin window after closing the dialog
-        self.dialog = QDialog(mainwindow)  # Creates a dialog window under the mainwindow
-        self.setupUi(self.dialog)  # Calls the function to create all the elements in the dialog window
+        self.setupUi(self)  # Calls the function to create all the elements in the dialog window
 
         # Button actions
         self.clearbutton.clicked.connect(self.clearfields)
         self.submitbutton.clicked.connect(self.getfields)
-        self.closebutton.clicked.connect(self.dialog.close)
+        self.closebutton.clicked.connect(self.close)
 
     def makedialog(self):
         self.clearfields()  # Clears the fields before opening up the dialog window
-        self.dialog.exec_()  # Runs the dialog window
+        self.exec_()  # Runs the dialog window
 
     def clearfields(self):
         self.userfield.setText('')
@@ -83,7 +81,7 @@ class PwdDialogNew(pwddialognew.Ui_passworddialog):
             self.errorpwdconfirm.setText('')
             if self.pwdfield.text() == self.pwdfieldconfirm.text():
                 setusrpwd(self.userfield.text(), self.pwdfield.text())
-                self.dialog.close()
+                self.close()
                 self.mainwindow.loadadmin()  # Launches the admin window after setting pwd
             else:
                 self.errorpwdconfirm.setText('Error: The passwords do not match!')
