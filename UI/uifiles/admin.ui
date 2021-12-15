@@ -30,9 +30,7 @@
   </property>
   <property name="font">
    <font>
-    <family>Trebuchet MS</family>
     <pointsize>13</pointsize>
-    <weight>75</weight>
     <bold>true</bold>
    </font>
   </property>
@@ -44,14 +42,12 @@
     <widget class="QTabWidget" name="tabWidget">
      <property name="font">
       <font>
-       <family>Trebuchet MS</family>
        <pointsize>13</pointsize>
-       <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="memtab">
       <property name="sizePolicy">
@@ -74,9 +70,7 @@
        </property>
        <property name="font">
         <font>
-         <family>Trebuchet MS</family>
          <pointsize>13</pointsize>
-         <weight>50</weight>
          <bold>false</bold>
         </font>
        </property>
@@ -127,9 +121,7 @@
        </property>
        <property name="font">
         <font>
-         <family>Trebuchet MS</family>
          <pointsize>13</pointsize>
-         <weight>75</weight>
          <bold>true</bold>
         </font>
        </property>
@@ -138,9 +130,7 @@
          <widget class="QPushButton" name="addmem">
           <property name="font">
            <font>
-            <family>Trebuchet MS</family>
             <pointsize>13</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -157,9 +147,7 @@ color: white;</string>
          <widget class="QPushButton" name="refreshmem">
           <property name="font">
            <font>
-            <family>Trebuchet MS</family>
             <pointsize>13</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -176,9 +164,7 @@ color: white;</string>
          <widget class="QPushButton" name="deletemem">
           <property name="font">
            <font>
-            <family>Trebuchet MS</family>
             <pointsize>13</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -215,9 +201,7 @@ color: white;</string>
        </property>
        <property name="font">
         <font>
-         <family>Trebuchet MS</family>
          <pointsize>13</pointsize>
-         <weight>50</weight>
          <bold>false</bold>
         </font>
        </property>
@@ -278,9 +262,7 @@ color: white;</string>
        </property>
        <property name="font">
         <font>
-         <family>Trebuchet MS</family>
          <pointsize>13</pointsize>
-         <weight>75</weight>
          <bold>true</bold>
         </font>
        </property>
@@ -289,9 +271,7 @@ color: white;</string>
          <widget class="QPushButton" name="addbook">
           <property name="font">
            <font>
-            <family>Trebuchet MS</family>
             <pointsize>13</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -308,9 +288,7 @@ color: white;</string>
          <widget class="QPushButton" name="refreshbook">
           <property name="font">
            <font>
-            <family>Trebuchet MS</family>
             <pointsize>13</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -327,9 +305,7 @@ color: white;</string>
          <widget class="QPushButton" name="deletebook">
           <property name="font">
            <font>
-            <family>Trebuchet MS</family>
             <pointsize>13</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>

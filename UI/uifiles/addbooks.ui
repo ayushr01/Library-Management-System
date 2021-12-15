@@ -30,9 +30,7 @@
   </property>
   <property name="font">
    <font>
-    <family>Trebuchet MS</family>
     <pointsize>13</pointsize>
-    <weight>75</weight>
     <bold>true</bold>
    </font>
   </property>
@@ -50,9 +48,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Calibri</family>
      <pointsize>12</pointsize>
-     <weight>50</weight>
      <bold>false</bold>
     </font>
    </property>
@@ -61,9 +57,7 @@
      <widget class="QLabel" name="titlefield">
       <property name="font">
        <font>
-        <family>Trebuchet MS</family>
         <pointsize>13</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -76,9 +70,7 @@
      <widget class="QLabel" name="authofield">
       <property name="font">
        <font>
-        <family>Trebuchet MS</family>
         <pointsize>13</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -91,9 +83,7 @@
      <widget class="QLabel" name="genrefield">
       <property name="font">
        <font>
-        <family>Trebuchet MS</family>
         <pointsize>13</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -106,9 +96,7 @@
      <widget class="QLabel" name="totalfield">
       <property name="font">
        <font>
-        <family>Trebuchet MS</family>
         <pointsize>13</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -130,9 +118,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Tahoma</family>
      <pointsize>12</pointsize>
-     <weight>75</weight>
      <bold>true</bold>
     </font>
    </property>
@@ -156,9 +142,7 @@
       </property>
       <property name="font">
        <font>
-        <family>Trebuchet MS</family>
         <pointsize>13</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -181,9 +165,7 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Trebuchet MS</family>
         <pointsize>13</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -206,14 +188,13 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Trebuchet MS</family>
         <pointsize>13</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">background-color: #333333;
+color: white;</string>
       </property>
       <property name="text">
        <string>Close</string>
@@ -248,9 +229,7 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Trebuchet MS</family>
         <pointsize>13</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -266,9 +245,7 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Trebuchet MS</family>
         <pointsize>13</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -284,9 +261,7 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Trebuchet MS</family>
         <pointsize>13</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -302,9 +277,7 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Trebuchet MS</family>
         <pointsize>13</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -323,9 +296,7 @@ color: white;</string>
    </property>
    <property name="font">
     <font>
-     <family>Trebuchet MS</family>
      <pointsize>13</pointsize>
-     <weight>50</weight>
      <bold>false</bold>
     </font>
    </property>
@@ -347,9 +318,7 @@ color: white;</string>
    </property>
    <property name="font">
     <font>
-     <family>Trebuchet MS</family>
      <pointsize>13</pointsize>
-     <weight>50</weight>
      <bold>false</bold>
     </font>
    </property>
@@ -371,9 +340,7 @@ color: white;</string>
    </property>
    <property name="font">
     <font>
-     <family>Trebuchet MS</family>
      <pointsize>13</pointsize>
-     <weight>50</weight>
      <bold>false</bold>
     </font>
    </property>
@@ -395,9 +362,7 @@ color: white;</string>
    </property>
    <property name="font">
     <font>
-     <family>Trebuchet MS</family>
      <pointsize>13</pointsize>
-     <weight>50</weight>
      <bold>false</bold>
     </font>
    </property>

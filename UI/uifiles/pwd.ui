@@ -30,9 +30,7 @@
   </property>
   <property name="font">
    <font>
-    <family>Trebuchet MS</family>
     <pointsize>13</pointsize>
-    <weight>75</weight>
     <bold>true</bold>
    </font>
   </property>
@@ -50,9 +48,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Trebuchet MS</family>
      <pointsize>13</pointsize>
-     <weight>50</weight>
      <bold>false</bold>
     </font>
    </property>
@@ -64,9 +60,7 @@
      <widget class="QLabel" name="username">
       <property name="font">
        <font>
-        <family>Trebuchet MS</family>
         <pointsize>13</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -79,9 +73,7 @@
      <widget class="QLabel" name="password">
       <property name="font">
        <font>
-        <family>Trebuchet MS</family>
         <pointsize>13</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -103,9 +95,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Trebuchet MS</family>
      <pointsize>13</pointsize>
-     <weight>75</weight>
      <bold>true</bold>
     </font>
    </property>
@@ -129,9 +119,7 @@
       </property>
       <property name="font">
        <font>
-        <family>Trebuchet MS</family>
         <pointsize>13</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -154,9 +142,7 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Trebuchet MS</family>
         <pointsize>13</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -179,14 +165,13 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Trebuchet MS</family>
         <pointsize>13</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">background-color: #333333;
+color: white;</string>
       </property>
       <property name="text">
        <string>Close</string>
@@ -206,9 +191,7 @@ color: white;</string>
    </property>
    <property name="font">
     <font>
-     <family>Trebuchet MS</family>
      <pointsize>14</pointsize>
-     <weight>75</weight>
      <bold>true</bold>
      <underline>false</underline>
     </font>
@@ -228,9 +211,7 @@ color: white;</string>
    </property>
    <property name="font">
     <font>
-     <family>Trebuchet MS</family>
      <pointsize>13</pointsize>
-     <weight>75</weight>
      <bold>true</bold>
     </font>
    </property>
@@ -251,9 +232,7 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Trebuchet MS</family>
         <pointsize>13</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -269,9 +248,7 @@ color: white;</string>
       </property>
       <property name="font">
        <font>
-        <family>Trebuchet MS</family>
         <pointsize>13</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -296,9 +273,7 @@ color: white;</string>
    </property>
    <property name="font">
     <font>
-     <family>Trebuchet MS</family>
      <pointsize>13</pointsize>
-     <weight>50</weight>
      <bold>false</bold>
     </font>
    </property>
