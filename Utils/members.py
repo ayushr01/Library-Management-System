@@ -6,6 +6,8 @@ from PyQt5.QtWidgets import *
 import UI.addmembersdialog as addmemdialog
 import UI.deletemembersdialog as deletememdialog
 
+import Utils.foldermaker as folder
+
 
 #######################
 # Wriiten by: Ayush Rao
@@ -197,4 +199,5 @@ def booksissuedbymem(idtodisplay, flag):
     return data
 
 
+folder.makefolder()  # Creates the folder for DB and pwd if it does not exist
 initialise()  # Makes sure the table is available

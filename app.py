@@ -1,4 +1,3 @@
-import Utils.foldermaker  # Creates the folder for DB and pwd
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from Utils.primarywindow import MainWindow

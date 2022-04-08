@@ -18,8 +18,6 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
         super().__init__()
         self.setupUi(self)  # Calls the function to create all the elements in the window
 
-        # Issue Tab
-
         # Password dialog boxes
         self.pwddialog = pwd.PwdDialog(mainwindow=self)
         self.pwddialognew = pwd.PwdDialogNew(mainwindow=self)
