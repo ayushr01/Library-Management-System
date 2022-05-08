@@ -1,4 +1,5 @@
-from PyQt5.QtWidgets import *
+from PyQt6.QtWidgets import QWidget, QTableWidgetItem
+
 import UI.adminui as admin
 import Utils.members as member
 import Utils.books as book

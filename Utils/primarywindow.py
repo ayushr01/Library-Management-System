@@ -1,5 +1,6 @@
-from PyQt5.QtCore import QSize
-from PyQt5.QtWidgets import *
+from PyQt6.QtCore import QSize
+from PyQt6.QtWidgets import QMainWindow, QListWidgetItem
+
 import UI.myapp as myapp
 
 import Utils.pwd as pwd

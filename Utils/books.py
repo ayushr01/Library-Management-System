@@ -2,7 +2,8 @@ import sqlite3
 import re
 import os
 
-from PyQt5.QtWidgets import *
+from PyQt6.QtWidgets import QDialog
+
 import UI.addbooksdialog as addbkdialog
 import UI.deletebooksdialog as delbkdialog
 import UI.bookdetails as bookdetails
@@ -33,7 +34,7 @@ class AddBookDialog(QDialog, addbkdialog.Ui_addbkdialog):
 
     def makedialog(self):
         self.clearfields()  # Clears the fields before opening up the dialog window
-        self.exec_()  # Runs the dialog window
+        self.exec()  # Runs the dialog window
 
     def clearfields(self):
         self.inputtitle.setText('')
@@ -101,7 +102,7 @@ class DeleteBookDialog(QDialog, delbkdialog.Ui_deletebookdialog):
     def makedialog(self):
         self.getlist()  # Populates the list as soon as the dialog box is displayed
         self.errorlabel.setText('')
-        self.exec_()  # Runs the dialog window
+        self.exec()  # Runs the dialog window
 
     def getlist(self):
         self.booklist.clear()
@@ -134,7 +135,7 @@ class BookDetailsDialog(QDialog, bookdetails.Ui_bookdetaildialog):
 
     def makedialog(self, item):
         self.setfields(item)  # Sets the detail fields in the dialog window
-        self.exec_()  # Runs the dialog window
+        self.exec()  # Runs the dialog window
 
     def setfields(self, item):
         text = item.text()
@@ -168,7 +169,7 @@ class IssueBooksDialog(QDialog, issuebook.Ui_issuebookdialog):
         self.item = item
         self.getlist()  # Populates the list as soon as the dialog box is displayed
         self.issuelabel.setText('')
-        self.exec_()  # Runs the dialog window
+        self.exec()  # Runs the dialog window
 
     def getlist(self):
         self.memlist.clear()

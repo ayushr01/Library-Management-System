@@ -1,7 +1,8 @@
 import os
 import json
 
-from PyQt5.QtWidgets import *
+from PyQt6.QtWidgets import QDialog
+
 import UI.pwddialog as pwddialog
 import UI.pwddialognew as pwddialognew
 
@@ -25,7 +26,7 @@ class PwdDialog(QDialog, pwddialog.Ui_passworddialog):
 
     def makedialog(self):
         self.clearfields()  # Clears the fields before opening up the dialog window
-        self.exec_()  # Runs the dialog window
+        self.exec()  # Runs the dialog window
 
     def clearfields(self):
         self.userfield.setText('')
@@ -54,7 +55,7 @@ class PwdDialogNew(QDialog, pwddialognew.Ui_passworddialog):
 
     def makedialog(self):
         self.clearfields()  # Clears the fields before opening up the dialog window
-        self.exec_()  # Runs the dialog window
+        self.exec()  # Runs the dialog window
 
     def clearfields(self):
         self.userfield.setText('')

@@ -2,7 +2,8 @@ import sqlite3
 import re
 import os
 
-from PyQt5.QtWidgets import *
+from PyQt6.QtWidgets import QDialog
+
 import UI.addmembersdialog as addmemdialog
 import UI.deletemembersdialog as deletememdialog
 
@@ -33,7 +34,7 @@ class AddMemberDialog(QDialog, addmemdialog.Ui_addmemdialog):
 
     def makedialog(self):
         self.clearfields()  # Clears the fields before opening up the dialog window
-        self.exec_()  # Runs the dialog window
+        self.exec()  # Runs the dialog window
 
     def clearfields(self):
         self.inputname.setText('')
@@ -68,7 +69,7 @@ class DeleteMemberDialog(QDialog, deletememdialog.Ui_deletememdialog):
     def makedialog(self):
         self.getlist()  # Populates the list as soon as the dialog box is displayed
         self.errorlabel.setText('')
-        self.exec_()  # Runs the dialog window
+        self.exec()  # Runs the dialog window
 
     def getlist(self):
         self.memlist.clear()
