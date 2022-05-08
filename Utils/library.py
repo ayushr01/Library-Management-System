@@ -122,11 +122,11 @@ def updaterating(id_book):
     rating = cursor.fetchall()
     rating = [rate[0] for rate in rating]
 
-    sum = 0
+    ratingsum = 0
     for num in rating:
-        sum = sum + num
+        ratingsum = ratingsum + num
 
-    avg = sum / len(rating)
+    avg = ratingsum / len(rating)
 
     cursor.execute('UPDATE Books SET rating = ? WHERE id = ?', (round(avg, 1), id_book))
 
