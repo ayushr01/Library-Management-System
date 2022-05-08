@@ -23,6 +23,7 @@ class Ui_passworddialog(object):
         font.setPointSize(15)
         font.setBold(True)
         self.info.setFont(font)
+        self.info.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.info.setObjectName("info")
         self.verticalLayout.addWidget(self.info)
         self.inputform = QtWidgets.QFormLayout()
@@ -117,7 +118,7 @@ class Ui_passworddialog(object):
     def retranslateUi(self, passworddialog):
         _translate = QtCore.QCoreApplication.translate
         passworddialog.setWindowTitle(_translate("passworddialog", "Admin Login"))
-        self.info.setText(_translate("passworddialog", "Login to access admin portal"))
+        self.info.setText(_translate("passworddialog", "Log in to access admin portal"))
         self.username.setText(_translate("passworddialog", "Username:"))
         self.password.setText(_translate("passworddialog", "Password:"))
         self.clearbutton.setText(_translate("passworddialog", "Clear"))
