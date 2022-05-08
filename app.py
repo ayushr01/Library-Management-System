@@ -12,6 +12,7 @@ app.exec()
 # TODO: Revamp all ui files to support responsive design
 # TODO: Add ability to search for book details online
 # TODO: Bundle application using PyInstaller or other options
+# TODO: Find better alternative for password storing
 
 #######################
 # Wriiten by: Ayush Rao
