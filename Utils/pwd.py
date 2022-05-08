@@ -19,6 +19,10 @@ class PwdDialog(QDialog, pwddialog.Ui_passworddialog):
         self.mainwindow = mainwindow  # Used to launch the admin window after closing the dialog
         self.setupUi(self)  # Calls the function to create all the elements in the dialog window
 
+        # Setting field margins
+        self.userfield.setTextMargins(10, 0, 10, 0)
+        self.pwdfield.setTextMargins(10, 0, 10, 0)
+
         # Button actions
         self.clearbutton.clicked.connect(self.clearfields)
         self.submitbutton.clicked.connect(self.getfields)

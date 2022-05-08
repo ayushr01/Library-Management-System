@@ -20,7 +20,7 @@ class Ui_passworddialog(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.info = QtWidgets.QLabel(passworddialog)
         font = QtGui.QFont()
-        font.setPointSize(14)
+        font.setPointSize(15)
         font.setBold(True)
         self.info.setFont(font)
         self.info.setObjectName("info")
@@ -59,33 +59,64 @@ class Ui_passworddialog(object):
         font = QtGui.QFont()
         font.setBold(True)
         self.error.setFont(font)
+        self.error.setStyleSheet("color: orange")
         self.error.setText("")
+        self.error.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.error.setObjectName("error")
         self.verticalLayout.addWidget(self.error)
         self.buttonlayout = QtWidgets.QHBoxLayout()
         self.buttonlayout.setObjectName("buttonlayout")
         self.clearbutton = QtWidgets.QPushButton(passworddialog)
+        self.clearbutton.setMinimumSize(QtCore.QSize(0, 25))
+        self.clearbutton.setStyleSheet("QPushButton#clearbutton{\n"
+"    background-color: cornflowerblue;\n"
+"    border-radius: 5px;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QPushButton#clearbutton:hover{\n"
+"    border: 2px solid teal;\n"
+"}")
         self.clearbutton.setObjectName("clearbutton")
         self.buttonlayout.addWidget(self.clearbutton)
         self.submitbutton = QtWidgets.QPushButton(passworddialog)
-        self.submitbutton.setStyleSheet("")
+        self.submitbutton.setMinimumSize(QtCore.QSize(0, 25))
+        self.submitbutton.setStyleSheet("QPushButton#submitbutton{\n"
+"    background-color: green;\n"
+"    border-radius: 5px;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QPushButton#submitbutton:hover{\n"
+"    border: 2px solid teal;\n"
+"}")
         self.submitbutton.setObjectName("submitbutton")
         self.buttonlayout.addWidget(self.submitbutton)
         self.closebutton = QtWidgets.QPushButton(passworddialog)
+        self.closebutton.setMinimumSize(QtCore.QSize(0, 25))
+        self.closebutton.setStyleSheet("QPushButton#closebutton{\n"
+"    background-color: #656565;\n"
+"    border-radius: 5px;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QPushButton#closebutton:hover{\n"
+"    border: 2px solid teal;\n"
+"}")
         self.closebutton.setObjectName("closebutton")
         self.buttonlayout.addWidget(self.closebutton)
         self.verticalLayout.addLayout(self.buttonlayout)
         self.verticalLayout.setStretch(0, 1)
         self.verticalLayout.setStretch(1, 5)
         self.verticalLayout.setStretch(2, 1)
-        self.verticalLayout.setStretch(3, 1)
+        self.verticalLayout.setStretch(3, 2)
 
         self.retranslateUi(passworddialog)
         QtCore.QMetaObject.connectSlotsByName(passworddialog)
 
     def retranslateUi(self, passworddialog):
         _translate = QtCore.QCoreApplication.translate
-        passworddialog.setWindowTitle(_translate("passworddialog", "Dialog"))
+        passworddialog.setWindowTitle(_translate("passworddialog", "Admin Login"))
         self.info.setText(_translate("passworddialog", "Login to access admin portal"))
         self.username.setText(_translate("passworddialog", "Username:"))
         self.password.setText(_translate("passworddialog", "Password:"))
