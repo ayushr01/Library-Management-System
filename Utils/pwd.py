@@ -52,6 +52,11 @@ class PwdDialogNew(QDialog, pwddialognew.Ui_passworddialog):
         self.mainwindow = mainwindow  # Used to launch the admin window after closing the dialog
         self.setupUi(self)  # Calls the function to create all the elements in the dialog window
 
+        # Setting field margins
+        self.userfield.setTextMargins(10, 0, 10, 0)
+        self.pwdfield.setTextMargins(10, 0, 10, 0)
+        self.pwdfieldconfirm.setTextMargins(10, 0, 10, 0)
+
         # Button actions
         self.clearbutton.clicked.connect(self.clearfields)
         self.submitbutton.clicked.connect(self.getfields)
@@ -65,31 +70,32 @@ class PwdDialogNew(QDialog, pwddialognew.Ui_passworddialog):
         self.userfield.setText('')
         self.pwdfield.setText('')
         self.pwdfieldconfirm.setText('')
-        self.erroruser.setText('')
-        self.errorpwd.setText('')
-        self.errorpwdconfirm.setText('')
+        self.error.setText('')
 
     def getfields(self):
         if self.userfield.text() == '':
-            self.erroruser.setText('Error: Enter a username!')
+            self.error.setText('Error: Enter a username!')
+            return
         else:
-            self.erroruser.setText('')
+            self.error.setText('')
 
         if self.pwdfield.text() == '':
-            self.errorpwd.setText('Error: Enter a password!')
+            self.error.setText('Error: Enter a password!')
+            return
         else:
-            self.errorpwd.setText('')
+            self.error.setText('')
 
         if self.pwdfieldconfirm.text() == '':
-            self.errorpwdconfirm.setText('Error: Confirm your password!')
+            self.error.setText('Error: Confirm your password!')
+            return
         else:
-            self.errorpwdconfirm.setText('')
+            self.error.setText('')
             if self.pwdfield.text() == self.pwdfieldconfirm.text():
                 setusrpwd(self.userfield.text(), self.pwdfield.text())
                 self.close()
                 self.mainwindow.loadadmin()  # Launches the admin window after setting pwd
             else:
-                self.errorpwdconfirm.setText('Error: The passwords do not match!')
+                self.error.setText('Error: The passwords do not match!')
 
 
 def checkadmin():
