@@ -27,6 +27,9 @@ class AddMemberDialog(QDialog, addmemdialog.Ui_addmemdialog):
         # Default date to clear the input field
         self.defaultdate = self.datepicker.dateTime()
 
+        # Setting field margins
+        self.inputname.setTextMargins(10, 0, 10, 0)
+
         # Button actions
         self.clearbutton.clicked.connect(self.clearfields)
         self.submitbutton.clicked.connect(self.getfields)
@@ -38,19 +41,19 @@ class AddMemberDialog(QDialog, addmemdialog.Ui_addmemdialog):
 
     def clearfields(self):
         self.inputname.setText('')
-        self.errorlabel.setText('')
+        self.error.setText('')
         self.datepicker.setDateTime(self.defaultdate)
 
     def getfields(self):
         name = self.inputname.text()
         if namecheck(name):
-            self.errorlabel.setText('')
+            self.error.setText('')
             dob = self.datepicker.dateTime().date().toPyDate().strftime('%d-%m-%Y')
             insert(name, dob)
             self.adminwindow.loadmem()  # Refreshes the member table after adding memberss
             self.close()
         else:
-            self.errorlabel.setText('Error: Enter a valid First and Last Name!')
+            self.error.setText('Error: Enter a valid First and Last Name!')
 
 
 # Dialog window to Remove users from the member table
