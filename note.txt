@@ -1,0 +1,3 @@
+To generate pyinstaller executable:
+pyinstaller app.py --onefile --clean --name "LM System"
+
