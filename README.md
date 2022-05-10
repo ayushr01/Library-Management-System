@@ -1,6 +1,14 @@
 # Library-Management-System
 A library management system built using Python and Sqlite3 with PyQt5 for the front end.
 
+**Only tested on MacOS, build available only for M1 Macs.**
+
+### To Build:
+ pyinstaller app.py --windowed --clean --name "LM System" --icon "icon.icns"  
+
+### Link to Download (Pending): 
+https://drive.google.com/drive/folders/1KwaN11ke53sPyp_n8JTCHFvoG02Af1EY?usp=sharing
+
 ### Tables used:
 #### Books:
 - id (Primary & Autoincrement)
