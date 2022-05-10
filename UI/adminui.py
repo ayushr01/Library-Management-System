@@ -12,42 +12,18 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_AdminWindow(object):
     def setupUi(self, AdminWindow):
         AdminWindow.setObjectName("AdminWindow")
-        AdminWindow.resize(900, 500)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(AdminWindow.sizePolicy().hasHeightForWidth())
-        AdminWindow.setSizePolicy(sizePolicy)
-        AdminWindow.setMinimumSize(QtCore.QSize(900, 500))
-        AdminWindow.setMaximumSize(QtCore.QSize(900, 500))
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        font.setBold(True)
-        AdminWindow.setFont(font)
-        self.formLayout = QtWidgets.QFormLayout(AdminWindow)
-        self.formLayout.setObjectName("formLayout")
+        AdminWindow.resize(650, 450)
+        AdminWindow.setMinimumSize(QtCore.QSize(650, 450))
+        AdminWindow.setMaximumSize(QtCore.QSize(800, 600))
+        self.verticalLayout = QtWidgets.QVBoxLayout(AdminWindow)
+        self.verticalLayout.setObjectName("verticalLayout")
         self.tabWidget = QtWidgets.QTabWidget(AdminWindow)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        font.setBold(True)
-        self.tabWidget.setFont(font)
         self.tabWidget.setObjectName("tabWidget")
         self.memtab = QtWidgets.QWidget()
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.memtab.sizePolicy().hasHeightForWidth())
-        self.memtab.setSizePolicy(sizePolicy)
         self.memtab.setObjectName("memtab")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.memtab)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.memtable = QtWidgets.QTableWidget(self.memtab)
-        self.memtable.setGeometry(QtCore.QRect(10, 10, 851, 341))
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        font.setBold(False)
-        self.memtable.setFont(font)
-        self.memtable.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAsNeeded)
-        self.memtable.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
-        self.memtable.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectionBehavior.SelectRows)
         self.memtable.setObjectName("memtable")
         self.memtable.setColumnCount(4)
         self.memtable.setRowCount(0)
@@ -59,62 +35,60 @@ class Ui_AdminWindow(object):
         self.memtable.setHorizontalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
         self.memtable.setHorizontalHeaderItem(3, item)
-        self.memtable.horizontalHeader().setVisible(False)
+        self.memtable.horizontalHeader().setVisible(True)
+        self.memtable.horizontalHeader().setStretchLastSection(True)
         self.memtable.verticalHeader().setVisible(False)
-        self.layoutWidget = QtWidgets.QWidget(self.memtab)
-        self.layoutWidget.setGeometry(QtCore.QRect(10, 380, 851, 36))
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        font.setBold(True)
-        self.layoutWidget.setFont(font)
-        self.layoutWidget.setObjectName("layoutWidget")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.layoutWidget)
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.addmem = QtWidgets.QPushButton(self.layoutWidget)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        font.setBold(True)
-        self.addmem.setFont(font)
-        self.addmem.setStyleSheet("background-color : blue;\n"
-"color: white;")
+        self.verticalLayout_2.addWidget(self.memtable)
+        self.membuttons = QtWidgets.QHBoxLayout()
+        self.membuttons.setObjectName("membuttons")
+        self.addmem = QtWidgets.QPushButton(self.memtab)
+        self.addmem.setMinimumSize(QtCore.QSize(0, 25))
+        self.addmem.setStyleSheet("QPushButton#addmem{\n"
+"    background-color: green;\n"
+"    border-radius: 5px;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QPushButton#addmem:hover{\n"
+"    border: 2px solid teal;\n"
+"}")
         self.addmem.setObjectName("addmem")
-        self.horizontalLayout.addWidget(self.addmem)
-        self.refreshmem = QtWidgets.QPushButton(self.layoutWidget)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        font.setBold(True)
-        self.refreshmem.setFont(font)
-        self.refreshmem.setStyleSheet("background-color : green;\n"
-"color: white;")
+        self.membuttons.addWidget(self.addmem)
+        self.refreshmem = QtWidgets.QPushButton(self.memtab)
+        self.refreshmem.setMinimumSize(QtCore.QSize(0, 25))
+        self.refreshmem.setStyleSheet("QPushButton#refreshmem{\n"
+"    background-color: cornflowerblue;\n"
+"    border-radius: 5px;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QPushButton#refreshmem:hover{\n"
+"    border: 2px solid teal;\n"
+"}")
         self.refreshmem.setObjectName("refreshmem")
-        self.horizontalLayout.addWidget(self.refreshmem)
-        self.deletemem = QtWidgets.QPushButton(self.layoutWidget)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        font.setBold(True)
-        self.deletemem.setFont(font)
-        self.deletemem.setStyleSheet("background-color : red;\n"
-"color: white;")
+        self.membuttons.addWidget(self.refreshmem)
+        self.deletemem = QtWidgets.QPushButton(self.memtab)
+        self.deletemem.setMinimumSize(QtCore.QSize(0, 25))
+        self.deletemem.setStyleSheet("QPushButton#deletemem{\n"
+"    background-color: red;\n"
+"    border-radius: 5px;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QPushButton#deletemem:hover{\n"
+"    border: 2px solid teal;\n"
+"}")
         self.deletemem.setObjectName("deletemem")
-        self.horizontalLayout.addWidget(self.deletemem)
+        self.membuttons.addWidget(self.deletemem)
+        self.verticalLayout_2.addLayout(self.membuttons)
+        self.verticalLayout_2.setStretch(0, 8)
+        self.verticalLayout_2.setStretch(1, 1)
         self.tabWidget.addTab(self.memtab, "")
         self.booktab = QtWidgets.QWidget()
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.booktab.sizePolicy().hasHeightForWidth())
-        self.booktab.setSizePolicy(sizePolicy)
         self.booktab.setObjectName("booktab")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.booktab)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.booktable = QtWidgets.QTableWidget(self.booktab)
-        self.booktable.setGeometry(QtCore.QRect(10, 10, 851, 341))
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        font.setBold(False)
-        self.booktable.setFont(font)
-        self.booktable.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAsNeeded)
-        self.booktable.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
-        self.booktable.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectionBehavior.SelectRows)
         self.booktable.setObjectName("booktable")
         self.booktable.setColumnCount(6)
         self.booktable.setRowCount(0)
@@ -130,47 +104,55 @@ class Ui_AdminWindow(object):
         self.booktable.setHorizontalHeaderItem(4, item)
         item = QtWidgets.QTableWidgetItem()
         self.booktable.setHorizontalHeaderItem(5, item)
-        self.booktable.horizontalHeader().setVisible(False)
+        self.booktable.horizontalHeader().setStretchLastSection(True)
         self.booktable.verticalHeader().setVisible(False)
-        self.layoutWidget_2 = QtWidgets.QWidget(self.booktab)
-        self.layoutWidget_2.setGeometry(QtCore.QRect(10, 380, 851, 36))
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        font.setBold(True)
-        self.layoutWidget_2.setFont(font)
-        self.layoutWidget_2.setObjectName("layoutWidget_2")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.layoutWidget_2)
-        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.addbook = QtWidgets.QPushButton(self.layoutWidget_2)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        font.setBold(True)
-        self.addbook.setFont(font)
-        self.addbook.setStyleSheet("background-color : blue;\n"
-"color: white;")
+        self.verticalLayout_3.addWidget(self.booktable)
+        self.bookbuttons = QtWidgets.QHBoxLayout()
+        self.bookbuttons.setObjectName("bookbuttons")
+        self.addbook = QtWidgets.QPushButton(self.booktab)
+        self.addbook.setMinimumSize(QtCore.QSize(0, 25))
+        self.addbook.setStyleSheet("QPushButton#addbook{\n"
+"    background-color: green;\n"
+"    border-radius: 5px;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QPushButton#addbook:hover{\n"
+"    border: 2px solid teal;\n"
+"}")
         self.addbook.setObjectName("addbook")
-        self.horizontalLayout_2.addWidget(self.addbook)
-        self.refreshbook = QtWidgets.QPushButton(self.layoutWidget_2)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        font.setBold(True)
-        self.refreshbook.setFont(font)
-        self.refreshbook.setStyleSheet("background-color : green;\n"
-"color: white;")
+        self.bookbuttons.addWidget(self.addbook)
+        self.refreshbook = QtWidgets.QPushButton(self.booktab)
+        self.refreshbook.setMinimumSize(QtCore.QSize(0, 25))
+        self.refreshbook.setStyleSheet("QPushButton#refreshbook{\n"
+"    background-color: cornflowerblue;\n"
+"    border-radius: 5px;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QPushButton#refreshbook:hover{\n"
+"    border: 2px solid teal;\n"
+"}")
         self.refreshbook.setObjectName("refreshbook")
-        self.horizontalLayout_2.addWidget(self.refreshbook)
-        self.deletebook = QtWidgets.QPushButton(self.layoutWidget_2)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        font.setBold(True)
-        self.deletebook.setFont(font)
-        self.deletebook.setStyleSheet("background-color : red;\n"
-"color: white;")
+        self.bookbuttons.addWidget(self.refreshbook)
+        self.deletebook = QtWidgets.QPushButton(self.booktab)
+        self.deletebook.setMinimumSize(QtCore.QSize(0, 25))
+        self.deletebook.setStyleSheet("QPushButton#deletebook{\n"
+"    background-color: red;\n"
+"    border-radius: 5px;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QPushButton#deletebook:hover{\n"
+"    border: 2px solid teal;\n"
+"}")
         self.deletebook.setObjectName("deletebook")
-        self.horizontalLayout_2.addWidget(self.deletebook)
+        self.bookbuttons.addWidget(self.deletebook)
+        self.verticalLayout_3.addLayout(self.bookbuttons)
+        self.verticalLayout_3.setStretch(0, 8)
+        self.verticalLayout_3.setStretch(1, 1)
         self.tabWidget.addTab(self.booktab, "")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.ItemRole.SpanningRole, self.tabWidget)
+        self.verticalLayout.addWidget(self.tabWidget)
 
         self.retranslateUi(AdminWindow)
         self.tabWidget.setCurrentIndex(0)

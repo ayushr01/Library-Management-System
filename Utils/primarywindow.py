@@ -49,7 +49,7 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
         self.loadbooks()  # Populates list on launch
 
     def loadadmin(self):
-        self.adminwindow.show()  # Shows the admin window
+        self.adminwindow.exec()  # Shows the admin window
 
     def loadpwd(self):
         if pwd.checkadmin():

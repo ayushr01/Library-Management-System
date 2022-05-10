@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QWidget, QTableWidgetItem
+from PyQt6.QtWidgets import QDialog, QTableWidgetItem
 
 import UI.adminui as admin
 import Utils.members as member
@@ -11,7 +11,7 @@ import Utils.books as book
 
 
 # Admin window with 2 tabs
-class AdminWindow(QWidget, admin.Ui_AdminWindow):
+class AdminWindow(QDialog, admin.Ui_AdminWindow):
     def __init__(self, mainwindow):
         super().__init__()
         self.setupUi(self)  # Calls the function to create all the elements in the window
@@ -27,9 +27,7 @@ class AdminWindow(QWidget, admin.Ui_AdminWindow):
         self.deletemem.clicked.connect(self.deletememberdialog.makedialog)
 
         self.memtable.setColumnWidth(0, 50)
-        self.memtable.setColumnWidth(1, 399)
-        self.memtable.setColumnWidth(2, 199)
-        self.memtable.setColumnWidth(3, 199)
+
         self.loadmem()  # Populates table as soon as the program runs
 
         # Book tab
@@ -41,11 +39,8 @@ class AdminWindow(QWidget, admin.Ui_AdminWindow):
         self.deletebook.clicked.connect(self.deletebookdialog.makedialog)
 
         self.booktable.setColumnWidth(0, 50)
-        self.booktable.setColumnWidth(1, 299)
-        self.booktable.setColumnWidth(2, 219)
-        self.booktable.setColumnWidth(3, 129)
-        self.booktable.setColumnWidth(4, 75)
-        self.booktable.setColumnWidth(5, 75)
+        self.booktable.setColumnWidth(4, 50)
+        self.booktable.setColumnWidth(5, 50)
         self.loadbook()  # Populates table as soon as the program runs
 
     # Adds data to the table in the member tab
