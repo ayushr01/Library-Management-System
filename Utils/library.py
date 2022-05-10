@@ -1,13 +1,14 @@
 import sqlite3
 import os
 
+from Utils.foldermaker import home
 
 #######################
 # Wriiten by: Ayush Rao
 #######################
 
 def initialise():
-    connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
     connection.execute('PRAGMA foreign_keys = ON')  # We need this because foreign keys are disabled by default
     cursor = connection.cursor()
 
@@ -26,7 +27,7 @@ def initialise():
 
 
 def initialiserating():
-    connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
     connection.execute('PRAGMA foreign_keys = ON')  # We need this because foreign keys are disabled by default
     cursor = connection.cursor()
 
@@ -43,7 +44,7 @@ def initialiserating():
 
 
 def insert(id_user, id_book):
-    connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
     connection.execute('PRAGMA foreign_keys = ON')  # We need this because foreign keys are disabled by default
     cursor = connection.cursor()
 
@@ -58,7 +59,7 @@ def insert(id_user, id_book):
 
 
 def returnbook(id_user, id_book, dateissued):
-    connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
     connection.execute('PRAGMA foreign_keys = ON')  # We need this because foreign keys are disabled by default
     cursor = connection.cursor()
 
@@ -71,7 +72,7 @@ def returnbook(id_user, id_book, dateissued):
 
 
 def checkstock(item):
-    connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
     cursor = connection.cursor()
     text = item.text()
     beg = text.find('<') + 5
@@ -101,7 +102,7 @@ def setrating(id_book, rating):
     elif rating['five']:
         rate = 5
 
-    connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
     connection.execute('PRAGMA foreign_keys = ON')  # We need this because foreign keys are disabled by default
     cursor = connection.cursor()
 
@@ -113,7 +114,7 @@ def setrating(id_book, rating):
 
 
 def updaterating(id_book):
-    connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
     connection.execute('PRAGMA foreign_keys = ON')  # We need this because foreign keys are disabled by default
     cursor = connection.cursor()
 

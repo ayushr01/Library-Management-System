@@ -6,6 +6,8 @@ from PyQt6.QtWidgets import QDialog
 import UI.pwddialog as pwddialog
 import UI.pwddialognew as pwddialognew
 
+from Utils.foldermaker import home
+
 
 #######################
 # Wriiten by: Ayush Rao
@@ -99,7 +101,7 @@ class PwdDialogNew(QDialog, pwddialognew.Ui_passworddialog):
 
 
 def checkadmin():
-    if os.path.isfile(os.path.realpath('Files/pwd.json')):
+    if os.path.isfile(os.path.join(home, '.LMSystem/pwd.json')):
         return True
     else:
         return False
@@ -110,14 +112,14 @@ def setusrpwd(username, password):
     data['username'] = username
     data['password'] = password
 
-    file = open(os.path.realpath('Files/pwd.json'), 'w')
+    file = open(os.path.join(home, '.LMSystem/pwd.json'), 'w')
     json.dump(data, file)
 
     file.close()
 
 
 def checkusrpwd(username, password):
-    file = open(os.path.realpath('Files/pwd.json'), 'r')
+    file = open(os.path.join(home, '.LMSystem/pwd.json'), 'r')
     data = json.load(file)
     if data['username'] == username and data['password'] == password:
         return True

@@ -7,7 +7,8 @@ from PyQt6.QtWidgets import QDialog
 import UI.addmembersdialog as addmemdialog
 import UI.deletemembersdialog as deletememdialog
 
-import Utils.foldermaker as folder
+from Utils.foldermaker import makefolder, home
+
 
 
 #######################
@@ -102,7 +103,7 @@ class DeleteMemberDialog(QDialog, deletememdialog.Ui_deletememdialog):
 ###############################################
 
 def initialise():
-    connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
     cursor = connection.cursor()
 
     cursor.execute('''CREATE TABLE IF NOT EXISTS Members(
@@ -126,7 +127,7 @@ def namecheck(name):
 
 
 def insert(name, dob):
-    connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
     cursor = connection.cursor()
 
     cursor.execute("INSERT INTO Members(name, DOB, reg) VALUES(?, ?, datetime('now','localtime'))", (name, dob,))
@@ -136,7 +137,7 @@ def insert(name, dob):
 
 
 def delete(idtodelete):
-    connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
     connection.execute('PRAGMA foreign_keys = ON')  # We need this because foreign keys are disabled by default
     cursor = connection.cursor()
 
@@ -151,7 +152,7 @@ def delete(idtodelete):
 
 
 def readall():
-    connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
     cursor = connection.cursor()
 
     cursor.execute("SELECT * FROM Members")
@@ -162,7 +163,7 @@ def readall():
 
 
 def checkid(idtodisplay):
-    connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
     cursor = connection.cursor()
 
     cursor.execute("SELECT id FROM Members")
@@ -178,7 +179,7 @@ def checkid(idtodisplay):
 
 
 def booksissuedbymem(idtodisplay, flag):
-    connection = sqlite3.connect(os.path.realpath('Files/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
     cursor = connection.cursor()
 
     if flag == 'norm':
@@ -202,5 +203,5 @@ def booksissuedbymem(idtodisplay, flag):
     return data
 
 
-folder.makefolder()  # Creates the folder for DB and pwd if it does not exist
+makefolder()  # Creates the folder for DB and pwd if it does not exist
 initialise()  # Makes sure the table is available
