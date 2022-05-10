@@ -38,8 +38,6 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
         self.adminwindow = admin.AdminWindow(self)  # Creates the admin window on launch
         # I pass self so that the genre function can be called
 
-        # Deposit tab
-
         # Button actions
         self.viewbookbutton.clicked.connect(lambda: self.loadissuedbooks('norm'))
         self.viewbookhistorybutton.clicked.connect(lambda: self.loadissuedbooks('hist'))
