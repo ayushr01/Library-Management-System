@@ -12,66 +12,62 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_deletebookdialog(object):
     def setupUi(self, deletebookdialog):
         deletebookdialog.setObjectName("deletebookdialog")
-        deletebookdialog.resize(550, 230)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(deletebookdialog.sizePolicy().hasHeightForWidth())
-        deletebookdialog.setSizePolicy(sizePolicy)
-        deletebookdialog.setMinimumSize(QtCore.QSize(550, 230))
-        deletebookdialog.setMaximumSize(QtCore.QSize(550, 230))
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        font.setBold(True)
-        deletebookdialog.setFont(font)
+        deletebookdialog.resize(400, 200)
+        deletebookdialog.setMinimumSize(QtCore.QSize(400, 200))
+        deletebookdialog.setMaximumSize(QtCore.QSize(400, 200))
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(deletebookdialog)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
         self.booklist = QtWidgets.QListWidget(deletebookdialog)
-        self.booklist.setGeometry(QtCore.QRect(10, 10, 391, 181))
         font = QtGui.QFont()
         font.setPointSize(13)
-        font.setBold(False)
         self.booklist.setFont(font)
         self.booklist.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
         self.booklist.setObjectName("booklist")
+        self.horizontalLayout.addWidget(self.booklist)
+        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.deletebutton = QtWidgets.QPushButton(deletebookdialog)
+        self.deletebutton.setMinimumSize(QtCore.QSize(0, 35))
+        self.deletebutton.setStyleSheet("QPushButton#deletebutton{\n"
+"    background-color: red;\n"
+"    border-radius: 5px;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QPushButton#deletebutton:hover{\n"
+"    border: 2px solid teal;\n"
+"}")
+        self.deletebutton.setObjectName("deletebutton")
+        self.verticalLayout.addWidget(self.deletebutton)
+        self.closebutton = QtWidgets.QPushButton(deletebookdialog)
+        self.closebutton.setMinimumSize(QtCore.QSize(0, 35))
+        self.closebutton.setStyleSheet("QPushButton#closebutton{\n"
+"    background-color: #656565;\n"
+"    border-radius: 5px;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QPushButton#closebutton:hover{\n"
+"    border: 2px solid teal;\n"
+"}")
+        self.closebutton.setObjectName("closebutton")
+        self.verticalLayout.addWidget(self.closebutton)
+        self.horizontalLayout.addLayout(self.verticalLayout)
+        self.horizontalLayout.setStretch(0, 3)
+        self.horizontalLayout.setStretch(1, 1)
+        self.verticalLayout_2.addLayout(self.horizontalLayout)
         self.errorlabel = QtWidgets.QLabel(deletebookdialog)
-        self.errorlabel.setGeometry(QtCore.QRect(10, 200, 481, 22))
         font = QtGui.QFont()
-        font.setPointSize(13)
         font.setBold(True)
         self.errorlabel.setFont(font)
-        self.errorlabel.setStyleSheet("color: red")
+        self.errorlabel.setStyleSheet("color: orange;")
         self.errorlabel.setText("")
         self.errorlabel.setObjectName("errorlabel")
-        self.layoutWidget = QtWidgets.QWidget(deletebookdialog)
-        self.layoutWidget.setGeometry(QtCore.QRect(410, 10, 132, 181))
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        font.setBold(True)
-        self.layoutWidget.setFont(font)
-        self.layoutWidget.setObjectName("layoutWidget")
-        self.buttons = QtWidgets.QVBoxLayout(self.layoutWidget)
-        self.buttons.setContentsMargins(0, 0, 0, 0)
-        self.buttons.setSpacing(10)
-        self.buttons.setObjectName("buttons")
-        self.deletebutton = QtWidgets.QPushButton(self.layoutWidget)
-        self.deletebutton.setMinimumSize(QtCore.QSize(130, 50))
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        font.setBold(True)
-        self.deletebutton.setFont(font)
-        self.deletebutton.setStyleSheet("background-color : red;\n"
-"color: white;")
-        self.deletebutton.setObjectName("deletebutton")
-        self.buttons.addWidget(self.deletebutton)
-        self.closebutton = QtWidgets.QPushButton(self.layoutWidget)
-        self.closebutton.setMinimumSize(QtCore.QSize(130, 50))
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        font.setBold(True)
-        self.closebutton.setFont(font)
-        self.closebutton.setStyleSheet("background-color: #333333;\n"
-"color: white;")
-        self.closebutton.setObjectName("closebutton")
-        self.buttons.addWidget(self.closebutton)
+        self.verticalLayout_2.addWidget(self.errorlabel)
+        self.verticalLayout_2.setStretch(0, 8)
+        self.verticalLayout_2.setStretch(1, 1)
 
         self.retranslateUi(deletebookdialog)
         QtCore.QMetaObject.connectSlotsByName(deletebookdialog)
