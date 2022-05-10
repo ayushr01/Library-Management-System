@@ -28,7 +28,7 @@ class AddMemberDialog(QDialog, addmemdialog.Ui_addmemdialog):
         self.defaultdate = self.datepicker.dateTime()
 
         # Setting field margins
-        self.inputname.setTextMargins(10, 0, 10, 0)
+        self.inputname.setTextMargins(5, 0, 5, 0)
 
         # Button actions
         self.clearbutton.clicked.connect(self.clearfields)

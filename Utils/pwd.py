@@ -20,8 +20,8 @@ class PwdDialog(QDialog, pwddialog.Ui_passworddialog):
         self.setupUi(self)  # Calls the function to create all the elements in the dialog window
 
         # Setting field margins
-        self.userfield.setTextMargins(10, 0, 10, 0)
-        self.pwdfield.setTextMargins(10, 0, 10, 0)
+        self.userfield.setTextMargins(5, 0, 5, 0)
+        self.pwdfield.setTextMargins(5, 0, 5, 0)
 
         # Button actions
         self.clearbutton.clicked.connect(self.clearfields)
@@ -53,9 +53,9 @@ class PwdDialogNew(QDialog, pwddialognew.Ui_passworddialog):
         self.setupUi(self)  # Calls the function to create all the elements in the dialog window
 
         # Setting field margins
-        self.userfield.setTextMargins(10, 0, 10, 0)
-        self.pwdfield.setTextMargins(10, 0, 10, 0)
-        self.pwdfieldconfirm.setTextMargins(10, 0, 10, 0)
+        self.userfield.setTextMargins(5, 0, 5, 0)
+        self.pwdfield.setTextMargins(5, 0, 5, 0)
+        self.pwdfieldconfirm.setTextMargins(5, 0, 5, 0)
 
         # Button actions
         self.clearbutton.clicked.connect(self.clearfields)
