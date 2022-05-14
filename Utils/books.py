@@ -15,11 +15,6 @@ import Utils.library as lib
 from Utils.foldermaker import home
 
 
-#######################
-# Wriiten by: Ayush Rao
-#######################
-
-
 # Dialog window to add more users to the member table
 class AddBookDialog(QDialog, addbkdialog.Ui_addbkdialog):
     def __init__(self, adminwindow):

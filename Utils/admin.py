@@ -1,13 +1,9 @@
 from PyQt6.QtWidgets import QDialog, QTableWidgetItem
 
 import UI.adminui as admin
+
 import Utils.members as member
 import Utils.books as book
-
-
-#######################
-# Wriiten by: Ayush Rao
-#######################
 
 
 # Admin window with 2 tabs

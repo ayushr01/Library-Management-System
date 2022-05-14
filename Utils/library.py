@@ -3,9 +3,6 @@ import os
 
 from Utils.foldermaker import home
 
-#######################
-# Wriiten by: Ayush Rao
-#######################
 
 def initialise():
     connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))

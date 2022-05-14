@@ -10,10 +10,6 @@ import Utils.members as mem
 import Utils.library as lib
 
 
-#######################
-# Wriiten by: Ayush Rao
-#######################
-
 class MainWindow(QMainWindow, myapp.Ui_MainWindow):
     def __init__(self):
         super().__init__()

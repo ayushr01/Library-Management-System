@@ -8,11 +8,3 @@ window = MainWindow()
 window.show()
 
 app.exec()
-
-# TODO: Revamp all ui files to support responsive design
-# TODO: Add ability to search for book details online
-# TODO: Find better alternative for password storing
-
-#######################
-# Wriiten by: Ayush Rao
-#######################

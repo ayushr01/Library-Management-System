@@ -9,11 +9,6 @@ import UI.pwddialognew as pwddialognew
 from Utils.foldermaker import home
 
 
-#######################
-# Wriiten by: Ayush Rao
-#######################
-
-
 class PwdDialog(QDialog, pwddialog.Ui_passworddialog):
     def __init__(self, mainwindow):
         super().__init__()
