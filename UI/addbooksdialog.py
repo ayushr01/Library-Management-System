@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_addbookdialog(object):
     def setupUi(self, addbookdialog):
         addbookdialog.setObjectName("addbookdialog")
-        addbookdialog.resize(480, 383)
+        addbookdialog.resize(450, 350)
         self.verticalLayout = QtWidgets.QVBoxLayout(addbookdialog)
         self.verticalLayout.setObjectName("verticalLayout")
         self.tabWidget = QtWidgets.QTabWidget(addbookdialog)
