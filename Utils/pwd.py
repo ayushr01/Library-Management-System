@@ -26,6 +26,7 @@ class PwdDialog(QDialog, pwddialog.Ui_passworddialog):
         self.closebutton.clicked.connect(self.close)
 
     def makedialog(self):
+        self.userfield.setFocus()  # Make sure that userfield is always focused
         self.clearfields()  # Clears the fields before opening up the dialog window
         self.exec()  # Runs the dialog window
 
@@ -60,6 +61,7 @@ class PwdDialogNew(QDialog, pwddialognew.Ui_passworddialog):
         self.closebutton.clicked.connect(self.close)
 
     def makedialog(self):
+        self.userfield.setFocus()  # Make sure that userfield is always focused
         self.clearfields()  # Clears the fields before opening up the dialog window
         self.exec()  # Runs the dialog window
 
