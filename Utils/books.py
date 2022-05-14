@@ -1,6 +1,7 @@
 import sqlite3
 import re
 import os
+import requests
 
 from PyQt6.QtWidgets import QDialog
 
@@ -16,13 +17,19 @@ from Utils.foldermaker import home
 
 
 # Dialog window to add more users to the member table
-class AddBookDialog(QDialog, addbkdialog.Ui_addbkdialog):
+class AddBookDialog(QDialog, addbkdialog.Ui_addbookdialog):
     def __init__(self, adminwindow):
         super().__init__()
 
         self.adminwindow = adminwindow  # To refresh the book table
 
         self.setupUi(self)  # Calls the function to create all the elements in the dialog window
+
+        # Setting field margins
+        self.inputgenre.setTextMargins(5, 0, 5, 0)
+        self.inputtotal.setTextMargins(5, 0, 5, 0)
+        self.inputauthor.setTextMargins(5, 0, 5, 0)
+        self.inputtitle.setTextMargins(5, 0, 5, 0)
 
         # Button actions
         self.clearbutton.clicked.connect(self.clearfields)
@@ -38,50 +45,73 @@ class AddBookDialog(QDialog, addbkdialog.Ui_addbkdialog):
         self.inputauthor.setText('')
         self.inputgenre.setText('')
         self.inputtotal.setText('')
-        self.errortitle.setText('')
-        self.errorauthor.setText('')
-        self.errorgenre.setText('')
+        self.error.setText('')
 
     def getfields(self):
-        issue = False
         title = self.inputtitle.text()
         author = self.inputauthor.text()
         genre = self.inputgenre.text()
         totalcopies = self.inputtotal.text()
 
         if check(title, 'title') is False:
-            issue = True
-            self.errortitle.setText('Error: Enter a valid title!')
+            self.error.setText('Error: Enter a valid title!')
+            return
         else:
-            self.errortitle.setText('')
+            self.error.setText('')
 
         if check(author, 'author') is False:
-            issue = True
-            self.errorauthor.setText('Error: Enter a valid First and Last Name!')
+            self.error.setText('Error: Enter a valid First and Last Name!')
+            return
         else:
-            self.errorauthor.setText('')
+            self.error.setText('')
 
         if check(genre, 'genre') is False:
-            issue = True
-            self.errorgenre.setText('Error: Enter a valid genre!')
+            self.error.setText('Error: Enter a valid genre!')
+            return
         else:
-            self.errorgenre.setText('')
+            self.error.setText('')
 
         if totalcopies.isnumeric() is False:
-            issue = True
-            self.errortotal.setText('Error: Enter a number!')
+            self.error.setText('Error: Enter a number for total copies!')
+            return
         else:
             totalcopies = int(totalcopies)
             if totalcopies < 1 or totalcopies > 100:
-                issue = True
-                self.errortotal.setText('Error: Enter in the range 1-100')
+                self.error.setText('Error: Enter in the range 1-100')
+                return
             else:
-                self.errortotal.setText('')
+                self.error.setText('')
 
-        if issue is False:
-            insert(title, author, genre, totalcopies)
-            self.adminwindow.loadbook()  # Refreshes the book table after adding books
-            self.close()
+        insert(title, author, genre, totalcopies)
+        self.adminwindow.loadbook()  # Refreshes the book table after adding books
+        self.close()
+
+    def getbookchoice(self):
+        print(self.comboBox.currentIndex())
+
+    def getsearchresultsISBN(self):
+        link = 'https://www.googleapis.com/books/v1/volumes?q=isbn:9781474605731'
+
+        response = requests.get(link)
+        if response.status_code != 200:
+            # TODO: Add error handling
+            print("Error with API")
+            return
+
+        book = response.json()['items'][0]
+
+        bookdata = {
+            'authors': book['volumeInfo']['authors'],
+            'publisher': book['volumeInfo']['publisher'],
+            'title': book['volumeInfo']['title'],
+            'genre': book['volumeInfo']['categories']
+        }
+        print(bookdata)
+
+        # print(f"{counter}- {book['volumeInfo']['title']}")
+        # print(f'{counter} - {book}')
+        # self.comboBox.addItem(book)
+        # counter += 1
 
 
 class DeleteBookDialog(QDialog, delbkdialog.Ui_deletebookdialog):
