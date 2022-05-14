@@ -13,6 +13,8 @@ class Ui_addmemdialog(object):
     def setupUi(self, addmemdialog):
         addmemdialog.setObjectName("addmemdialog")
         addmemdialog.resize(400, 200)
+        addmemdialog.setMinimumSize(QtCore.QSize(400, 200))
+        addmemdialog.setMaximumSize(QtCore.QSize(400, 200))
         self.verticalLayout = QtWidgets.QVBoxLayout(addmemdialog)
         self.verticalLayout.setObjectName("verticalLayout")
         self.inputform = QtWidgets.QFormLayout()
