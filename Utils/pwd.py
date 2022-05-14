@@ -36,8 +36,8 @@ class PwdDialog(QDialog, pwddialog.Ui_passworddialog):
 
     def getfields(self):
         if checkusrpwd(self.userfield.text(), self.pwdfield.text()):
+            self.mainwindow.isAuthenticated = True
             self.close()
-            self.mainwindow.loadadmin()  # Launches the admin window after setting pwd
         else:
             self.error.setText('Error: Username or Password is incorrect!')
 
@@ -89,8 +89,8 @@ class PwdDialogNew(QDialog, pwddialognew.Ui_passworddialog):
             self.error.setText('')
             if self.pwdfield.text() == self.pwdfieldconfirm.text():
                 setusrpwd(self.userfield.text(), self.pwdfield.text())
+                self.mainwindow.isAuthenticated = True
                 self.close()
-                self.mainwindow.loadadmin()  # Launches the admin window after setting pwd
             else:
                 self.error.setText('Error: The passwords do not match!')
 

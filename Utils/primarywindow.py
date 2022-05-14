@@ -22,7 +22,7 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
         self.issuedialog = book.IssueBooksDialog()
 
         # Button actions
-        self.adminbutton.clicked.connect(self.loadpwd)
+        self.adminbutton.clicked.connect(self.loadpwdadmin)
         self.refreshbutton.clicked.connect(self.loadbooks)
         self.detailsbutton.clicked.connect(self.loaddetails)
         self.issuebutton.clicked.connect(self.loadissue)
@@ -44,14 +44,17 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
         self.loadgenre()  # Populates genres on launch
         self.loadbooks()  # Populates list on launch
 
-    def loadadmin(self):
-        self.adminwindow.exec()  # Shows the admin window
+        # Used to check if pwd is cleared or not
+        self.isAuthenticated = False
 
-    def loadpwd(self):
+    def loadpwdadmin(self):
         if pwd.checkadmin():
             self.pwddialog.makedialog()
         else:
             self.pwddialognew.makedialog()
+        if self.isAuthenticated is True:
+            self.adminwindow.exec()  # Shows the admin window
+            self.isAuthenticated = False
 
     def loaddetails(self):
         if self.booklist.currentItem() is None:
