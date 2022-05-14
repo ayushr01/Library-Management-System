@@ -30,11 +30,18 @@ class AddBookDialog(QDialog, addbkdialog.Ui_addbookdialog):
         self.inputtotal.setTextMargins(5, 0, 5, 0)
         self.inputauthor.setTextMargins(5, 0, 5, 0)
         self.inputtitle.setTextMargins(5, 0, 5, 0)
+        self.isbnfield.setTextMargins(5, 0, 5, 0)
+        self.totalfieldisbn.setTextMargins(5, 0, 5, 0)
 
         # Button actions
         self.clearbutton.clicked.connect(self.clearfields)
         self.submitbutton.clicked.connect(self.getfields)
         self.closebutton.clicked.connect(self.close)
+        self.clearbuttonisbn.clicked.connect(self.clearfieldsisbn)
+        self.closebuttonisbn.clicked.connect(self.close)
+        self.searchbuttonisbn.clicked.connect(self.getsearchresultsisbn)
+
+        self.isbndata = None  # Data from search is stored in here to enter into the db
 
     def makedialog(self):
         self.clearfields()  # Clears the fields before opening up the dialog window
@@ -46,6 +53,14 @@ class AddBookDialog(QDialog, addbkdialog.Ui_addbookdialog):
         self.inputgenre.setText('')
         self.inputtotal.setText('')
         self.error.setText('')
+
+    def clearfieldsisbn(self):
+        self.isbnfield.setText('')
+        self.authorisbn.setText('-')
+        self.titleisbn.setText('-')
+        self.publisherisbn.setText('-')
+        self.errorisbn.setText('')
+        self.totalfieldisbn.setText('')
 
     def getfields(self):
         title = self.inputtitle.text()
@@ -86,32 +101,43 @@ class AddBookDialog(QDialog, addbkdialog.Ui_addbookdialog):
         self.adminwindow.loadbook()  # Refreshes the book table after adding books
         self.close()
 
-    def getbookchoice(self):
-        print(self.comboBox.currentIndex())
+    def getsearchresultsisbn(self):
+        isbn = self.isbnfield.text()
+        if isbn.isnumeric() is False:
+            self.errorisbn.setText('Error: Invalid ISBN!')
+            return
+        else:
+            self.errorisbn.setText('')
 
-    def getsearchresultsISBN(self):
-        link = 'https://www.googleapis.com/books/v1/volumes?q=isbn:9781474605731'
+        link = 'https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn
+
+        # Checking internet before sending API request
+        try:
+            requests.get('https://www.google.com/', timeout=1)
+        except (requests.ConnectionError, requests.Timeout):
+            self.errorisbn.setText('Error: No internet connection!')
+            return
+        self.errorisbn.setText('')
 
         response = requests.get(link)
         if response.status_code != 200:
-            # TODO: Add error handling
-            print("Error with API")
+            self.errorisbn.setText('Error: Unable to search for book!')
             return
+        else:
+            self.errorisbn.setText('')
 
         book = response.json()['items'][0]
 
-        bookdata = {
-            'authors': book['volumeInfo']['authors'],
-            'publisher': book['volumeInfo']['publisher'],
+        self.isbndata = {
             'title': book['volumeInfo']['title'],
-            'genre': book['volumeInfo']['categories']
+            'authors': ', '.join(book['volumeInfo']['authors']),
+            'publisher': book['volumeInfo']['publisher'],
+            'genre': ', '.join(book['volumeInfo']['categories'])
         }
-        print(bookdata)
 
-        # print(f"{counter}- {book['volumeInfo']['title']}")
-        # print(f'{counter} - {book}')
-        # self.comboBox.addItem(book)
-        # counter += 1
+        self.titleisbn.setText(self.isbndata['title'])
+        self.authorisbn.setText('By: ' + self.isbndata['authors'])
+        self.publisherisbn.setText('Published by: ' + self.isbndata['publisher'])
 
 
 class DeleteBookDialog(QDialog, delbkdialog.Ui_deletebookdialog):
