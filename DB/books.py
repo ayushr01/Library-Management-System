@@ -2,27 +2,6 @@ import os
 import sqlite3
 
 
-def initialise():
-    connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))
-    cursor = connection.cursor()
-
-    cursor.execute('''CREATE TABLE IF NOT EXISTS Books(
-    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-    title TEXT NOT NULL,
-    author TEXT NOT NULL,
-    rating INTEGER,
-    genre TEXT NOT NULL,
-    add_date TEXT NOT NULL,
-    copies_total INTEGER NOT NULL,
-    copies_issued INTEGER NOT NULL
-    CHECK (rating > 0 AND rating < 6)
-    )
-    ''')
-
-    connection.commit()
-    connection.close()
-
-
 def insert(title, author, genre, totalcopies):
     connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))
     cursor = connection.cursor()

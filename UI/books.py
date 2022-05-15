@@ -284,11 +284,3 @@ class IssueBooksDialog(QDialog, GeneratedUI.issuebook.Ui_issuebookdialog):
             memid = int(splittext[0])
             DB.members.insert(memid, bookid)
             self.issuelabel.setText(f'Book issued to {splittext[1].strip()}')
-
-
-###############################################
-# All the helper functions for the dialog boxes
-###############################################
-
-
-DB.books.initialise()  # Makes sure the table is available

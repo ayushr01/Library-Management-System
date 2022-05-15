@@ -97,11 +97,3 @@ class DeleteMemberDialog(QDialog, GeneratedUI.deletemembersdialog.Ui_deletememdi
             self.adminwindow.loadmem()  # Refreshes the member table after deleting memberss
         else:
             self.errorlabel.setText('Error: Select an entry!')
-
-
-###############################################
-# All the helper functions for the dialog boxes
-###############################################
-
-
-DB.members.initialise()  # Makes sure the table is available

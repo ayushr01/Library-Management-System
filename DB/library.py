@@ -2,42 +2,6 @@ import sqlite3
 import os
 
 
-def initialise():
-    connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))
-    connection.execute('PRAGMA foreign_keys = ON')  # We need this because foreign keys are disabled by default
-    cursor = connection.cursor()
-
-    cursor.execute('''CREATE TABLE IF NOT EXISTS Issue(
-    id_user INTEGER NOT NULL,
-    id_book INTEGER NOT NULL,
-    issue_date TEXT NOT NULL,
-    return_date TEXT,
-    FOREIGN KEY(id_user) REFERENCES Members(id),
-    FOREIGN KEY(id_book) REFERENCES Books(id)
-    )
-    ''')
-
-    connection.commit()
-    connection.close()
-
-
-def initialiserating():
-    connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))
-    connection.execute('PRAGMA foreign_keys = ON')  # We need this because foreign keys are disabled by default
-    cursor = connection.cursor()
-
-    cursor.execute('''CREATE TABLE IF NOT EXISTS Rating(
-    id_book INTEGER NOT NULL,
-    rating INTEGER,
-    CHECK(rating > 0 AND rating < 6),
-    FOREIGN KEY(id_book) REFERENCES Books(id)
-    )
-    ''')
-
-    connection.commit()
-    connection.close()
-
-
 def insert(id_user, id_book):
     connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))
     connection.execute('PRAGMA foreign_keys = ON')  # We need this because foreign keys are disabled by default
@@ -128,7 +92,3 @@ def updaterating(id_book):
 
     connection.commit()
     connection.close()
-
-
-initialise()  # Makes sure the table is available
-initialiserating()

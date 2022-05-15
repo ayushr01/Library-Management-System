@@ -2,22 +2,6 @@ import os
 import sqlite3
 
 
-def initialise():
-    connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))
-    cursor = connection.cursor()
-
-    cursor.execute('''CREATE TABLE IF NOT EXISTS Members(
-    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-    name TEXT NOT NULL,
-    DOB TEXT NOT NULL,
-    reg TEXT NOT NULL
-    )
-    ''')
-
-    connection.commit()
-    connection.close()
-
-
 def insert(name, dob):
     connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))
     cursor = connection.cursor()
