@@ -2,7 +2,7 @@ import sqlite3
 import re
 import os
 
-from PyQt6.QtWidgets import QDialog
+from PySide6.QtWidgets import QDialog
 
 import UI.addmembersdialog as addmemdialog
 import UI.deletemembersdialog as deletememdialog

@@ -1,5 +1,5 @@
-from PyQt6.QtCore import QSize
-from PyQt6.QtWidgets import QMainWindow, QListWidgetItem
+from PySide6.QtCore import QSize
+from PySide6.QtWidgets import QMainWindow, QListWidgetItem
 
 import UI.myapp as myapp
 

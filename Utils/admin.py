@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QDialog, QTableWidgetItem
+from PySide6.QtWidgets import QDialog, QTableWidgetItem
 
 import UI.adminui as admin
 

@@ -1,7 +1,7 @@
 import os
 import json
 
-from PyQt6.QtWidgets import QDialog
+from PySide6.QtWidgets import QDialog
 
 import UI.pwddialog as pwddialog
 import UI.pwddialognew as pwddialognew
