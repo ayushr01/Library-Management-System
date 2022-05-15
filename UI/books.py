@@ -1,23 +1,18 @@
-import sqlite3
-import re
-import os
 import requests
 
 from PySide6.QtWidgets import QDialog
 
-import UI.addbooksdialog as addbkdialog
-import UI.deletebooksdialog as delbkdialog
-import UI.bookdetails as bookdetails
-import UI.issuebook as issuebook
+import GeneratedUI.addbooksdialog
+import GeneratedUI.deletebooksdialog
+import GeneratedUI.bookdetails
+import GeneratedUI.issuebook
 
-import Utils.members as mem
-import Utils.library as lib
-
-from Utils.foldermaker import home
+import DB.members
+import DB.books
 
 
 # Dialog window to add more users to the member table
-class AddBookDialog(QDialog, addbkdialog.Ui_addbookdialog):
+class AddBookDialog(QDialog, GeneratedUI.addbooksdialog.Ui_addbookdialog):
     def __init__(self, adminwindow):
         super().__init__()
 
@@ -69,19 +64,19 @@ class AddBookDialog(QDialog, addbkdialog.Ui_addbookdialog):
         genre = self.inputgenre.text()
         totalcopies = self.inputtotal.text()
 
-        if check(title, 'title') is False:
+        if DB.books.check(title, 'title') is False:
             self.error.setText('Error: Enter a valid title!')
             return
         else:
             self.error.setText('')
 
-        if check(author, 'author') is False:
+        if DB.books.check(author, 'author') is False:
             self.error.setText('Error: Enter a valid First and Last Name!')
             return
         else:
             self.error.setText('')
 
-        if check(genre, 'genre') is False:
+        if DB.books.check(genre, 'genre') is False:
             self.error.setText('Error: Enter a valid genre!')
             return
         else:
@@ -98,7 +93,7 @@ class AddBookDialog(QDialog, addbkdialog.Ui_addbookdialog):
             else:
                 self.error.setText('')
 
-        insert(title, author, genre, totalcopies)
+        DB.books.insert(title, author, genre, totalcopies)
         self.adminwindow.loadbook()  # Refreshes the book table after adding books
         self.close()
 
@@ -162,13 +157,13 @@ class AddBookDialog(QDialog, addbkdialog.Ui_addbookdialog):
             else:
                 self.errorisbn.setText('')
 
-        insert(self.isbndata['title'], self.isbndata['authors'], self.isbndata['genre'], totalcopies)
+        DB.books.insert(self.isbndata['title'], self.isbndata['authors'], self.isbndata['genre'], totalcopies)
         self.isbndata = None  # Invalidating it for future entries
         self.adminwindow.loadbook()  # Refreshes the book table after adding books
         self.close()
 
 
-class DeleteBookDialog(QDialog, delbkdialog.Ui_deletebookdialog):
+class DeleteBookDialog(QDialog, GeneratedUI.deletebooksdialog.Ui_deletebookdialog):
     def __init__(self, adminwindow):
         super().__init__()
 
@@ -187,7 +182,7 @@ class DeleteBookDialog(QDialog, delbkdialog.Ui_deletebookdialog):
 
     def getlist(self):
         self.booklist.clear()
-        bookdata = readall()
+        bookdata = DB.books.readall()
         if len(bookdata) != 0:
             position = 0
             for row in bookdata:
@@ -200,7 +195,7 @@ class DeleteBookDialog(QDialog, delbkdialog.Ui_deletebookdialog):
         if bookdata is not None:
             self.errorlabel.setText('')
             idtodelete = bookdata.text().split('-')[0].rstrip()
-            if delete(idtodelete) is False:
+            if DB.books.delete(idtodelete) is False:
                 self.errorlabel.setText('Error: Book issued by a member!')
             self.getlist()
             self.adminwindow.loadbook()  # Refreshes the book table after deleting books
@@ -208,7 +203,7 @@ class DeleteBookDialog(QDialog, delbkdialog.Ui_deletebookdialog):
             self.errorlabel.setText('Error: Select an entry!')
 
 
-class BookDetailsDialog(QDialog, bookdetails.Ui_bookdetaildialog):
+class BookDetailsDialog(QDialog, GeneratedUI.bookdetails.Ui_bookdetaildialog):
     def __init__(self):
         super().__init__()
 
@@ -223,7 +218,7 @@ class BookDetailsDialog(QDialog, bookdetails.Ui_bookdetaildialog):
         beg = text.find('<') + 5
         end = text.find('>')
         idtodisplay = int(text[beg:end])
-        data = readwithid(idtodisplay)
+        data = DB.books.readwithid(idtodisplay)
         self.idfield.setText(str(data[0][0]))
         self.titlefield.setText(data[0][1])
         self.authorfield.setText(data[0][2])
@@ -234,7 +229,7 @@ class BookDetailsDialog(QDialog, bookdetails.Ui_bookdetaildialog):
         self.issuedfield.setText(str(data[0][7]))
 
 
-class IssueBooksDialog(QDialog, issuebook.Ui_issuebookdialog):
+class IssueBooksDialog(QDialog, GeneratedUI.issuebook.Ui_issuebookdialog):
     def __init__(self):
         super().__init__()
 
@@ -254,7 +249,7 @@ class IssueBooksDialog(QDialog, issuebook.Ui_issuebookdialog):
 
     def getlist(self):
         self.memlist.clear()
-        memdata = mem.readall()
+        memdata = DB.members.readall()
         if len(memdata) != 0:
             position = 0
             for row in memdata:
@@ -272,7 +267,7 @@ class IssueBooksDialog(QDialog, issuebook.Ui_issuebookdialog):
             text = memdata.text()
             splittext = text.split('-')
             memid = int(splittext[0])
-            lib.insert(memid, bookid)
+            DB.members.insert(memid, bookid)
             self.issuelabel.setText(f'Book issued to {splittext[1].strip()}')
 
 
@@ -281,130 +276,4 @@ class IssueBooksDialog(QDialog, issuebook.Ui_issuebookdialog):
 ###############################################
 
 
-def initialise():
-    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
-    cursor = connection.cursor()
-
-    cursor.execute('''CREATE TABLE IF NOT EXISTS Books(
-    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-    title TEXT NOT NULL,
-    author TEXT NOT NULL,
-    rating INTEGER,
-    genre TEXT NOT NULL,
-    add_date TEXT NOT NULL,
-    copies_total INTEGER NOT NULL,
-    copies_issued INTEGER NOT NULL
-    CHECK (rating > 0 AND rating < 6)
-    )
-    ''')
-
-    connection.commit()
-    connection.close()
-
-
-def check(data, field):
-    regex = {
-        'title': "^[A-Za-z0-9\s\-,\.;:()]+$",
-        'author': "^[A-Z][a-z]+\s[A-Z][a-z]+$",
-        'genre': "^[A-Za-z\s\-]+$"
-    }
-    validate = re.search(regex[field], data)
-    if validate is None:
-        return False
-    else:
-        return True
-
-
-def insert(title, author, genre, totalcopies):
-    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
-    cursor = connection.cursor()
-
-    cursor.execute('''
-    INSERT INTO Books(title, author, rating, genre, add_date, copies_total, copies_issued) 
-    VALUES(?, ?, NULL, ?, datetime('now','localtime'), ?, 0)''', (title, author, genre, totalcopies,))
-
-    connection.commit()
-    connection.close()
-
-
-def delete(idtodelete):
-    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
-    connection.execute('PRAGMA foreign_keys = ON')  # We need this because foreign keys are disabled by default
-    cursor = connection.cursor()
-
-    try:
-        cursor.execute("DELETE FROM Books WHERE id=?", (idtodelete,))
-    except sqlite3.IntegrityError:
-        return False
-
-    connection.commit()
-    connection.close()
-    return True
-
-
-def readall():
-    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
-    cursor = connection.cursor()
-
-    cursor.execute('SELECT * FROM Books')
-    data = cursor.fetchall()
-
-    connection.close()
-    return data
-
-
-def readsorted(sortingdata):
-    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
-    cursor = connection.cursor()
-
-    # viewfilter and genre
-    constraint = ''
-    if sortingdata[0]['available']:
-        constraint = ' WHERE copies_issued < copies_total'
-        if sortingdata[2] != 'No Genre':
-            constraint = constraint + ' AND genre = ' + f"\'{sortingdata[2]}\'"
-    elif sortingdata[0]['all']:
-        if sortingdata[2] != 'No Genre':
-            constraint = ' WHERE genre = ' + f"\'{sortingdata[2]}\'"
-
-    # sortfilter
-    sortconstraint = ' ORDER BY '
-    if sortingdata[1]['title']:
-        sortconstraint = sortconstraint + 'title'
-    elif sortingdata[1]['author']:
-        sortconstraint = sortconstraint + 'author'
-    elif sortingdata[1]['rating']:
-        sortconstraint = sortconstraint + 'rating DESC'
-
-    maincommand = 'SELECT * FROM Books'
-    command = maincommand + constraint + sortconstraint
-
-    cursor.execute(command)
-    data = cursor.fetchall()
-
-    connection.close()
-    return data
-
-
-def readgenre():
-    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
-    cursor = connection.cursor()
-
-    cursor.execute('SELECT DISTINCT genre FROM Books')
-    data = cursor.fetchall()
-
-    connection.close()
-    return data
-
-
-def readwithid(idtodisplay):
-    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
-    cursor = connection.cursor()
-    cursor.execute('SELECT * FROM Books WHERE id = ?', (idtodisplay,))
-    data = cursor.fetchall()
-
-    connection.close()
-    return data
-
-
-initialise()  # Makes sure the table is available
+DB.books.initialise()  # Makes sure the table is available

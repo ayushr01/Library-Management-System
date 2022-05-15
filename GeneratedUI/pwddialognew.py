@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'pwd.ui'
+## Form generated from reading GeneratedUI file 'pwdnew.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.3.0
 ##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
+## WARNING! All changes made in this file will be lost when recompiling GeneratedUI file!
 ################################################################################
 
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
@@ -23,9 +23,9 @@ class Ui_passworddialog(object):
     def setupUi(self, passworddialog):
         if not passworddialog.objectName():
             passworddialog.setObjectName(u"passworddialog")
-        passworddialog.resize(400, 250)
-        passworddialog.setMinimumSize(QSize(400, 250))
-        passworddialog.setMaximumSize(QSize(400, 250))
+        passworddialog.resize(400, 350)
+        passworddialog.setMinimumSize(QSize(400, 350))
+        passworddialog.setMaximumSize(QSize(400, 350))
         self.verticalLayout = QVBoxLayout(passworddialog)
         self.verticalLayout.setSpacing(10)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -73,6 +73,19 @@ class Ui_passworddialog(object):
         self.pwdfield.setEchoMode(QLineEdit.Password)
 
         self.inputform.setWidget(1, QFormLayout.FieldRole, self.pwdfield)
+
+        self.confirm = QLabel(passworddialog)
+        self.confirm.setObjectName(u"confirm")
+        self.confirm.setFont(font1)
+
+        self.inputform.setWidget(2, QFormLayout.LabelRole, self.confirm)
+
+        self.pwdfieldconfirm = QLineEdit(passworddialog)
+        self.pwdfieldconfirm.setObjectName(u"pwdfieldconfirm")
+        self.pwdfieldconfirm.setMinimumSize(QSize(0, 30))
+        self.pwdfieldconfirm.setEchoMode(QLineEdit.Password)
+
+        self.inputform.setWidget(2, QFormLayout.FieldRole, self.pwdfieldconfirm)
 
 
         self.verticalLayout.addLayout(self.inputform)
@@ -147,9 +160,10 @@ class Ui_passworddialog(object):
 
     def retranslateUi(self, passworddialog):
         passworddialog.setWindowTitle(QCoreApplication.translate("passworddialog", u"Admin Login", None))
-        self.info.setText(QCoreApplication.translate("passworddialog", u"Log in to access admin portal", None))
+        self.info.setText(QCoreApplication.translate("passworddialog", u"Admin account needs to be created", None))
         self.username.setText(QCoreApplication.translate("passworddialog", u"Username:", None))
         self.password.setText(QCoreApplication.translate("passworddialog", u"Password:", None))
+        self.confirm.setText(QCoreApplication.translate("passworddialog", u"Confirm:", None))
         self.error.setText("")
         self.clearbutton.setText(QCoreApplication.translate("passworddialog", u"Clear", None))
         self.submitbutton.setText(QCoreApplication.translate("passworddialog", u"Submit", None))

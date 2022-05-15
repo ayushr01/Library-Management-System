@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'addmembers.ui'
+## Form generated from reading GeneratedUI file 'addmembers.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.3.0
 ##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
+## WARNING! All changes made in this file will be lost when recompiling GeneratedUI file!
 ################################################################################
 
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,

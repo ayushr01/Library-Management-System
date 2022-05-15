@@ -1,13 +1,16 @@
 from PySide6.QtWidgets import QDialog, QTableWidgetItem
 
-import UI.adminui as admin
+import GeneratedUI.adminui
 
-import Utils.members as member
-import Utils.books as book
+import UI.members
+import UI.books
+
+import DB.books
+import DB.members
 
 
 # Admin window with 2 tabs
-class AdminWindow(QDialog, admin.Ui_AdminWindow):
+class AdminWindow(QDialog, GeneratedUI.adminui.Ui_AdminWindow):
     def __init__(self, mainwindow):
         super().__init__()
         self.setupUi(self)  # Calls the function to create all the elements in the window
@@ -15,8 +18,8 @@ class AdminWindow(QDialog, admin.Ui_AdminWindow):
         self.mainwindow = mainwindow  # To refresh the genre list
 
         # Member tab
-        self.addmemberdialog = member.AddMemberDialog(adminwindow=self)
-        self.deletememberdialog = member.DeleteMemberDialog(adminwindow=self)
+        self.addmemberdialog = UI.members.AddMemberDialog(adminwindow=self)
+        self.deletememberdialog = UI.members.DeleteMemberDialog(adminwindow=self)
 
         self.addmem.clicked.connect(self.addmemberdialog.makedialog)
         self.refreshmem.clicked.connect(self.loadmem)
@@ -27,8 +30,8 @@ class AdminWindow(QDialog, admin.Ui_AdminWindow):
         self.loadmem()  # Populates table as soon as the program runs
 
         # Book tab
-        self.addbookdialog = book.AddBookDialog(adminwindow=self)
-        self.deletebookdialog = book.DeleteBookDialog(adminwindow=self)
+        self.addbookdialog = UI.books.AddBookDialog(adminwindow=self)
+        self.deletebookdialog = UI.books.DeleteBookDialog(adminwindow=self)
 
         self.addbook.clicked.connect(self.addbookdialog.makedialog)
         self.refreshbook.clicked.connect(self.loadbook)
@@ -41,7 +44,7 @@ class AdminWindow(QDialog, admin.Ui_AdminWindow):
 
     # Adds data to the table in the member tab
     def loadmem(self):
-        data = member.readall()
+        data = DB.members.readall()
         self.memtable.setRowCount(len(data))  # It is always zero so we modify it
         position = 0
         for row in data:
@@ -53,7 +56,7 @@ class AdminWindow(QDialog, admin.Ui_AdminWindow):
 
     # Adds data to the table in the book tab
     def loadbook(self):
-        data = book.readall()
+        data = DB.books.readall()
         self.booktable.setRowCount(len(data))  # It is always zero so we modify it
         position = 0
         for row in data:

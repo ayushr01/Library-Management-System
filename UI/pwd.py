@@ -3,13 +3,13 @@ import json
 
 from PySide6.QtWidgets import QDialog
 
-import UI.pwddialog as pwddialog
-import UI.pwddialognew as pwddialognew
+import GeneratedUI.pwddialog
+import GeneratedUI.pwddialognew
 
-from Utils.foldermaker import home
+from UI.foldermaker import home
 
 
-class PwdDialog(QDialog, pwddialog.Ui_passworddialog):
+class PwdDialog(QDialog, GeneratedUI.pwddialog.Ui_passworddialog):
     def __init__(self, mainwindow):
         super().__init__()
 
@@ -43,7 +43,7 @@ class PwdDialog(QDialog, pwddialog.Ui_passworddialog):
             self.error.setText('Error: Username or Password is incorrect!')
 
 
-class PwdDialogNew(QDialog, pwddialognew.Ui_passworddialog):
+class PwdDialogNew(QDialog, GeneratedUI.pwddialognew.Ui_passworddialog):
     def __init__(self, mainwindow):
         super().__init__()
 

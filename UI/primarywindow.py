@@ -1,13 +1,15 @@
 from PySide6.QtCore import QSize
 from PySide6.QtWidgets import QMainWindow, QListWidgetItem
 
-import UI.myapp as myapp
+import GeneratedUI.myapp as myapp
 
-import Utils.pwd as pwd
-import Utils.admin as admin
-import Utils.books as book
-import Utils.members as mem
-import Utils.library as lib
+import UI.pwd as pwd
+import UI.admin as admin
+import UI.books as book
+
+import DB.books
+import DB.members
+import DB.library
 
 
 class MainWindow(QMainWindow, myapp.Ui_MainWindow):
@@ -65,7 +67,7 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
     def loadissue(self):
         if self.booklist.currentItem() is None:
             pass
-        elif lib.checkstock(self.booklist.currentItem()):
+        elif DB.library.checkstock(self.booklist.currentItem()):
             self.errorlabel.setText('')
             self.issuedialog.makedialog(self.booklist.currentItem())
         else:
@@ -80,9 +82,9 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
             self.errorlabel_2.setText('Error: Enter a number!')
         else:
             self.errorlabel_2.setText('')
-            if mem.checkid(int(text)) and flag == 'norm':
+            if DB.members.checkid(int(text)) and flag == 'norm':
                 position = 0
-                for row in mem.booksissuedbymem(int(text), flag):
+                for row in DB.members.booksissuedbymem(int(text), flag):
                     self.errorlabel_2.setText(f"Viewing books issued by {row[1]}")
                     item = QListWidgetItem()
                     item.setSizeHint(QSize(500, 50))
@@ -90,9 +92,9 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
 Issued on {row[3]}''')
                     self.returnbooklist.insertItem(position, item)
                     position = position + 1
-            elif mem.checkid(int(text)) and flag == 'hist':
+            elif DB.members.checkid(int(text)) and flag == 'hist':
                 position = 0
-                for row in mem.booksissuedbymem(int(text), flag):
+                for row in DB.members.booksissuedbymem(int(text), flag):
                     self.errorlabel_2.setText(f"Viewing history of books issued by {row[1]}")
                     item = QListWidgetItem()
                     item.setSizeHint(QSize(500, 75))
@@ -107,7 +109,7 @@ Returned on {row[4]}''')
     def loadbooks(self):
         self.booklist.clear()
         sortingdata = self.filters()
-        bookdata = book.readsorted(sortingdata)
+        bookdata = DB.books.readsorted(sortingdata)
         position = 0
         for row in bookdata:
             rating = ''
@@ -126,7 +128,7 @@ Returned on {row[4]}''')
     def loadgenre(self):
         self.genrebox.clear()
         self.genrebox.addItem("No Genre")
-        data = book.readgenre()
+        data = DB.books.readgenre()
         for row in data:
             self.genrebox.addItem(row[0])
 
@@ -162,6 +164,6 @@ Returned on {row[4]}''')
                 'five': self.fivestar.isChecked()
             }
 
-            lib.setrating(bookid, rating)
-            lib.returnbook(memid, bookid, dateissued)
+            DB.library.setrating(bookid, rating)
+            DB.library.returnbook(memid, bookid, dateissued)
             self.loadissuedbooks('norm')
