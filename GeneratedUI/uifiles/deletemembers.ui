@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>200</height>
+    <width>500</width>
+    <height>250</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>400</width>
-    <height>200</height>
+    <width>500</width>
+    <height>250</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>400</width>
-    <height>200</height>
+    <width>500</width>
+    <height>250</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -50,7 +50,7 @@
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>35</height>
+           <height>45</height>
           </size>
          </property>
          <property name="styleSheet">
@@ -74,7 +74,7 @@ QPushButton#deletebutton:hover{
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>35</height>
+           <height>45</height>
           </size>
          </property>
          <property name="styleSheet">

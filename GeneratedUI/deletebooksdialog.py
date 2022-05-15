@@ -23,9 +23,9 @@ class Ui_deletebookdialog(object):
     def setupUi(self, deletebookdialog):
         if not deletebookdialog.objectName():
             deletebookdialog.setObjectName(u"deletebookdialog")
-        deletebookdialog.resize(400, 200)
-        deletebookdialog.setMinimumSize(QSize(400, 200))
-        deletebookdialog.setMaximumSize(QSize(400, 200))
+        deletebookdialog.resize(500, 250)
+        deletebookdialog.setMinimumSize(QSize(500, 250))
+        deletebookdialog.setMaximumSize(QSize(500, 250))
         self.verticalLayout_2 = QVBoxLayout(deletebookdialog)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.horizontalLayout = QHBoxLayout()
@@ -44,7 +44,7 @@ class Ui_deletebookdialog(object):
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.deletebutton = QPushButton(deletebookdialog)
         self.deletebutton.setObjectName(u"deletebutton")
-        self.deletebutton.setMinimumSize(QSize(0, 35))
+        self.deletebutton.setMinimumSize(QSize(0, 45))
         self.deletebutton.setStyleSheet(u"QPushButton#deletebutton{\n"
 "	background-color: red;\n"
 "	border-radius: 5px;\n"
@@ -59,7 +59,7 @@ class Ui_deletebookdialog(object):
 
         self.closebutton = QPushButton(deletebookdialog)
         self.closebutton.setObjectName(u"closebutton")
-        self.closebutton.setMinimumSize(QSize(0, 35))
+        self.closebutton.setMinimumSize(QSize(0, 45))
         self.closebutton.setStyleSheet(u"QPushButton#closebutton{\n"
 "	background-color: #656565;\n"
 "	border-radius: 5px;\n"

@@ -23,9 +23,9 @@ class Ui_deletememdialog(object):
     def setupUi(self, deletememdialog):
         if not deletememdialog.objectName():
             deletememdialog.setObjectName(u"deletememdialog")
-        deletememdialog.resize(400, 200)
-        deletememdialog.setMinimumSize(QSize(400, 200))
-        deletememdialog.setMaximumSize(QSize(400, 200))
+        deletememdialog.resize(500, 250)
+        deletememdialog.setMinimumSize(QSize(500, 250))
+        deletememdialog.setMaximumSize(QSize(500, 250))
         self.verticalLayout_2 = QVBoxLayout(deletememdialog)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.horizontalLayout = QHBoxLayout()
@@ -44,7 +44,7 @@ class Ui_deletememdialog(object):
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.deletebutton = QPushButton(deletememdialog)
         self.deletebutton.setObjectName(u"deletebutton")
-        self.deletebutton.setMinimumSize(QSize(0, 35))
+        self.deletebutton.setMinimumSize(QSize(0, 45))
         self.deletebutton.setStyleSheet(u"QPushButton#deletebutton{\n"
 "	background-color: red;\n"
 "	border-radius: 5px;\n"
@@ -59,7 +59,7 @@ class Ui_deletememdialog(object):
 
         self.closebutton = QPushButton(deletememdialog)
         self.closebutton.setObjectName(u"closebutton")
-        self.closebutton.setMinimumSize(QSize(0, 35))
+        self.closebutton.setMinimumSize(QSize(0, 45))
         self.closebutton.setStyleSheet(u"QPushButton#closebutton{\n"
 "	background-color: #656565;\n"
 "	border-radius: 5px;\n"
