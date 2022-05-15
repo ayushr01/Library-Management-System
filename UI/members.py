@@ -3,8 +3,6 @@ from PySide6.QtWidgets import QDialog
 import GeneratedUI.addmembersdialog
 import GeneratedUI.deletemembersdialog
 
-import UI.foldermaker
-
 import DB.members
 
 

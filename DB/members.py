@@ -2,11 +2,9 @@ import os
 import re
 import sqlite3
 
-from UI.foldermaker import home
-
 
 def initialise():
-    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))
     cursor = connection.cursor()
 
     cursor.execute('''CREATE TABLE IF NOT EXISTS Members(
@@ -30,7 +28,7 @@ def namecheck(name):
 
 
 def insert(name, dob):
-    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))
     cursor = connection.cursor()
 
     cursor.execute("INSERT INTO Members(name, DOB, reg) VALUES(?, ?, datetime('now','localtime'))", (name, dob,))
@@ -40,7 +38,7 @@ def insert(name, dob):
 
 
 def delete(idtodelete):
-    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))
     connection.execute('PRAGMA foreign_keys = ON')  # We need this because foreign keys are disabled by default
     cursor = connection.cursor()
 
@@ -55,7 +53,7 @@ def delete(idtodelete):
 
 
 def readall():
-    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))
     cursor = connection.cursor()
 
     cursor.execute("SELECT * FROM Members")
@@ -66,7 +64,7 @@ def readall():
 
 
 def checkid(idtodisplay):
-    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))
     cursor = connection.cursor()
 
     cursor.execute("SELECT id FROM Members")
@@ -82,7 +80,7 @@ def checkid(idtodisplay):
 
 
 def booksissuedbymem(idtodisplay, flag):
-    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))
     cursor = connection.cursor()
 
     if flag == 'norm':

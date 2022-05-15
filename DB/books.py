@@ -2,11 +2,9 @@ import os
 import re
 import sqlite3
 
-from UI.foldermaker import home
-
 
 def initialise():
-    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))
     cursor = connection.cursor()
 
     cursor.execute('''CREATE TABLE IF NOT EXISTS Books(
@@ -40,7 +38,7 @@ def check(data, field):
 
 
 def insert(title, author, genre, totalcopies):
-    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))
     cursor = connection.cursor()
 
     cursor.execute('''
@@ -52,7 +50,7 @@ def insert(title, author, genre, totalcopies):
 
 
 def delete(idtodelete):
-    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))
     connection.execute('PRAGMA foreign_keys = ON')  # We need this because foreign keys are disabled by default
     cursor = connection.cursor()
 
@@ -67,7 +65,7 @@ def delete(idtodelete):
 
 
 def readall():
-    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))
     cursor = connection.cursor()
 
     cursor.execute('SELECT * FROM Books')
@@ -78,7 +76,7 @@ def readall():
 
 
 def readsorted(sortingdata):
-    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))
     cursor = connection.cursor()
 
     # viewfilter and genre
@@ -111,7 +109,7 @@ def readsorted(sortingdata):
 
 
 def readgenre():
-    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))
     cursor = connection.cursor()
 
     cursor.execute('SELECT DISTINCT genre FROM Books')
@@ -122,7 +120,7 @@ def readgenre():
 
 
 def readwithid(idtodisplay):
-    connection = sqlite3.connect(os.path.join(home, '.LMSystem/library.sqlite'))
+    connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))
     cursor = connection.cursor()
     cursor.execute('SELECT * FROM Books WHERE id = ?', (idtodisplay,))
     data = cursor.fetchall()
