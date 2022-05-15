@@ -50,7 +50,7 @@ class AddMemberDialog(QDialog, GeneratedUI.addmembersdialog.Ui_addmemdialog):
         name = self.inputname.text()
         if namecheck(name):
             self.error.setText('')
-            dob = self.datepicker.dateTime().date().toPyDate().strftime('%d-%m-%Y')
+            dob = self.datepicker.date().toPython().strftime('%d-%m-%Y')
             DB.members.insert(name, dob)
             self.adminwindow.loadmem()  # Refreshes the member table after adding memberss
             self.close()
