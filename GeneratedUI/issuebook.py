@@ -15,65 +15,82 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractItemView, QApplication, QDialog, QLabel,
-    QListWidget, QListWidgetItem, QPushButton, QSizePolicy,
-    QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QDialog, QHBoxLayout,
+    QLabel, QListWidget, QListWidgetItem, QPushButton,
+    QSizePolicy, QVBoxLayout, QWidget)
 
 class Ui_issuebookdialog(object):
     def setupUi(self, issuebookdialog):
         if not issuebookdialog.objectName():
             issuebookdialog.setObjectName(u"issuebookdialog")
-        issuebookdialog.resize(500, 230)
-        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(issuebookdialog.sizePolicy().hasHeightForWidth())
-        issuebookdialog.setSizePolicy(sizePolicy)
-        issuebookdialog.setMinimumSize(QSize(500, 230))
-        issuebookdialog.setMaximumSize(QSize(500, 230))
-        font = QFont()
-        font.setPointSize(13)
-        font.setBold(True)
-        issuebookdialog.setFont(font)
+        issuebookdialog.resize(500, 250)
+        issuebookdialog.setMinimumSize(QSize(500, 250))
+        issuebookdialog.setMaximumSize(QSize(500, 250))
+        self.verticalLayout_2 = QVBoxLayout(issuebookdialog)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.memlist = QListWidget(issuebookdialog)
         self.memlist.setObjectName(u"memlist")
-        self.memlist.setGeometry(QRect(10, 10, 341, 181))
-        font1 = QFont()
-        font1.setPointSize(13)
-        font1.setBold(False)
-        self.memlist.setFont(font1)
+        font = QFont()
+        font.setPointSize(13)
+        self.memlist.setFont(font)
         self.memlist.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.memlist.setSpacing(2)
+
+        self.horizontalLayout.addWidget(self.memlist)
+
+        self.verticalLayout = QVBoxLayout()
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.issuebutton = QPushButton(issuebookdialog)
+        self.issuebutton.setObjectName(u"issuebutton")
+        self.issuebutton.setMinimumSize(QSize(0, 45))
+        self.issuebutton.setStyleSheet(u"QPushButton#issuebutton{\n"
+"	background-color: FireBrick;\n"
+"	border-radius: 5px;\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton#issuebutton:hover{\n"
+"	border: 2px solid teal;\n"
+"}")
+
+        self.verticalLayout.addWidget(self.issuebutton)
+
+        self.closebutton = QPushButton(issuebookdialog)
+        self.closebutton.setObjectName(u"closebutton")
+        self.closebutton.setMinimumSize(QSize(0, 45))
+        self.closebutton.setStyleSheet(u"QPushButton#closebutton{\n"
+"	background-color: #656565;\n"
+"	border-radius: 5px;\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton#closebutton:hover{\n"
+"	border: 2px solid teal;\n"
+"}")
+
+        self.verticalLayout.addWidget(self.closebutton)
+
+
+        self.horizontalLayout.addLayout(self.verticalLayout)
+
+        self.horizontalLayout.setStretch(0, 3)
+        self.horizontalLayout.setStretch(1, 1)
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout)
+
         self.issuelabel = QLabel(issuebookdialog)
         self.issuelabel.setObjectName(u"issuelabel")
-        self.issuelabel.setGeometry(QRect(10, 200, 481, 22))
-        self.issuelabel.setFont(font)
-        self.issuelabel.setStyleSheet(u"color: blue")
-        self.layoutWidget = QWidget(issuebookdialog)
-        self.layoutWidget.setObjectName(u"layoutWidget")
-        self.layoutWidget.setGeometry(QRect(360, 10, 132, 181))
-        self.layoutWidget.setFont(font)
-        self.buttons = QVBoxLayout(self.layoutWidget)
-        self.buttons.setSpacing(10)
-        self.buttons.setObjectName(u"buttons")
-        self.buttons.setContentsMargins(0, 0, 0, 0)
-        self.issuebutton = QPushButton(self.layoutWidget)
-        self.issuebutton.setObjectName(u"issuebutton")
-        self.issuebutton.setMinimumSize(QSize(130, 50))
-        self.issuebutton.setFont(font)
-        self.issuebutton.setStyleSheet(u"background-color : #be8846;\n"
-"color: white;")
+        font1 = QFont()
+        font1.setBold(True)
+        self.issuelabel.setFont(font1)
+        self.issuelabel.setStyleSheet(u"color: orange;")
 
-        self.buttons.addWidget(self.issuebutton)
+        self.verticalLayout_2.addWidget(self.issuelabel)
 
-        self.closebutton = QPushButton(self.layoutWidget)
-        self.closebutton.setObjectName(u"closebutton")
-        self.closebutton.setMinimumSize(QSize(130, 50))
-        self.closebutton.setFont(font)
-        self.closebutton.setStyleSheet(u"background-color: #333333;\n"
-"color: white;")
-
-        self.buttons.addWidget(self.closebutton)
-
+        self.verticalLayout_2.setStretch(0, 8)
+        self.verticalLayout_2.setStretch(1, 1)
 
         self.retranslateUi(issuebookdialog)
 
@@ -82,8 +99,8 @@ class Ui_issuebookdialog(object):
 
     def retranslateUi(self, issuebookdialog):
         issuebookdialog.setWindowTitle(QCoreApplication.translate("issuebookdialog", u"Issue Book", None))
-        self.issuelabel.setText("")
         self.issuebutton.setText(QCoreApplication.translate("issuebookdialog", u"Issue", None))
         self.closebutton.setText(QCoreApplication.translate("issuebookdialog", u"Close", None))
+        self.issuelabel.setText("")
     # retranslateUi
 
