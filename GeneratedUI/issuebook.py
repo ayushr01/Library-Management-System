@@ -60,7 +60,7 @@ class Ui_issuebookdialog(object):
         self.issuebutton.setObjectName(u"issuebutton")
         self.issuebutton.setMinimumSize(QSize(130, 50))
         self.issuebutton.setFont(font)
-        self.issuebutton.setStyleSheet(u"background-color : blue;\n"
+        self.issuebutton.setStyleSheet(u"background-color : #be8846;\n"
 "color: white;")
 
         self.buttons.addWidget(self.issuebutton)

@@ -55,7 +55,7 @@
          </property>
          <property name="styleSheet">
           <string notr="true">QPushButton#deletebutton{
-	background-color: red;
+	background-color: FireBrick;
 	border-radius: 5px;
 	color: white;
 }

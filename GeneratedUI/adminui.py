@@ -61,7 +61,7 @@ class Ui_AdminWindow(object):
         self.addmem.setObjectName(u"addmem")
         self.addmem.setMinimumSize(QSize(0, 25))
         self.addmem.setStyleSheet(u"QPushButton#addmem{\n"
-"	background-color: green;\n"
+"	background-color: #ed7868;\n"
 "	border-radius: 5px;\n"
 "	color: white;\n"
 "}\n"
@@ -76,7 +76,7 @@ class Ui_AdminWindow(object):
         self.refreshmem.setObjectName(u"refreshmem")
         self.refreshmem.setMinimumSize(QSize(0, 25))
         self.refreshmem.setStyleSheet(u"QPushButton#refreshmem{\n"
-"	background-color: cornflowerblue;\n"
+"	background-color: #3c73a6;\n"
 "	border-radius: 5px;\n"
 "	color: white;\n"
 "}\n"
@@ -91,7 +91,7 @@ class Ui_AdminWindow(object):
         self.deletemem.setObjectName(u"deletemem")
         self.deletemem.setMinimumSize(QSize(0, 25))
         self.deletemem.setStyleSheet(u"QPushButton#deletemem{\n"
-"	background-color: red;\n"
+"	background-color: FireBrick;\n"
 "	border-radius: 5px;\n"
 "	color: white;\n"
 "}\n"
@@ -142,7 +142,7 @@ class Ui_AdminWindow(object):
         self.addbook.setObjectName(u"addbook")
         self.addbook.setMinimumSize(QSize(0, 25))
         self.addbook.setStyleSheet(u"QPushButton#addbook{\n"
-"	background-color: green;\n"
+"	background-color: #ed7868;\n"
 "	border-radius: 5px;\n"
 "	color: white;\n"
 "}\n"
@@ -157,7 +157,7 @@ class Ui_AdminWindow(object):
         self.refreshbook.setObjectName(u"refreshbook")
         self.refreshbook.setMinimumSize(QSize(0, 25))
         self.refreshbook.setStyleSheet(u"QPushButton#refreshbook{\n"
-"	background-color: cornflowerblue;\n"
+"	background-color: #3c73a6;\n"
 "	border-radius: 5px;\n"
 "	color: white;\n"
 "}\n"
@@ -172,7 +172,7 @@ class Ui_AdminWindow(object):
         self.deletebook.setObjectName(u"deletebook")
         self.deletebook.setMinimumSize(QSize(0, 25))
         self.deletebook.setStyleSheet(u"QPushButton#deletebook{\n"
-"	background-color: red;\n"
+"	background-color: FireBrick;\n"
 "	border-radius: 5px;\n"
 "	color: white;\n"
 "}\n"

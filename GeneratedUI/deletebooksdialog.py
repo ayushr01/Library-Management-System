@@ -46,7 +46,7 @@ class Ui_deletebookdialog(object):
         self.deletebutton.setObjectName(u"deletebutton")
         self.deletebutton.setMinimumSize(QSize(0, 45))
         self.deletebutton.setStyleSheet(u"QPushButton#deletebutton{\n"
-"	background-color: red;\n"
+"	background-color: FireBrick;\n"
 "	border-radius: 5px;\n"
 "	color: white;\n"
 "}\n"

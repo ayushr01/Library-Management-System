@@ -112,7 +112,7 @@
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color : blue;
+       <string notr="true">background-color : #be8846;
 color: white;</string>
       </property>
       <property name="text">

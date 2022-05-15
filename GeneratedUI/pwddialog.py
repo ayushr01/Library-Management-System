@@ -91,7 +91,7 @@ class Ui_passworddialog(object):
         self.clearbutton.setObjectName(u"clearbutton")
         self.clearbutton.setMinimumSize(QSize(0, 25))
         self.clearbutton.setStyleSheet(u"QPushButton#clearbutton{\n"
-"	background-color: cornflowerblue;\n"
+"	background-color: #f2a240;\n"
 "	border-radius: 5px;\n"
 "	color: white;\n"
 "}\n"
@@ -106,7 +106,7 @@ class Ui_passworddialog(object):
         self.submitbutton.setObjectName(u"submitbutton")
         self.submitbutton.setMinimumSize(QSize(0, 25))
         self.submitbutton.setStyleSheet(u"QPushButton#submitbutton{\n"
-"	background-color: green;\n"
+"	background-color: MediumSeaGreen;\n"
 "	border-radius: 5px;\n"
 "	color: white;\n"
 "}\n"

@@ -109,7 +109,7 @@ class Ui_addbookdialog(object):
         self.clearbutton.setObjectName(u"clearbutton")
         self.clearbutton.setMinimumSize(QSize(0, 25))
         self.clearbutton.setStyleSheet(u"QPushButton#clearbutton{\n"
-"	background-color: cornflowerblue;\n"
+"	background-color: #f2a240;\n"
 "	border-radius: 5px;\n"
 "	color: white;\n"
 "}\n"
@@ -124,7 +124,7 @@ class Ui_addbookdialog(object):
         self.submitbutton.setObjectName(u"submitbutton")
         self.submitbutton.setMinimumSize(QSize(0, 25))
         self.submitbutton.setStyleSheet(u"QPushButton#submitbutton{\n"
-"	background-color: green;\n"
+"	background-color: MediumSeaGreen;\n"
 "	border-radius: 5px;\n"
 "	color: white;\n"
 "}\n"
@@ -179,6 +179,16 @@ class Ui_addbookdialog(object):
 
         self.searchbuttonisbn = QPushButton(self.isbn)
         self.searchbuttonisbn.setObjectName(u"searchbuttonisbn")
+        self.searchbuttonisbn.setMinimumSize(QSize(60, 30))
+        self.searchbuttonisbn.setStyleSheet(u"QPushButton#searchbuttonisbn{\n"
+"	background-color: BurlyWood;\n"
+"	border-radius: 5px;\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton#searchbuttonisbn:hover{\n"
+"	border: 2px solid teal;\n"
+"}")
 
         self.isbnentry.addWidget(self.searchbuttonisbn)
 
@@ -266,7 +276,7 @@ class Ui_addbookdialog(object):
         self.clearbuttonisbn.setObjectName(u"clearbuttonisbn")
         self.clearbuttonisbn.setMinimumSize(QSize(0, 25))
         self.clearbuttonisbn.setStyleSheet(u"QPushButton#clearbuttonisbn{\n"
-"	background-color: cornflowerblue;\n"
+"	background-color: #f2a240;\n"
 "	border-radius: 5px;\n"
 "	color: white;\n"
 "}\n"
@@ -281,7 +291,7 @@ class Ui_addbookdialog(object):
         self.submitbuttonisbn.setObjectName(u"submitbuttonisbn")
         self.submitbuttonisbn.setMinimumSize(QSize(0, 25))
         self.submitbuttonisbn.setStyleSheet(u"QPushButton#submitbuttonisbn{\n"
-"	background-color: green;\n"
+"	background-color: MediumSeaGreen;\n"
 "	border-radius: 5px;\n"
 "	color: white;\n"
 "}\n"
@@ -322,7 +332,7 @@ class Ui_addbookdialog(object):
 
         self.retranslateUi(addbookdialog)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(addbookdialog)

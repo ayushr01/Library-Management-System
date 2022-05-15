@@ -29,7 +29,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="manual">
       <attribute name="title">
@@ -179,7 +179,7 @@
            </property>
            <property name="styleSheet">
             <string notr="true">QPushButton#clearbutton{
-	background-color: cornflowerblue;
+	background-color: #f2a240;
 	border-radius: 5px;
 	color: white;
 }
@@ -203,7 +203,7 @@ QPushButton#clearbutton:hover{
            </property>
            <property name="styleSheet">
             <string notr="true">QPushButton#submitbutton{
-	background-color: green;
+	background-color: MediumSeaGreen;
 	border-radius: 5px;
 	color: white;
 }
@@ -285,6 +285,23 @@ QPushButton#closebutton:hover{
          </item>
          <item>
           <widget class="QPushButton" name="searchbuttonisbn">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton#searchbuttonisbn{
+	background-color: BurlyWood;
+	border-radius: 5px;
+	color: white;
+}
+
+QPushButton#searchbuttonisbn:hover{
+	border: 2px solid teal;
+}</string>
+           </property>
            <property name="text">
             <string>Search</string>
            </property>
@@ -445,7 +462,7 @@ QPushButton#closebutton:hover{
            </property>
            <property name="styleSheet">
             <string notr="true">QPushButton#clearbuttonisbn{
-	background-color: cornflowerblue;
+	background-color: #f2a240;
 	border-radius: 5px;
 	color: white;
 }
@@ -469,7 +486,7 @@ QPushButton#clearbuttonisbn:hover{
            </property>
            <property name="styleSheet">
             <string notr="true">QPushButton#submitbuttonisbn{
-	background-color: green;
+	background-color: MediumSeaGreen;
 	border-radius: 5px;
 	color: white;
 }
