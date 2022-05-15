@@ -32,9 +32,6 @@ class Ui_deletebookdialog(object):
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.booklist = QListWidget(deletebookdialog)
         self.booklist.setObjectName(u"booklist")
-        font = QFont()
-        font.setPointSize(13)
-        self.booklist.setFont(font)
         self.booklist.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.booklist.setSpacing(2)
 
@@ -82,9 +79,9 @@ class Ui_deletebookdialog(object):
 
         self.errorlabel = QLabel(deletebookdialog)
         self.errorlabel.setObjectName(u"errorlabel")
-        font1 = QFont()
-        font1.setBold(True)
-        self.errorlabel.setFont(font1)
+        font = QFont()
+        font.setBold(True)
+        self.errorlabel.setFont(font)
         self.errorlabel.setStyleSheet(u"color: orange;")
 
         self.verticalLayout_2.addWidget(self.errorlabel)

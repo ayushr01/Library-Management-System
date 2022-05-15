@@ -32,9 +32,6 @@ class Ui_deletememdialog(object):
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.memlist = QListWidget(deletememdialog)
         self.memlist.setObjectName(u"memlist")
-        font = QFont()
-        font.setPointSize(13)
-        self.memlist.setFont(font)
         self.memlist.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.memlist.setSpacing(2)
 
@@ -82,9 +79,9 @@ class Ui_deletememdialog(object):
 
         self.errorlabel = QLabel(deletememdialog)
         self.errorlabel.setObjectName(u"errorlabel")
-        font1 = QFont()
-        font1.setBold(True)
-        self.errorlabel.setFont(font1)
+        font = QFont()
+        font.setBold(True)
+        self.errorlabel.setFont(font)
         self.errorlabel.setStyleSheet(u"color: orange;")
 
         self.verticalLayout_2.addWidget(self.errorlabel)

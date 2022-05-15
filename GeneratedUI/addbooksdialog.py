@@ -203,39 +203,25 @@ class Ui_addbookdialog(object):
         self.detailslayout.setContentsMargins(10, 5, 10, 5)
         self.headingisbn = QLabel(self.isbn)
         self.headingisbn.setObjectName(u"headingisbn")
-        font1 = QFont()
-        font1.setPointSize(13)
-        font1.setBold(True)
-        self.headingisbn.setFont(font1)
-        self.headingisbn.setStyleSheet(u"")
+        self.headingisbn.setFont(font)
         self.headingisbn.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.detailslayout.addWidget(self.headingisbn)
 
         self.titleisbn = QLabel(self.isbn)
         self.titleisbn.setObjectName(u"titleisbn")
-        font2 = QFont()
-        font2.setPointSize(12)
-        font2.setBold(False)
-        self.titleisbn.setFont(font2)
-        self.titleisbn.setStyleSheet(u"")
         self.titleisbn.setAlignment(Qt.AlignCenter)
 
         self.detailslayout.addWidget(self.titleisbn)
 
         self.authorisbn = QLabel(self.isbn)
         self.authorisbn.setObjectName(u"authorisbn")
-        font3 = QFont()
-        font3.setPointSize(12)
-        self.authorisbn.setFont(font3)
         self.authorisbn.setAlignment(Qt.AlignCenter)
 
         self.detailslayout.addWidget(self.authorisbn)
 
         self.publisherisbn = QLabel(self.isbn)
         self.publisherisbn.setObjectName(u"publisherisbn")
-        self.publisherisbn.setFont(font2)
-        self.publisherisbn.setStyleSheet(u"")
         self.publisherisbn.setAlignment(Qt.AlignCenter)
 
         self.detailslayout.addWidget(self.publisherisbn)

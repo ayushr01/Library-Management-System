@@ -327,12 +327,8 @@ QPushButton#searchbuttonisbn:hover{
           <widget class="QLabel" name="headingisbn">
            <property name="font">
             <font>
-             <pointsize>13</pointsize>
              <bold>true</bold>
             </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true"/>
            </property>
            <property name="text">
             <string>Book Details:</string>
@@ -344,15 +340,6 @@ QPushButton#searchbuttonisbn:hover{
          </item>
          <item>
           <widget class="QLabel" name="titleisbn">
-           <property name="font">
-            <font>
-             <pointsize>12</pointsize>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
            <property name="text">
             <string>-</string>
            </property>
@@ -363,11 +350,6 @@ QPushButton#searchbuttonisbn:hover{
          </item>
          <item>
           <widget class="QLabel" name="authorisbn">
-           <property name="font">
-            <font>
-             <pointsize>12</pointsize>
-            </font>
-           </property>
            <property name="text">
             <string>-</string>
            </property>
@@ -378,15 +360,6 @@ QPushButton#searchbuttonisbn:hover{
          </item>
          <item>
           <widget class="QLabel" name="publisherisbn">
-           <property name="font">
-            <font>
-             <pointsize>12</pointsize>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
            <property name="text">
             <string>-</string>
            </property>

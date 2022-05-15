@@ -55,6 +55,19 @@ class AddBookDialog(QDialog, GeneratedUI.addbooksdialog.Ui_addbookdialog):
 
         self.isbndata = None  # Data from search is stored in here to enter into the db
 
+        # Setting font sizes
+        font = self.titleisbn.font()
+        font.setPixelSize(12)
+        self.titleisbn.setFont(font)
+
+        font = self.authorisbn.font()
+        font.setPixelSize(12)
+        self.authorisbn.setFont(font)
+
+        font = self.publisherisbn.font()
+        font.setPixelSize(12)
+        self.authorisbn.setFont(font)
+
     def makedialog(self):
         self.clearfields()  # Clears the fields before opening up the dialog window
         self.exec()  # Runs the dialog window

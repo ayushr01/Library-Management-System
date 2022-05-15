@@ -32,9 +32,6 @@ class Ui_issuebookdialog(object):
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.memlist = QListWidget(issuebookdialog)
         self.memlist.setObjectName(u"memlist")
-        font = QFont()
-        font.setPointSize(13)
-        self.memlist.setFont(font)
         self.memlist.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.memlist.setSpacing(2)
 
@@ -82,9 +79,9 @@ class Ui_issuebookdialog(object):
 
         self.issuelabel = QLabel(issuebookdialog)
         self.issuelabel.setObjectName(u"issuelabel")
-        font1 = QFont()
-        font1.setBold(True)
-        self.issuelabel.setFont(font1)
+        font = QFont()
+        font.setBold(True)
+        self.issuelabel.setFont(font)
         self.issuelabel.setStyleSheet(u"color: orange;")
 
         self.verticalLayout_2.addWidget(self.issuelabel)

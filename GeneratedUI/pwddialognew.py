@@ -32,7 +32,6 @@ class Ui_passworddialog(object):
         self.info = QLabel(passworddialog)
         self.info.setObjectName(u"info")
         font = QFont()
-        font.setPointSize(15)
         font.setBold(True)
         self.info.setFont(font)
         self.info.setAlignment(Qt.AlignCenter)
@@ -49,15 +48,13 @@ class Ui_passworddialog(object):
         self.inputform.setContentsMargins(10, -1, 10, -1)
         self.username = QLabel(passworddialog)
         self.username.setObjectName(u"username")
-        font1 = QFont()
-        font1.setBold(True)
-        self.username.setFont(font1)
+        self.username.setFont(font)
 
         self.inputform.setWidget(0, QFormLayout.LabelRole, self.username)
 
         self.password = QLabel(passworddialog)
         self.password.setObjectName(u"password")
-        self.password.setFont(font1)
+        self.password.setFont(font)
 
         self.inputform.setWidget(1, QFormLayout.LabelRole, self.password)
 
@@ -76,7 +73,7 @@ class Ui_passworddialog(object):
 
         self.confirm = QLabel(passworddialog)
         self.confirm.setObjectName(u"confirm")
-        self.confirm.setFont(font1)
+        self.confirm.setFont(font)
 
         self.inputform.setWidget(2, QFormLayout.LabelRole, self.confirm)
 
@@ -92,7 +89,7 @@ class Ui_passworddialog(object):
 
         self.error = QLabel(passworddialog)
         self.error.setObjectName(u"error")
-        self.error.setFont(font1)
+        self.error.setFont(font)
         self.error.setStyleSheet(u"color: orange")
         self.error.setAlignment(Qt.AlignCenter)
 
