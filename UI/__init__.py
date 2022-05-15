@@ -1,8 +1,4 @@
 import os
 
-home = os.path.expanduser("~")
-
-
-def makefolder():
-    if not os.path.exists(os.path.join(home, '.LMSystem')):
-        os.mkdir(os.path.join(home, '.LMSystem'))  # Creates the file folder for database
+if not os.path.exists(os.path.join(os.path.expanduser("~"), '.LMSystem')):
+    os.mkdir(os.path.join(os.path.expanduser("~"), '.LMSystem'))  # Creates the file folder for database

@@ -95,5 +95,4 @@ class DeleteMemberDialog(QDialog, GeneratedUI.deletemembersdialog.Ui_deletememdi
 ###############################################
 
 
-UI.foldermaker.makefolder()  # Creates the folder for DB and pwd if it does not exist
 DB.members.initialise()  # Makes sure the table is available

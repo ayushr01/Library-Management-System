@@ -6,8 +6,6 @@ from PySide6.QtWidgets import QDialog
 import GeneratedUI.pwddialog
 import GeneratedUI.pwddialognew
 
-from UI.foldermaker import home
-
 
 class PwdDialog(QDialog, GeneratedUI.pwddialog.Ui_passworddialog):
     def __init__(self, mainwindow):
@@ -98,7 +96,7 @@ class PwdDialogNew(QDialog, GeneratedUI.pwddialognew.Ui_passworddialog):
 
 
 def checkadmin():
-    if os.path.isfile(os.path.join(home, '.LMSystem/pwd.json')):
+    if os.path.isfile(os.path.join(os.path.expanduser("~"), '.LMSystem/pwd.json')):
         return True
     else:
         return False
@@ -109,14 +107,14 @@ def setusrpwd(username, password):
     data['username'] = username
     data['password'] = password
 
-    file = open(os.path.join(home, '.LMSystem/pwd.json'), 'w')
+    file = open(os.path.join(os.path.expanduser("~"), '.LMSystem/pwd.json'), 'w')
     json.dump(data, file)
 
     file.close()
 
 
 def checkusrpwd(username, password):
-    file = open(os.path.join(home, '.LMSystem/pwd.json'), 'r')
+    file = open(os.path.join(os.path.expanduser("~"), '.LMSystem/pwd.json'), 'r')
     data = json.load(file)
     if data['username'] == username and data['password'] == password:
         return True
