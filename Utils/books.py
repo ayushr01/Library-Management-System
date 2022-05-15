@@ -111,17 +111,20 @@ class AddBookDialog(QDialog, addbkdialog.Ui_addbookdialog):
 
         link = 'https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn
 
-        # Checking internet before sending API request
         try:
-            requests.get('https://www.google.com/', timeout=1)
+            response = requests.get(link, timeout=2)
         except (requests.ConnectionError, requests.Timeout):
-            self.errorisbn.setText('Error: No internet connection!')
+            self.errorisbn.setText('Error: Unable to search - Network issue')
             return
-        self.errorisbn.setText('')
 
-        response = requests.get(link)
         if response.status_code != 200:
             self.errorisbn.setText('Error: Unable to search for book!')
+            return
+        else:
+            self.errorisbn.setText('')
+
+        if response.json()['totalItems'] == 0:
+            self.errorisbn.setText('Error: Could not find book!')
             return
         else:
             self.errorisbn.setText('')
