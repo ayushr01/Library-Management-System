@@ -40,6 +40,7 @@ class AddBookDialog(QDialog, addbkdialog.Ui_addbookdialog):
         self.clearbuttonisbn.clicked.connect(self.clearfieldsisbn)
         self.closebuttonisbn.clicked.connect(self.close)
         self.searchbuttonisbn.clicked.connect(self.getsearchresultsisbn)
+        self.submitbuttonisbn.clicked.connect(self.addisbnbook)
 
         self.isbndata = None  # Data from search is stored in here to enter into the db
 
@@ -141,6 +142,30 @@ class AddBookDialog(QDialog, addbkdialog.Ui_addbookdialog):
         self.titleisbn.setText(self.isbndata['title'])
         self.authorisbn.setText('By: ' + self.isbndata['authors'])
         self.publisherisbn.setText('Published by: ' + self.isbndata['publisher'])
+
+    def addisbnbook(self):
+        if self.isbndata is None:
+            self.errorisbn.setText('Error: Search for the book first!')
+            return
+        else:
+            self.errorisbn.setText('')
+
+        totalcopies = self.totalfieldisbn.text()
+        if totalcopies.isnumeric() is False:
+            self.errorisbn.setText('Error: Enter a number for total copies!')
+            return
+        else:
+            totalcopies = int(totalcopies)
+            if totalcopies < 1 or totalcopies > 100:
+                self.errorisbn.setText('Error: Enter in the range 1-100')
+                return
+            else:
+                self.errorisbn.setText('')
+
+        insert(self.isbndata['title'], self.isbndata['authors'], self.isbndata['genre'], totalcopies)
+        self.isbndata = None  # Invalidating it for future entries
+        self.adminwindow.loadbook()  # Refreshes the book table after adding books
+        self.close()
 
 
 class DeleteBookDialog(QDialog, delbkdialog.Ui_deletebookdialog):
