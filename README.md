@@ -6,7 +6,7 @@ A library management system built using Python and Sqlite3 with PySide6 for the 
 
 ### To Build:
 
-pyinstaller app.py -y --windowed --clean --name "LM System" --icon "icon.icns"
+pyinstaller app.py -y --windowed --clean --name "LM System" --icon "icon.icns" --distpath "./pyinstaller/dist" --workpath "./pyinstaller/build" --add-data "Fonts:Fonts"
 
 ### Link to Download (Pending):
 
