@@ -10,6 +10,7 @@ import GeneratedUI.issuebook
 
 import DB.members
 import DB.books
+import DB.library
 
 
 # Validator
@@ -282,5 +283,5 @@ class IssueBooksDialog(QDialog, GeneratedUI.issuebook.Ui_issuebookdialog):
             text = memdata.text()
             splittext = text.split('-')
             memid = int(splittext[0])
-            DB.members.insert(memid, bookid)
+            DB.library.insert(memid, bookid)
             self.issuelabel.setText(f'Book issued to {splittext[1].strip()}')
