@@ -1,4 +1,5 @@
 import requests
+import re
 
 from PySide6.QtWidgets import QDialog
 
@@ -9,6 +10,20 @@ import GeneratedUI.issuebook
 
 import DB.members
 import DB.books
+
+
+# Validator
+def check(data, field):
+    regex = {
+        'title': "^[A-Za-z0-9\s\-,\.;:()]+$",
+        'author': "^[A-Z][a-z]+\s[A-Z][a-z]+$",
+        'genre': "^[A-Za-z\s\-]+$"
+    }
+    validate = re.search(regex[field], data)
+    if validate is None:
+        return False
+    else:
+        return True
 
 
 # Dialog window to add more users to the member table
@@ -64,19 +79,19 @@ class AddBookDialog(QDialog, GeneratedUI.addbooksdialog.Ui_addbookdialog):
         genre = self.inputgenre.text()
         totalcopies = self.inputtotal.text()
 
-        if DB.books.check(title, 'title') is False:
+        if check(title, 'title') is False:
             self.error.setText('Error: Enter a valid title!')
             return
         else:
             self.error.setText('')
 
-        if DB.books.check(author, 'author') is False:
+        if check(author, 'author') is False:
             self.error.setText('Error: Enter a valid First and Last Name!')
             return
         else:
             self.error.setText('')
 
-        if DB.books.check(genre, 'genre') is False:
+        if check(genre, 'genre') is False:
             self.error.setText('Error: Enter a valid genre!')
             return
         else:

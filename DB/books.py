@@ -1,5 +1,4 @@
 import os
-import re
 import sqlite3
 
 
@@ -22,19 +21,6 @@ def initialise():
 
     connection.commit()
     connection.close()
-
-
-def check(data, field):
-    regex = {
-        'title': "^[A-Za-z0-9\s\-,\.;:()]+$",
-        'author': "^[A-Z][a-z]+\s[A-Z][a-z]+$",
-        'genre': "^[A-Za-z\s\-]+$"
-    }
-    validate = re.search(regex[field], data)
-    if validate is None:
-        return False
-    else:
-        return True
 
 
 def insert(title, author, genre, totalcopies):

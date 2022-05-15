@@ -1,9 +1,20 @@
+import re
+
 from PySide6.QtWidgets import QDialog
 
 import GeneratedUI.addmembersdialog
 import GeneratedUI.deletemembersdialog
 
 import DB.members
+
+
+# Validator
+def namecheck(name):
+    validate = re.search("^[A-Z][a-z]+\s[A-Z][a-z]+$", name)
+    if validate is None:
+        return False
+    else:
+        return True
 
 
 # Dialog window to add more users to the member table
@@ -37,7 +48,7 @@ class AddMemberDialog(QDialog, GeneratedUI.addmembersdialog.Ui_addmemdialog):
 
     def getfields(self):
         name = self.inputname.text()
-        if DB.members.namecheck(name):
+        if namecheck(name):
             self.error.setText('')
             dob = self.datepicker.dateTime().date().toPyDate().strftime('%d-%m-%Y')
             DB.members.insert(name, dob)

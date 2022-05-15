@@ -1,5 +1,4 @@
 import os
-import re
 import sqlite3
 
 
@@ -17,14 +16,6 @@ def initialise():
 
     connection.commit()
     connection.close()
-
-
-def namecheck(name):
-    validate = re.search("^[A-Z][a-z]+\s[A-Z][a-z]+$", name)
-    if validate is None:
-        return False
-    else:
-        return True
 
 
 def insert(name, dob):
