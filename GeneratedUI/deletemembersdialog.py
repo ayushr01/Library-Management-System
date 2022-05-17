@@ -72,7 +72,7 @@ class Ui_deletememdialog(object):
 
         self.horizontalLayout.addLayout(self.verticalLayout)
 
-        self.horizontalLayout.setStretch(0, 3)
+        self.horizontalLayout.setStretch(0, 4)
         self.horizontalLayout.setStretch(1, 1)
 
         self.verticalLayout_2.addLayout(self.horizontalLayout)
