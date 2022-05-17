@@ -181,7 +181,7 @@ class AddBookDialog(QDialog, GeneratedUI.addbooksdialog.Ui_addbookdialog):
             else:
                 self.errorisbn.setText('')
 
-        DB.books.insert(self.isbndata['title'], self.isbndata['authors'], self.isbndata['genre'], totalcopies)
+        DB.books.insert(self.isbndata['title'], self.isbndata['authors'], self.isbndata['categories'], totalcopies)
         self.isbndata = None  # Invalidating it for future entries
         self.adminwindow.loadbook()  # Refreshes the book table after adding books
         self.close()
