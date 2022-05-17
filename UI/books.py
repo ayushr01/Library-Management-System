@@ -96,31 +96,25 @@ class AddBookDialog(QDialog, GeneratedUI.addbooksdialog.Ui_addbookdialog):
         if check(title, 'title') is False:
             self.error.setText('Error: Enter a valid title!')
             return
-        else:
-            self.error.setText('')
 
         if check(author, 'author') is False:
             self.error.setText('Error: Enter a valid First and Last Name!')
             return
-        else:
-            self.error.setText('')
 
         if check(genre, 'genre') is False:
             self.error.setText('Error: Enter a valid genre!')
             return
-        else:
-            self.error.setText('')
 
         if totalcopies.isnumeric() is False:
             self.error.setText('Error: Enter a number for total copies!')
             return
-        else:
-            totalcopies = int(totalcopies)
-            if totalcopies < 1 or totalcopies > 100:
-                self.error.setText('Error: Enter in the range 1-100')
-                return
-            else:
-                self.error.setText('')
+
+        totalcopies = int(totalcopies)
+        if totalcopies < 1 or totalcopies > 100:
+            self.error.setText('Error: Enter in the range 1-100')
+            return
+
+        self.error.setText('')
 
         DB.books.insert(title, author, genre, totalcopies)
         self.adminwindow.loadbook()  # Refreshes the book table after adding books
@@ -131,8 +125,7 @@ class AddBookDialog(QDialog, GeneratedUI.addbooksdialog.Ui_addbookdialog):
         if isbn.isnumeric() is False:
             self.errorisbn.setText('Error: Invalid ISBN!')
             return
-        else:
-            self.errorisbn.setText('')
+        self.errorisbn.setText('')
 
         link = 'https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn
 
@@ -145,23 +138,25 @@ class AddBookDialog(QDialog, GeneratedUI.addbooksdialog.Ui_addbookdialog):
         if response.status_code != 200:
             self.errorisbn.setText('Error: Unable to search for book!')
             return
-        else:
-            self.errorisbn.setText('')
 
         if response.json()['totalItems'] == 0:
             self.errorisbn.setText('Error: Could not find book!')
             return
-        else:
-            self.errorisbn.setText('')
+
+        self.errorisbn.setText('')
 
         book = response.json()['items'][0]
 
-        self.isbndata = {
-            'title': book['volumeInfo']['title'],
-            'authors': ', '.join(book['volumeInfo']['authors']),
-            'publisher': book['volumeInfo']['publisher'],
-            'genre': ', '.join(book['volumeInfo']['categories'])
-        }
+        self.isbndata = dict()
+        keys = ['title', 'authors', 'publisher', 'categories']
+        for key in keys:
+            try:
+                if isinstance(book['volumeInfo'][key], list):
+                    self.isbndata[key] = ', '.join(book['volumeInfo'][key])
+                else:
+                    self.isbndata[key] = book['volumeInfo'][key]
+            except KeyError as err:
+                self.isbndata[key] = '🤷🏻‍'
 
         self.titleisbn.setText(self.isbndata['title'])
         self.authorisbn.setText('By: ' + self.isbndata['authors'])
