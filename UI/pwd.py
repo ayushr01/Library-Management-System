@@ -28,6 +28,10 @@ class PwdDialog(QDialog, GeneratedUI.pwddialog.Ui_passworddialog):
         font.setPixelSize(15)
         self.info.setFont(font)
 
+        # Enter action for fields
+        self.userfield.returnPressed.connect(self.submitbutton.click)
+        self.pwdfield.returnPressed.connect(self.submitbutton.click)
+
     def makedialog(self):
         self.userfield.setFocus()  # Make sure that userfield is always focused
         self.clearfields()  # Clears the fields before opening up the dialog window
@@ -67,6 +71,11 @@ class PwdDialogNew(QDialog, GeneratedUI.pwddialognew.Ui_passworddialog):
         font = self.info.font()
         font.setPixelSize(15)
         self.info.setFont(font)
+
+        # Enter action for fields
+        self.userfield.returnPressed.connect(self.submitbutton.click)
+        self.pwdfield.returnPressed.connect(self.submitbutton.click)
+        self.pwdfieldconfirm.returnPressed.connect(self.submitbutton.click)
 
     def makedialog(self):
         self.userfield.setFocus()  # Make sure that userfield is always focused

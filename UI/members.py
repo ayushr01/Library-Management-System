@@ -37,6 +37,9 @@ class AddMemberDialog(QDialog, GeneratedUI.addmembersdialog.Ui_addmemdialog):
         self.submitbutton.clicked.connect(self.getfields)
         self.closebutton.clicked.connect(self.close)
 
+        # Enter action for fields
+        self.inputname.returnPressed.connect(self.submitbutton.click)
+
     def makedialog(self):
         self.clearfields()  # Clears the fields before opening up the dialog window
         self.exec()  # Runs the dialog window

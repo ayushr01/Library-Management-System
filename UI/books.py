@@ -53,6 +53,14 @@ class AddBookDialog(QDialog, GeneratedUI.addbooksdialog.Ui_addbookdialog):
         self.searchbuttonisbn.clicked.connect(self.getsearchresultsisbn)
         self.submitbuttonisbn.clicked.connect(self.addisbnbook)
 
+        # Enter action for fields
+        self.inputtitle.returnPressed.connect(self.submitbutton.click)
+        self.inputauthor.returnPressed.connect(self.submitbutton.click)
+        self.inputgenre.returnPressed.connect(self.submitbutton.click)
+        self.inputtotal.returnPressed.connect(self.submitbutton.click)
+        self.isbnfield.returnPressed.connect(self.searchbuttonisbn.click)
+        self.totalfieldisbn.returnPressed.connect(self.submitbuttonisbn.click)
+
         self.isbndata = None  # Data from search is stored in here to enter into the db
 
         # Setting font sizes
