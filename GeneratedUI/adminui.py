@@ -69,6 +69,7 @@ class Ui_AdminWindow(object):
 "QPushButton#addmem:hover{\n"
 "	border: 2px solid teal;\n"
 "}")
+        self.addmem.setAutoDefault(False)
 
         self.membuttons.addWidget(self.addmem)
 
@@ -84,6 +85,7 @@ class Ui_AdminWindow(object):
 "QPushButton#refreshmem:hover{\n"
 "	border: 2px solid teal;\n"
 "}")
+        self.refreshmem.setAutoDefault(False)
 
         self.membuttons.addWidget(self.refreshmem)
 
@@ -99,6 +101,7 @@ class Ui_AdminWindow(object):
 "QPushButton#deletemem:hover{\n"
 "	border: 2px solid teal;\n"
 "}")
+        self.deletemem.setAutoDefault(False)
 
         self.membuttons.addWidget(self.deletemem)
 
@@ -150,6 +153,7 @@ class Ui_AdminWindow(object):
 "QPushButton#addbook:hover{\n"
 "	border: 2px solid teal;\n"
 "}")
+        self.addbook.setAutoDefault(False)
 
         self.bookbuttons.addWidget(self.addbook)
 
@@ -165,6 +169,7 @@ class Ui_AdminWindow(object):
 "QPushButton#refreshbook:hover{\n"
 "	border: 2px solid teal;\n"
 "}")
+        self.refreshbook.setAutoDefault(False)
 
         self.bookbuttons.addWidget(self.refreshbook)
 
@@ -180,6 +185,7 @@ class Ui_AdminWindow(object):
 "QPushButton#deletebook:hover{\n"
 "	border: 2px solid teal;\n"
 "}")
+        self.deletebook.setAutoDefault(False)
 
         self.bookbuttons.addWidget(self.deletebook)
 

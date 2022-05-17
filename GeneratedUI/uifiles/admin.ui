@@ -102,6 +102,9 @@ QPushButton#addmem:hover{
            <property name="text">
             <string>Add</string>
            </property>
+           <property name="autoDefault">
+            <bool>false</bool>
+           </property>
           </widget>
          </item>
          <item>
@@ -126,6 +129,9 @@ QPushButton#refreshmem:hover{
            <property name="text">
             <string>Refresh</string>
            </property>
+           <property name="autoDefault">
+            <bool>false</bool>
+           </property>
           </widget>
          </item>
          <item>
@@ -149,6 +155,9 @@ QPushButton#deletemem:hover{
            </property>
            <property name="text">
             <string>Delete</string>
+           </property>
+           <property name="autoDefault">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -234,6 +243,9 @@ QPushButton#addbook:hover{
            <property name="text">
             <string>Add</string>
            </property>
+           <property name="autoDefault">
+            <bool>false</bool>
+           </property>
           </widget>
          </item>
          <item>
@@ -258,6 +270,9 @@ QPushButton#refreshbook:hover{
            <property name="text">
             <string>Refresh</string>
            </property>
+           <property name="autoDefault">
+            <bool>false</bool>
+           </property>
           </widget>
          </item>
          <item>
@@ -281,6 +296,9 @@ QPushButton#deletebook:hover{
            </property>
            <property name="text">
             <string>Delete</string>
+           </property>
+           <property name="autoDefault">
+            <bool>false</bool>
            </property>
           </widget>
          </item>

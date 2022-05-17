@@ -191,6 +191,9 @@ QPushButton#clearbutton:hover{
            <property name="text">
             <string>Clear</string>
            </property>
+           <property name="autoDefault">
+            <bool>false</bool>
+           </property>
           </widget>
          </item>
          <item>
@@ -215,6 +218,9 @@ QPushButton#submitbutton:hover{
            <property name="text">
             <string>Submit</string>
            </property>
+           <property name="autoDefault">
+            <bool>false</bool>
+           </property>
           </widget>
          </item>
          <item>
@@ -238,6 +244,9 @@ QPushButton#closebutton:hover{
            </property>
            <property name="text">
             <string>Close</string>
+           </property>
+           <property name="autoDefault">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -304,6 +313,9 @@ QPushButton#searchbuttonisbn:hover{
            </property>
            <property name="text">
             <string>Search</string>
+           </property>
+           <property name="autoDefault">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -447,6 +459,9 @@ QPushButton#clearbuttonisbn:hover{
            <property name="text">
             <string>Clear</string>
            </property>
+           <property name="autoDefault">
+            <bool>false</bool>
+           </property>
           </widget>
          </item>
          <item>
@@ -471,6 +486,9 @@ QPushButton#submitbuttonisbn:hover{
            <property name="text">
             <string>Submit</string>
            </property>
+           <property name="autoDefault">
+            <bool>false</bool>
+           </property>
           </widget>
          </item>
          <item>
@@ -494,6 +512,9 @@ QPushButton#closebuttonisbn:hover{
            </property>
            <property name="text">
             <string>Close</string>
+           </property>
+           <property name="autoDefault">
+            <bool>false</bool>
            </property>
           </widget>
          </item>

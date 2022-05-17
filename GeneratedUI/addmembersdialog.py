@@ -94,6 +94,7 @@ class Ui_addmemdialog(object):
 "QPushButton#clearbutton:hover{\n"
 "	border: 2px solid teal;\n"
 "}")
+        self.clearbutton.setAutoDefault(False)
 
         self.buttonlayout.addWidget(self.clearbutton)
 
@@ -109,6 +110,7 @@ class Ui_addmemdialog(object):
 "QPushButton#submitbutton:hover{\n"
 "	border: 2px solid teal;\n"
 "}")
+        self.submitbutton.setAutoDefault(False)
 
         self.buttonlayout.addWidget(self.submitbutton)
 
@@ -124,6 +126,7 @@ class Ui_addmemdialog(object):
 "QPushButton#closebutton:hover{\n"
 "	border: 2px solid teal;\n"
 "}")
+        self.closebutton.setAutoDefault(False)
 
         self.buttonlayout.addWidget(self.closebutton)
 

@@ -109,6 +109,7 @@ class Ui_passworddialog(object):
 "QPushButton#clearbutton:hover{\n"
 "	border: 2px solid teal;\n"
 "}")
+        self.clearbutton.setAutoDefault(False)
 
         self.buttonlayout.addWidget(self.clearbutton)
 
@@ -124,6 +125,7 @@ class Ui_passworddialog(object):
 "QPushButton#submitbutton:hover{\n"
 "	border: 2px solid teal;\n"
 "}")
+        self.submitbutton.setAutoDefault(False)
 
         self.buttonlayout.addWidget(self.submitbutton)
 
@@ -139,6 +141,7 @@ class Ui_passworddialog(object):
 "QPushButton#closebutton:hover{\n"
 "	border: 2px solid teal;\n"
 "}")
+        self.closebutton.setAutoDefault(False)
 
         self.buttonlayout.addWidget(self.closebutton)
 

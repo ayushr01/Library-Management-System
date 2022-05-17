@@ -117,6 +117,7 @@ class Ui_addbookdialog(object):
 "QPushButton#clearbutton:hover{\n"
 "	border: 2px solid teal;\n"
 "}")
+        self.clearbutton.setAutoDefault(False)
 
         self.buttonlayout.addWidget(self.clearbutton)
 
@@ -132,6 +133,7 @@ class Ui_addbookdialog(object):
 "QPushButton#submitbutton:hover{\n"
 "	border: 2px solid teal;\n"
 "}")
+        self.submitbutton.setAutoDefault(False)
 
         self.buttonlayout.addWidget(self.submitbutton)
 
@@ -147,6 +149,7 @@ class Ui_addbookdialog(object):
 "QPushButton#closebutton:hover{\n"
 "	border: 2px solid teal;\n"
 "}")
+        self.closebutton.setAutoDefault(False)
 
         self.buttonlayout.addWidget(self.closebutton)
 
@@ -189,6 +192,7 @@ class Ui_addbookdialog(object):
 "QPushButton#searchbuttonisbn:hover{\n"
 "	border: 2px solid teal;\n"
 "}")
+        self.searchbuttonisbn.setAutoDefault(False)
 
         self.isbnentry.addWidget(self.searchbuttonisbn)
 
@@ -270,6 +274,7 @@ class Ui_addbookdialog(object):
 "QPushButton#clearbuttonisbn:hover{\n"
 "	border: 2px solid teal;\n"
 "}")
+        self.clearbuttonisbn.setAutoDefault(False)
 
         self.buttonlayoutisn.addWidget(self.clearbuttonisbn)
 
@@ -285,6 +290,7 @@ class Ui_addbookdialog(object):
 "QPushButton#submitbuttonisbn:hover{\n"
 "	border: 2px solid teal;\n"
 "}")
+        self.submitbuttonisbn.setAutoDefault(False)
 
         self.buttonlayoutisn.addWidget(self.submitbuttonisbn)
 
@@ -300,6 +306,7 @@ class Ui_addbookdialog(object):
 "QPushButton#closebuttonisbn:hover{\n"
 "	border: 2px solid teal;\n"
 "}")
+        self.closebuttonisbn.setAutoDefault(False)
 
         self.buttonlayoutisn.addWidget(self.closebuttonisbn)
 
