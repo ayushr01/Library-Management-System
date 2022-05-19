@@ -126,6 +126,7 @@ class AddBookDialog(QDialog, GeneratedUI.addbooksdialog.Ui_addbookdialog):
 
         DB.books.insert(title, author, genre, totalcopies)
         self.adminwindow.loadbook()  # Refreshes the book table after adding books
+        self.adminwindow.mainwindow.loadbooks()  # Refreshes the mainwindow book list
         self.close()
 
     def getsearchresultsisbn(self):
@@ -192,6 +193,7 @@ class AddBookDialog(QDialog, GeneratedUI.addbooksdialog.Ui_addbookdialog):
         DB.books.insert(self.isbndata['title'], self.isbndata['authors'], self.isbndata['categories'], totalcopies)
         self.isbndata = None  # Invalidating it for future entries
         self.adminwindow.loadbook()  # Refreshes the book table after adding books
+        self.adminwindow.mainwindow.loadbooks()  # Refreshes the mainwindow book list
         self.close()
 
 
@@ -231,6 +233,7 @@ class DeleteBookDialog(QDialog, GeneratedUI.deletebooksdialog.Ui_deletebookdialo
                 self.errorlabel.setText('Error: Book issued by a member!')
             self.getlist()
             self.adminwindow.loadbook()  # Refreshes the book table after deleting books
+            self.adminwindow.mainwindow.loadbooks()  # Refreshes the mainwindow book list
         else:
             self.errorlabel.setText('Error: Select an entry!')
 
