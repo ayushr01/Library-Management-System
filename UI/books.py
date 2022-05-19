@@ -228,11 +228,13 @@ class DeleteBookDialog(QDialog, GeneratedUI.deletebooksdialog.Ui_deletebookdialo
         bookdata = self.booklist.currentItem()
         if bookdata is not None:
             self.errorlabel.setText('')
-            idtodelete = bookdata.text().split('-')[0].rstrip()
+            book = bookdata.text()
+            idtodelete = book.split('-')[0].rstrip()
             if DB.books.delete(idtodelete) is False:
                 self.errorlabel.setText('Error: Book issued by a member!')
             self.getlist()
             self.adminwindow.loadbook()  # Refreshes the book table after deleting books
+            self.errorlabel.setText(f"{book.split('-')[1].strip()} has been deleted!")
             self.adminwindow.mainwindow.loadbooks()  # Refreshes the mainwindow book list
         else:
             self.errorlabel.setText('Error: Select an entry!')

@@ -93,10 +93,13 @@ class DeleteMemberDialog(QDialog, GeneratedUI.deletemembersdialog.Ui_deletememdi
         memdata = self.memlist.currentItem()
         if memdata is not None:
             self.errorlabel.setText('')
-            idtodelete = memdata.text().split('-')[0].rstrip()
+            member = memdata.text()
+            idtodelete = member.split('-')[0].rstrip()
             if DB.members.delete(idtodelete) is False:
                 self.errorlabel.setText('Error: Book issued in their name!')
             self.getlist()
             self.adminwindow.loadmem()  # Refreshes the member table after deleting memberss
+            self.errorlabel.setText(f"{member.split('-')[1].strip()} has been deleted!")
+
         else:
             self.errorlabel.setText('Error: Select an entry!')
