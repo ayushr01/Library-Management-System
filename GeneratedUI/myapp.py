@@ -25,8 +25,8 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(750, 550)
-        MainWindow.setMinimumSize(QSize(750, 550))
+        MainWindow.resize(850, 550)
+        MainWindow.setMinimumSize(QSize(850, 550))
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -71,11 +71,11 @@ class Ui_MainWindow(object):
         font1 = QFont()
         font1.setBold(False)
         self.viewmode.setFont(font1)
-        self.viewmode.setFlat(True)
+        self.viewmode.setFlat(False)
         self.verticalLayout_2 = QVBoxLayout(self.viewmode)
         self.verticalLayout_2.setSpacing(10)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.verticalLayout_2.setContentsMargins(6, 15, 6, -1)
+        self.verticalLayout_2.setContentsMargins(6, -1, 6, -1)
         self.avaiablebooksbutton = QRadioButton(self.viewmode)
         self.avaiablebooksbutton.setObjectName(u"avaiablebooksbutton")
 
@@ -91,11 +91,11 @@ class Ui_MainWindow(object):
 
         self.sortby = QGroupBox(self.issuetab)
         self.sortby.setObjectName(u"sortby")
-        self.sortby.setFlat(True)
+        self.sortby.setFlat(False)
         self.verticalLayout_3 = QVBoxLayout(self.sortby)
         self.verticalLayout_3.setSpacing(10)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.verticalLayout_3.setContentsMargins(6, 15, 6, -1)
+        self.verticalLayout_3.setContentsMargins(6, -1, 6, -1)
         self.titlebutton = QRadioButton(self.sortby)
         self.titlebutton.setObjectName(u"titlebutton")
 
@@ -116,10 +116,10 @@ class Ui_MainWindow(object):
 
         self.genre = QGroupBox(self.issuetab)
         self.genre.setObjectName(u"genre")
-        self.genre.setFlat(True)
+        self.genre.setFlat(False)
         self.verticalLayout_4 = QVBoxLayout(self.genre)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.verticalLayout_4.setContentsMargins(6, 15, 6, -1)
+        self.verticalLayout_4.setContentsMargins(6, -1, 6, -1)
         self.genrebox = QComboBox(self.genre)
         self.genrebox.setObjectName(u"genrebox")
 
@@ -132,9 +132,11 @@ class Ui_MainWindow(object):
 
         self.rightlayout.addItem(self.verticalSpacer)
 
-        self.buttonlayout = QVBoxLayout()
-        self.buttonlayout.setObjectName(u"buttonlayout")
-        self.refreshbutton = QPushButton(self.issuetab)
+        self.groupBox = QGroupBox(self.issuetab)
+        self.groupBox.setObjectName(u"groupBox")
+        self.verticalLayout_5 = QVBoxLayout(self.groupBox)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.refreshbutton = QPushButton(self.groupBox)
         self.refreshbutton.setObjectName(u"refreshbutton")
         self.refreshbutton.setMinimumSize(QSize(0, 25))
         self.refreshbutton.setStyleSheet(u"QPushButton#refreshbutton{\n"
@@ -147,9 +149,9 @@ class Ui_MainWindow(object):
 "	border: 2px solid teal;\n"
 "}")
 
-        self.buttonlayout.addWidget(self.refreshbutton)
+        self.verticalLayout_5.addWidget(self.refreshbutton)
 
-        self.issuebutton = QPushButton(self.issuetab)
+        self.issuebutton = QPushButton(self.groupBox)
         self.issuebutton.setObjectName(u"issuebutton")
         self.issuebutton.setMinimumSize(QSize(0, 25))
         self.issuebutton.setStyleSheet(u"QPushButton#issuebutton{\n"
@@ -162,9 +164,9 @@ class Ui_MainWindow(object):
 "	border: 2px solid teal;\n"
 "}")
 
-        self.buttonlayout.addWidget(self.issuebutton)
+        self.verticalLayout_5.addWidget(self.issuebutton)
 
-        self.detailsbutton = QPushButton(self.issuetab)
+        self.detailsbutton = QPushButton(self.groupBox)
         self.detailsbutton.setObjectName(u"detailsbutton")
         self.detailsbutton.setMinimumSize(QSize(0, 25))
         self.detailsbutton.setStyleSheet(u"QPushButton#detailsbutton{\n"
@@ -177,9 +179,9 @@ class Ui_MainWindow(object):
 "	border: 2px solid teal;\n"
 "}")
 
-        self.buttonlayout.addWidget(self.detailsbutton)
+        self.verticalLayout_5.addWidget(self.detailsbutton)
 
-        self.adminbutton = QPushButton(self.issuetab)
+        self.adminbutton = QPushButton(self.groupBox)
         self.adminbutton.setObjectName(u"adminbutton")
         self.adminbutton.setMinimumSize(QSize(0, 25))
         self.adminbutton.setStyleSheet(u"QPushButton#adminbutton{\n"
@@ -192,16 +194,16 @@ class Ui_MainWindow(object):
 "	border: 2px solid teal;\n"
 "}")
 
-        self.buttonlayout.addWidget(self.adminbutton)
+        self.verticalLayout_5.addWidget(self.adminbutton)
 
 
-        self.rightlayout.addLayout(self.buttonlayout)
+        self.rightlayout.addWidget(self.groupBox)
 
         self.rightlayout.setStretch(0, 4)
         self.rightlayout.setStretch(1, 5)
         self.rightlayout.setStretch(2, 2)
         self.rightlayout.setStretch(3, 10)
-        self.rightlayout.setStretch(4, 3)
+        self.rightlayout.setStretch(4, 4)
 
         self.horizontalLayout.addLayout(self.rightlayout)
 
@@ -313,7 +315,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -330,6 +332,7 @@ class Ui_MainWindow(object):
         self.authorbutton.setText(QCoreApplication.translate("MainWindow", u"Author", None))
         self.ratingbutton.setText(QCoreApplication.translate("MainWindow", u"Rating", None))
         self.genre.setTitle(QCoreApplication.translate("MainWindow", u"Genre:", None))
+        self.groupBox.setTitle("")
         self.refreshbutton.setText(QCoreApplication.translate("MainWindow", u"Refresh", None))
         self.issuebutton.setText(QCoreApplication.translate("MainWindow", u"Issue", None))
         self.detailsbutton.setText(QCoreApplication.translate("MainWindow", u"Details", None))
@@ -340,7 +343,7 @@ class Ui_MainWindow(object):
         self.viewbookbutton.setText(QCoreApplication.translate("MainWindow", u"View books issued", None))
         self.viewbookhistorybutton.setText(QCoreApplication.translate("MainWindow", u"View history of books issued", None))
         self.ratinglabel.setText(QCoreApplication.translate("MainWindow", u"Leave a rating for the book:", None))
-        self.onestar.setText(QCoreApplication.translate("MainWindow", u"\u2b50", None))
+        self.onestar.setText("")
         self.twostar.setText(QCoreApplication.translate("MainWindow", u"\u2b50\u2b50", None))
         self.threestar.setText(QCoreApplication.translate("MainWindow", u"\u2b50\u2b50\u2b50", None))
         self.fourstar.setText(QCoreApplication.translate("MainWindow", u"\u2b50\u2b50\u2b50\u2b50", None))
