@@ -1,5 +1,5 @@
 from PySide6.QtCore import QSize
-from PySide6.QtWidgets import QMainWindow, QListWidgetItem
+from PySide6.QtWidgets import QMainWindow, QListWidgetItem, QVBoxLayout
 
 import GeneratedUI.myapp as myapp
 
@@ -49,6 +49,29 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
         # Used to check if pwd is cleared or not
         self.isAuthenticated = False
 
+        # Setting group box header as bold
+        font = self.sortby.font()
+        font.setBold(True)
+        font.setPixelSize(14)
+
+        self.sortby.setFont(font)
+        self.viewmode.setFont(font)
+        self.genre.setFont(font)
+
+        # Restore the font of each children to regular.
+        font.setBold(False)
+        font.setPixelSize(13)
+
+        for child in self.sortby.children():
+            if not isinstance(child, QVBoxLayout):
+                child.setFont(font)
+        for child in self.viewmode.children():
+            if not isinstance(child, QVBoxLayout):
+                child.setFont(font)
+        for child in self.genre.children():
+            if not isinstance(child, QVBoxLayout):
+                child.setFont(font)
+
     def loadpwdadmin(self):
         if pwd.checkadmin():
             self.pwddialog.makedialog()
@@ -77,15 +100,15 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
         self.returnbooklist.clear()
         text = self.idfield.text()
         if text == '':
-            self.errorlabel_2.setText('Error: Enter your member id!')
+            self.errorlabeldeposit.setText('Error: Enter your member id!')
         elif text.isnumeric() is False:
-            self.errorlabel_2.setText('Error: Enter a number!')
+            self.errorlabeldeposit.setText('Error: Enter a number!')
         else:
-            self.errorlabel_2.setText('')
+            self.errorlabeldeposit.setText('')
             if DB.members.checkid(int(text)) and flag == 'norm':
                 position = 0
                 for row in DB.members.booksissuedbymem(int(text), flag):
-                    self.errorlabel_2.setText(f"Viewing books issued by {row[1]}")
+                    self.errorlabeldeposit.setText(f"Viewing books issued by {row[1]}")
                     item = QListWidgetItem()
                     item.setSizeHint(QSize(500, 50))
                     item.setText(f'''<ID: {row[0]}> {row[2]}
@@ -95,7 +118,7 @@ Issued on {row[3]}''')
             elif DB.members.checkid(int(text)) and flag == 'hist':
                 position = 0
                 for row in DB.members.booksissuedbymem(int(text), flag):
-                    self.errorlabel_2.setText(f"Viewing history of books issued by {row[1]}")
+                    self.errorlabeldeposit.setText(f"Viewing history of books issued by {row[1]}")
                     item = QListWidgetItem()
                     item.setSizeHint(QSize(500, 75))
                     item.setText(f'''<ID: {row[0]}> {row[2]}
@@ -104,7 +127,7 @@ Returned on {row[4]}''')
                     self.returnbooklist.insertItem(position, item)
                     position = position + 1
             else:
-                self.errorlabel_2.setText('Member not found in database!')
+                self.errorlabeldeposit.setText('Member not found in database!')
 
     def loadbooks(self):
         self.booklist.clear()
