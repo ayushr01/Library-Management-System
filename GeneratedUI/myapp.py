@@ -315,7 +315,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -343,7 +343,7 @@ class Ui_MainWindow(object):
         self.viewbookbutton.setText(QCoreApplication.translate("MainWindow", u"View books issued", None))
         self.viewbookhistorybutton.setText(QCoreApplication.translate("MainWindow", u"View history of books issued", None))
         self.ratinglabel.setText(QCoreApplication.translate("MainWindow", u"Leave a rating for the book:", None))
-        self.onestar.setText("")
+        self.onestar.setText(QCoreApplication.translate("MainWindow", u"\u2b50", None))
         self.twostar.setText(QCoreApplication.translate("MainWindow", u"\u2b50\u2b50", None))
         self.threestar.setText(QCoreApplication.translate("MainWindow", u"\u2b50\u2b50\u2b50", None))
         self.fourstar.setText(QCoreApplication.translate("MainWindow", u"\u2b50\u2b50\u2b50\u2b50", None))
