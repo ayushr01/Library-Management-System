@@ -1,6 +1,7 @@
 import requests
 import re
 
+from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import QDialog
 
 import GeneratedUI.addbooksdialog
@@ -209,6 +210,10 @@ class DeleteBookDialog(QDialog, GeneratedUI.deletebooksdialog.Ui_deletebookdialo
         self.deletebutton.clicked.connect(self.deletebook)
         self.closebutton.clicked.connect(self.close)
 
+        # Timer for timeouts
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(lambda: self.errorlabel.setText(''))
+
     def makedialog(self):
         self.getlist()  # Populates the list as soon as the dialog box is displayed
         self.errorlabel.setText('')
@@ -222,22 +227,25 @@ class DeleteBookDialog(QDialog, GeneratedUI.deletebooksdialog.Ui_deletebookdialo
             for row in bookdata:
                 self.booklist.insertItem(position, f"{row[0]} - {row[1]} by {row[2]}")
                 position = position + 1
-            self.booklist.item(0).setSelected(True)
 
     def deletebook(self):
-        bookdata = self.booklist.currentItem()
-        if bookdata is not None:
+        bookdata = self.booklist.selectedItems()
+        if len(bookdata) == 0:
+            self.errorlabel.setText(f"Error: No book selected!")
+            self.timer.start(3000)
+            return
+        else:
             self.errorlabel.setText('')
-            book = bookdata.text()
+            book = bookdata[0].text()
             idtodelete = book.split('-')[0].rstrip()
             if DB.books.delete(idtodelete) is False:
                 self.errorlabel.setText('Error: Book issued by a member!')
+                self.timer.start(3000)
+                return
             self.getlist()
             self.adminwindow.loadbook()  # Refreshes the book table after deleting books
             self.errorlabel.setText(f"{book.split('-')[1].strip()} has been deleted!")
             self.adminwindow.mainwindow.loadbooks()  # Refreshes the mainwindow book list
-        else:
-            self.errorlabel.setText('Error: Select an entry!')
 
 
 class BookDetailsDialog(QDialog, GeneratedUI.bookdetails.Ui_bookdetaildialog):
@@ -278,6 +286,10 @@ class IssueBooksDialog(QDialog, GeneratedUI.issuebook.Ui_issuebookdialog):
         self.closebutton.clicked.connect(self.close)
         self.issuebutton.clicked.connect(self.issuebook)
 
+        # Timer for timeouts
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(lambda: self.issuelabel.setText(''))
+
     def makedialog(self, item):
         self.item = item
         self.getlist()  # Populates the list as soon as the dialog box is displayed
@@ -307,16 +319,19 @@ QPushButton#issuebutton:hover{
             for row in memdata:
                 self.memlist.insertItem(position, f"{row[0]} - {row[1]} - ({row[2]})")
                 position = position + 1
-            self.memlist.item(0).setSelected(True)
 
     def issuebook(self):
-        memdata = self.memlist.currentItem()
-        if memdata is not None:
+        memdata = self.memlist.selectedItems()
+        if len(memdata) == 0:
+            self.issuelabel.setText(f"Error: No member selected!")
+            self.timer.start(3000)
+            return
+        else:
             text = self.item.text()
             beg = text.find('<') + 5
             end = text.find('>')
             bookid = int(text[beg:end])
-            text = memdata.text()
+            text = memdata[0].text()
             splittext = text.split('-')
             memid = int(splittext[0])
             DB.library.insert(memid, bookid)

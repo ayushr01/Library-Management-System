@@ -100,7 +100,7 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
             self.errorlabel.setText('Error: Select a book!')
         elif DB.library.checkstock(self.booklist.selectedItems()[0]):
             self.errorlabel.setText('')
-            self.issuedialog.makedialog(self.booklist.currentItem())
+            self.issuedialog.makedialog(self.booklist.selectedItems()[0])
         else:
             self.errorlabel.setText('Error: This book is out of stock!')
 
@@ -186,9 +186,12 @@ Returned on {row[4]}''')
         return [viewfilter, sortfilter, genrefilter]
 
     def returnbook(self):
-        bookdata = self.returnbooklist.currentItem()
-        if bookdata is not None:
-            text = bookdata.text()
+        bookdata = self.returnbooklist.selectedItems()
+        if len(bookdata) == 0:
+            self.errorlabeldeposit.setText(f"Error: No books selected!")
+            self.timer.start(3000)
+        else:
+            text = bookdata[0].text()
             beg = text.find('<') + 5
             end = text.find('>')
             bookid = int(text[beg:end])

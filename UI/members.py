@@ -1,5 +1,6 @@
 import re
 
+from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import QDialog
 
 import GeneratedUI.addmembersdialog
@@ -74,6 +75,10 @@ class DeleteMemberDialog(QDialog, GeneratedUI.deletemembersdialog.Ui_deletememdi
         self.deletebutton.clicked.connect(self.deletemember)
         self.closebutton.clicked.connect(self.close)
 
+        # Timer for timeouts
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(lambda: self.errorlabel.setText(''))
+
     def makedialog(self):
         self.getlist()  # Populates the list as soon as the dialog box is displayed
         self.errorlabel.setText('')
@@ -87,19 +92,20 @@ class DeleteMemberDialog(QDialog, GeneratedUI.deletemembersdialog.Ui_deletememdi
             for row in memdata:
                 self.memlist.insertItem(position, f"{row[0]} - {row[1]} - ({row[2]})")
                 position = position + 1
-            self.memlist.item(0).setSelected(True)
 
     def deletemember(self):
-        memdata = self.memlist.currentItem()
-        if memdata is not None:
+        memdata = self.memlist.selectedItems()
+        if len(memdata) == 0:
+            self.errorlabel.setText(f"Error: No member selected!")
+            self.timer.start(3000)
+        else:
             self.errorlabel.setText('')
-            member = memdata.text()
+            member = memdata[0].text()
             idtodelete = member.split('-')[0].rstrip()
             if DB.members.delete(idtodelete) is False:
                 self.errorlabel.setText('Error: Book issued in their name!')
+                self.timer.start(3000)
+                return
             self.getlist()
             self.adminwindow.loadmem()  # Refreshes the member table after deleting memberss
             self.errorlabel.setText(f"{member.split('-')[1].strip()} has been deleted!")
-
-        else:
-            self.errorlabel.setText('Error: Select an entry!')
