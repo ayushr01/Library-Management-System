@@ -319,7 +319,7 @@ QPushButton#adminbutton:hover{
            <widget class="QGroupBox" name="toprightbox">
             <layout class="QVBoxLayout" name="memberlayout">
              <property name="spacing">
-              <number>20</number>
+              <number>10</number>
              </property>
              <item>
               <layout class="QHBoxLayout" name="enterlayout">

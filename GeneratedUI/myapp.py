@@ -233,7 +233,7 @@ class Ui_MainWindow(object):
         self.toprightbox = QGroupBox(self.deposittab)
         self.toprightbox.setObjectName(u"toprightbox")
         self.memberlayout = QVBoxLayout(self.toprightbox)
-        self.memberlayout.setSpacing(20)
+        self.memberlayout.setSpacing(10)
         self.memberlayout.setObjectName(u"memberlayout")
         self.enterlayout = QHBoxLayout()
         self.enterlayout.setSpacing(10)
