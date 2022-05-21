@@ -13,13 +13,15 @@ import DB.members
 class AdminWindow(QDialog, GeneratedUI.adminui.Ui_AdminWindow):
     def __init__(self, mainwindow):
         super().__init__()
-        self.setupUi(self)  # Calls the function to create all the elements in the window
+        # Calls the function to create all the elements in the window
+        self.setupUi(self)
 
         self.mainwindow = mainwindow  # To refresh the genre list
 
         # Member tab
         self.addmemberdialog = UI.members.AddMemberDialog(adminwindow=self)
-        self.deletememberdialog = UI.members.DeleteMemberDialog(adminwindow=self)
+        self.deletememberdialog = UI.members.DeleteMemberDialog(
+            adminwindow=self)
 
         self.addmem.clicked.connect(self.addmemberdialog.makedialog)
         self.refreshmem.clicked.connect(self.loadmem)
@@ -45,7 +47,8 @@ class AdminWindow(QDialog, GeneratedUI.adminui.Ui_AdminWindow):
     # Adds data to the table in the member tab
     def loadmem(self):
         data = DB.members.readall()
-        self.memtable.setRowCount(len(data))  # It is always zero so we modify it
+        # It is always zero so we modify it
+        self.memtable.setRowCount(len(data))
         position = 0
         for row in data:
             self.memtable.setItem(position, 0, QTableWidgetItem(str(row[0])))
@@ -57,7 +60,8 @@ class AdminWindow(QDialog, GeneratedUI.adminui.Ui_AdminWindow):
     # Adds data to the table in the book tab
     def loadbook(self):
         data = DB.books.readall()
-        self.booktable.setRowCount(len(data))  # It is always zero so we modify it
+        # It is always zero so we modify it
+        self.booktable.setRowCount(len(data))
         position = 0
         for row in data:
             self.booktable.setItem(position, 0, QTableWidgetItem(str(row[0])))

@@ -25,7 +25,8 @@ class AddMemberDialog(QDialog, GeneratedUI.addmembersdialog.Ui_addmemdialog):
 
         self.adminwindow = adminwindow  # To refresh the member table
 
-        self.setupUi(self)  # Calls the function to create all the elements in the dialog window
+        # Calls the function to create all the elements in the dialog window
+        self.setupUi(self)
 
         # Default date to clear the input field
         self.defaultdate = self.datepicker.dateTime()
@@ -69,7 +70,8 @@ class DeleteMemberDialog(QDialog, GeneratedUI.deletemembersdialog.Ui_deletememdi
 
         self.adminwindow = adminwindow  # To refresh the member table
 
-        self.setupUi(self)  # Calls the function to create all the elements in the dialog window
+        # Calls the function to create all the elements in the dialog window
+        self.setupUi(self)
 
         # Button actions
         self.deletebutton.clicked.connect(self.deletemember)
@@ -90,7 +92,8 @@ class DeleteMemberDialog(QDialog, GeneratedUI.deletemembersdialog.Ui_deletememdi
         if len(memdata) != 0:
             position = 0
             for row in memdata:
-                self.memlist.insertItem(position, f"{row[0]} - {row[1]} - ({row[2]})")
+                self.memlist.insertItem(
+                    position, f"{row[0]} - {row[1]} - ({row[2]})")
                 position = position + 1
 
     def deletemember(self):
@@ -108,4 +111,5 @@ class DeleteMemberDialog(QDialog, GeneratedUI.deletemembersdialog.Ui_deletememdi
                 return
             self.getlist()
             self.adminwindow.loadmem()  # Refreshes the member table after deleting memberss
-            self.errorlabel.setText(f"{member.split('-')[1].strip()} has been deleted!")
+            self.errorlabel.setText(
+                f"{member.split('-')[1].strip()} has been deleted!")

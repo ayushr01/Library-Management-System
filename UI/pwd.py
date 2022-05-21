@@ -11,8 +11,10 @@ class PwdDialog(QDialog, GeneratedUI.pwddialog.Ui_passworddialog):
     def __init__(self, mainwindow):
         super().__init__()
 
-        self.mainwindow = mainwindow  # Used to launch the admin window after closing the dialog
-        self.setupUi(self)  # Calls the function to create all the elements in the dialog window
+        # Used to launch the admin window after closing the dialog
+        self.mainwindow = mainwindow
+        # Calls the function to create all the elements in the dialog window
+        self.setupUi(self)
 
         # Setting field margins
         self.userfield.setTextMargins(5, 0, 5, 0)
@@ -54,8 +56,10 @@ class PwdDialogNew(QDialog, GeneratedUI.pwddialognew.Ui_passworddialog):
     def __init__(self, mainwindow):
         super().__init__()
 
-        self.mainwindow = mainwindow  # Used to launch the admin window after closing the dialog
-        self.setupUi(self)  # Calls the function to create all the elements in the dialog window
+        # Used to launch the admin window after closing the dialog
+        self.mainwindow = mainwindow
+        # Calls the function to create all the elements in the dialog window
+        self.setupUi(self)
 
         # Setting field margins
         self.userfield.setTextMargins(5, 0, 5, 0)
@@ -126,14 +130,16 @@ def setusrpwd(username, password):
     data['username'] = username
     data['password'] = password
 
-    file = open(os.path.join(os.path.expanduser("~"), '.LMSystem/pwd.json'), 'w')
+    file = open(os.path.join(os.path.expanduser(
+        "~"), '.LMSystem/pwd.json'), 'w')
     json.dump(data, file)
 
     file.close()
 
 
 def checkusrpwd(username, password):
-    file = open(os.path.join(os.path.expanduser("~"), '.LMSystem/pwd.json'), 'r')
+    file = open(os.path.join(os.path.expanduser(
+        "~"), '.LMSystem/pwd.json'), 'r')
     data = json.load(file)
     if data['username'] == username and data['password'] == password:
         return True

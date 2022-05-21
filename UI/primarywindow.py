@@ -15,7 +15,8 @@ import DB.library
 class MainWindow(QMainWindow, myapp.Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        self.setupUi(self)  # Calls the function to create all the elements in the window
+        # Calls the function to create all the elements in the window
+        self.setupUi(self)
 
         # Password dialog boxes
         self.pwddialog = pwd.PwdDialog(mainwindow=self)
@@ -33,12 +34,15 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
         self.avaiablebooksbutton.setChecked(True)
         self.titlebutton.setChecked(True)
 
-        self.adminwindow = admin.AdminWindow(self)  # Creates the admin window on launch
+        # Creates the admin window on launch
+        self.adminwindow = admin.AdminWindow(self)
         # I pass self so that the genre function can be called
 
         # Button actions
-        self.viewbookbutton.clicked.connect(lambda: self.loadissuedbooks('norm'))
-        self.viewbookhistorybutton.clicked.connect(lambda: self.loadissuedbooks('hist'))
+        self.viewbookbutton.clicked.connect(
+            lambda: self.loadissuedbooks('norm'))
+        self.viewbookhistorybutton.clicked.connect(
+            lambda: self.loadissuedbooks('hist'))
         self.returnbutton.clicked.connect(self.returnbook)
 
         # Functions to run on startup
@@ -71,14 +75,13 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
         for child in self.genre.children():
             if not isinstance(child, QVBoxLayout):
                 child.setFont(font)
-        
+
         # Setting field margins
         self.idfield.setTextMargins(5, 0, 5, 0)
 
         # Timer for timeouts
         self.timer = QTimer(self)
         self.timer.timeout.connect(lambda: self.errorlabeldeposit.setText(''))
-
 
     def loadpwdadmin(self):
         if pwd.checkadmin():
@@ -120,10 +123,12 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
                 issuedata = DB.members.booksissuedbymem(int(text), flag)
                 name = DB.members.getname(int(text))[0]
                 if len(issuedata) == 0:
-                    self.errorlabeldeposit.setText(f"No books are currently issued by {name}")
+                    self.errorlabeldeposit.setText(
+                        f"No books are currently issued by {name}")
                     self.timer.start(3000)
                     return
-                self.errorlabeldeposit.setText(f"Viewing books currently issued by {name}")
+                self.errorlabeldeposit.setText(
+                    f"Viewing books currently issued by {name}")
                 for row in issuedata:
                     item = QListWidgetItem()
                     item.setText(f'''<ID: {row[0]}> {row[2]}
@@ -136,11 +141,13 @@ Issued on {row[3]}''')
                 name = DB.members.getname(int(text))[0]
                 if len(issuedata) == 0:
                     name = DB.members.getname(int(text))[0]
-                    self.errorlabeldeposit.setText(f"No books are have ever been issued by {name}")
+                    self.errorlabeldeposit.setText(
+                        f"No books are have ever been issued by {name}")
                     self.timer.start(3000)
                     return
                 for row in issuedata:
-                    self.errorlabeldeposit.setText(f"Viewing history of books issued by {name}")
+                    self.errorlabeldeposit.setText(
+                        f"Viewing history of books issued by {name}")
                     item = QListWidgetItem()
                     item.setText(f'''<ID: {row[0]}> {row[2]}
 Issued on {row[3]}
@@ -161,7 +168,8 @@ Returned on {row[4]}''')
                     rating = rating + '☆'
             item = QListWidgetItem()
             item.setSizeHint(QSize(0, 50))
-            item.setText(f" <ID: {row[0]}>  {row[1]} by {row[2]} - {row[4]}{rating}")
+            item.setText(
+                f" <ID: {row[0]}>  {row[1]} by {row[2]} - {row[4]}{rating}")
             self.booklist.insertItem(position, item)
             position = position + 1
 

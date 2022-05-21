@@ -1,8 +1,10 @@
 import sqlite3
 import os
 
-connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))
-connection.execute('PRAGMA foreign_keys = ON')  # We need this because foreign keys are disabled by default
+connection = sqlite3.connect(os.path.join(
+    os.path.expanduser("~"), '.LMSystem/library.sqlite'))
+# We need this because foreign keys are disabled by default
+connection.execute('PRAGMA foreign_keys = ON')
 cursor = connection.cursor()
 
 # Books table

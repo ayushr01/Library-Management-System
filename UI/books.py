@@ -35,7 +35,8 @@ class AddBookDialog(QDialog, GeneratedUI.addbooksdialog.Ui_addbookdialog):
 
         self.adminwindow = adminwindow  # To refresh the book table
 
-        self.setupUi(self)  # Calls the function to create all the elements in the dialog window
+        # Calls the function to create all the elements in the dialog window
+        self.setupUi(self)
 
         # Setting field margins
         self.inputgenre.setTextMargins(5, 0, 5, 0)
@@ -170,7 +171,8 @@ class AddBookDialog(QDialog, GeneratedUI.addbooksdialog.Ui_addbookdialog):
 
         self.titleisbn.setText(self.isbndata['title'])
         self.authorisbn.setText('By: ' + self.isbndata['authors'])
-        self.publisherisbn.setText('Published by: ' + self.isbndata['publisher'])
+        self.publisherisbn.setText(
+            'Published by: ' + self.isbndata['publisher'])
 
     def addisbnbook(self):
         if self.isbndata is None:
@@ -191,7 +193,8 @@ class AddBookDialog(QDialog, GeneratedUI.addbooksdialog.Ui_addbookdialog):
             else:
                 self.errorisbn.setText('')
 
-        DB.books.insert(self.isbndata['title'], self.isbndata['authors'], self.isbndata['categories'], totalcopies)
+        DB.books.insert(self.isbndata['title'], self.isbndata['authors'],
+                        self.isbndata['categories'], totalcopies)
         self.isbndata = None  # Invalidating it for future entries
         self.adminwindow.loadbook()  # Refreshes the book table after adding books
         self.adminwindow.mainwindow.loadbooks()  # Refreshes the mainwindow book list
@@ -204,7 +207,8 @@ class DeleteBookDialog(QDialog, GeneratedUI.deletebooksdialog.Ui_deletebookdialo
 
         self.adminwindow = adminwindow  # To refresh the book table
 
-        self.setupUi(self)  # Calls the function to create all the elements in the dialog window
+        # Calls the function to create all the elements in the dialog window
+        self.setupUi(self)
 
         # Button actions
         self.deletebutton.clicked.connect(self.deletebook)
@@ -225,7 +229,8 @@ class DeleteBookDialog(QDialog, GeneratedUI.deletebooksdialog.Ui_deletebookdialo
         if len(bookdata) != 0:
             position = 0
             for row in bookdata:
-                self.booklist.insertItem(position, f"{row[0]} - {row[1]} by {row[2]}")
+                self.booklist.insertItem(
+                    position, f"{row[0]} - {row[1]} by {row[2]}")
                 position = position + 1
 
     def deletebook(self):
@@ -244,7 +249,8 @@ class DeleteBookDialog(QDialog, GeneratedUI.deletebooksdialog.Ui_deletebookdialo
                 return
             self.getlist()
             self.adminwindow.loadbook()  # Refreshes the book table after deleting books
-            self.errorlabel.setText(f"{book.split('-')[1].strip()} has been deleted!")
+            self.errorlabel.setText(
+                f"{book.split('-')[1].strip()} has been deleted!")
             self.adminwindow.mainwindow.loadbooks()  # Refreshes the mainwindow book list
 
 
@@ -252,7 +258,8 @@ class BookDetailsDialog(QDialog, GeneratedUI.bookdetails.Ui_bookdetaildialog):
     def __init__(self):
         super().__init__()
 
-        self.setupUi(self)  # Calls the function to create all the elements in the dialog window
+        # Calls the function to create all the elements in the dialog window
+        self.setupUi(self)
 
     def makedialog(self, item):
         self.setfields(item)  # Sets the detail fields in the dialog window
@@ -278,7 +285,8 @@ class IssueBooksDialog(QDialog, GeneratedUI.issuebook.Ui_issuebookdialog):
     def __init__(self):
         super().__init__()
 
-        self.setupUi(self)  # Calls the function to create all the elements in the dialog window
+        # Calls the function to create all the elements in the dialog window
+        self.setupUi(self)
 
         self.item = None  # This field will contain the book that is to be issued
 
@@ -317,7 +325,8 @@ QPushButton#issuebutton:hover{
         if len(memdata) != 0:
             position = 0
             for row in memdata:
-                self.memlist.insertItem(position, f"{row[0]} - {row[1]} - ({row[2]})")
+                self.memlist.insertItem(
+                    position, f"{row[0]} - {row[1]} - ({row[2]})")
                 position = position + 1
 
     def issuebook(self):
