@@ -142,7 +142,7 @@ Returned on {row[4]}''')
             if row[3] is not None:
                 rating = ' - '
                 for num in range(1, int(row[3]) + 1):
-                    rating = rating + '⭐'
+                    rating = rating + '☆'
             item = QListWidgetItem()
             item.setSizeHint(QSize(0, 50))
             item.setText(f" <ID: {row[0]}>  {row[1]} by {row[2]} - {row[4]}{rating}")

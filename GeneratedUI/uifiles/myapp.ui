@@ -432,35 +432,35 @@ QPushButton#viewbookhistorybutton:hover{
              <item>
               <widget class="QRadioButton" name="onestar">
                <property name="text">
-                <string>⭐</string>
+                <string>☆</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QRadioButton" name="twostar">
                <property name="text">
-                <string>⭐⭐</string>
+                <string>☆☆</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QRadioButton" name="threestar">
                <property name="text">
-                <string>⭐⭐⭐</string>
+                <string>☆☆☆</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QRadioButton" name="fourstar">
                <property name="text">
-                <string>⭐⭐⭐⭐</string>
+                <string>☆☆☆☆</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QRadioButton" name="fivestar">
                <property name="text">
-                <string>⭐️⭐️⭐️⭐️⭐️</string>
+                <string>☆☆☆☆☆</string>
                </property>
               </widget>
              </item>
