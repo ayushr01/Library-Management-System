@@ -282,6 +282,21 @@ class IssueBooksDialog(QDialog, GeneratedUI.issuebook.Ui_issuebookdialog):
         self.item = item
         self.getlist()  # Populates the list as soon as the dialog box is displayed
         self.issuelabel.setText('')
+
+        # Enabling issue button
+        self.issuebutton.setDisabled(False)
+        self.issuebutton.setStyleSheet('''
+QPushButton#issuebutton{
+	background-color: FireBrick;
+	border-radius: 5px;
+	color: white;
+}
+
+QPushButton#issuebutton:hover{
+	border: 2px solid teal;
+}
+        ''')
+
         self.exec()  # Runs the dialog window
 
     def getlist(self):
@@ -306,3 +321,17 @@ class IssueBooksDialog(QDialog, GeneratedUI.issuebook.Ui_issuebookdialog):
             memid = int(splittext[0])
             DB.library.insert(memid, bookid)
             self.issuelabel.setText(f'Book issued to {splittext[1].strip()}')
+
+        # Disabling button till dialog is reopened
+        self.issuebutton.setDisabled(True)
+        self.issuebutton.setStyleSheet('''
+QPushButton#issuebutton{
+	background-color: #656565;
+	border-radius: 5px;
+	color: white;
+}
+
+QPushButton#issuebutton:hover{
+	border: 2px solid teal;
+}
+        ''')
