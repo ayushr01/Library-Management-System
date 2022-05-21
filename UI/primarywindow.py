@@ -113,7 +113,6 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
                 for row in DB.members.booksissuedbymem(int(text), flag):
                     self.errorlabeldeposit.setText(f"Viewing books issued by {row[1]}")
                     item = QListWidgetItem()
-                    item.setSizeHint(QSize(500, 50))
                     item.setText(f'''<ID: {row[0]}> {row[2]}
 Issued on {row[3]}''')
                     self.returnbooklist.insertItem(position, item)
@@ -123,7 +122,6 @@ Issued on {row[3]}''')
                 for row in DB.members.booksissuedbymem(int(text), flag):
                     self.errorlabeldeposit.setText(f"Viewing history of books issued by {row[1]}")
                     item = QListWidgetItem()
-                    item.setSizeHint(QSize(500, 75))
                     item.setText(f'''<ID: {row[0]}> {row[2]}
 Issued on {row[3]}
 Returned on {row[4]}''')

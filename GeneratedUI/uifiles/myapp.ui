@@ -298,9 +298,13 @@ QPushButton#adminbutton:hover{
        <attribute name="title">
         <string>Deposit Book</string>
        </attribute>
-       <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="8,0,3">
+       <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="2,0,1">
         <item>
-         <widget class="QListWidget" name="returnbooklist"/>
+         <widget class="QListWidget" name="returnbooklist">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="Line" name="depositline">
@@ -315,7 +319,7 @@ QPushButton#adminbutton:hover{
            <widget class="QGroupBox" name="toprightbox">
             <layout class="QVBoxLayout" name="memberlayout">
              <property name="spacing">
-              <number>15</number>
+              <number>20</number>
              </property>
              <item>
               <layout class="QHBoxLayout" name="enterlayout">
@@ -356,6 +360,9 @@ QPushButton#adminbutton:hover{
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
                </property>
               </widget>
              </item>

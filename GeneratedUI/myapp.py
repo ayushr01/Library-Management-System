@@ -217,6 +217,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.returnbooklist = QListWidget(self.deposittab)
         self.returnbooklist.setObjectName(u"returnbooklist")
+        self.returnbooklist.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
         self.horizontalLayout_3.addWidget(self.returnbooklist)
 
@@ -232,7 +233,7 @@ class Ui_MainWindow(object):
         self.toprightbox = QGroupBox(self.deposittab)
         self.toprightbox.setObjectName(u"toprightbox")
         self.memberlayout = QVBoxLayout(self.toprightbox)
-        self.memberlayout.setSpacing(15)
+        self.memberlayout.setSpacing(20)
         self.memberlayout.setObjectName(u"memberlayout")
         self.enterlayout = QHBoxLayout()
         self.enterlayout.setSpacing(10)
@@ -256,6 +257,7 @@ class Ui_MainWindow(object):
         self.errorlabeldeposit.setFont(font)
         self.errorlabeldeposit.setStyleSheet(u"color: orange;")
         self.errorlabeldeposit.setAlignment(Qt.AlignCenter)
+        self.errorlabeldeposit.setWordWrap(True)
 
         self.memberlayout.addWidget(self.errorlabeldeposit)
 
@@ -353,8 +355,8 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_3.addLayout(self.rightlayoutdeposit)
 
-        self.horizontalLayout_3.setStretch(0, 8)
-        self.horizontalLayout_3.setStretch(2, 3)
+        self.horizontalLayout_3.setStretch(0, 2)
+        self.horizontalLayout_3.setStretch(2, 1)
         self.tabWidget.addTab(self.deposittab, "")
 
         self.verticalLayout.addWidget(self.tabWidget)
