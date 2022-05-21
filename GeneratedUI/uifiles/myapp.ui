@@ -34,7 +34,11 @@
         <item>
          <layout class="QVBoxLayout" name="leftlayoutissue">
           <item>
-           <widget class="QListWidget" name="booklist"/>
+           <widget class="QListWidget" name="booklist">
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QLabel" name="errorlabel">

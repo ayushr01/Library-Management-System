@@ -85,15 +85,15 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
             self.isAuthenticated = False
 
     def loaddetails(self):
-        if self.booklist.currentItem() is None:
-            pass
+        if len(self.booklist.selectedItems()) == 0:
+            self.errorlabel.setText('Error: Select a book!')
         else:
-            self.bookdialog.makedialog(self.booklist.currentItem())
+            self.bookdialog.makedialog(self.booklist.selectedItems()[0])
 
     def loadissue(self):
-        if self.booklist.currentItem() is None:
-            pass
-        elif DB.library.checkstock(self.booklist.currentItem()):
+        if len(self.booklist.selectedItems()) == 0:
+            self.errorlabel.setText('Error: Select a book!')
+        elif DB.library.checkstock(self.booklist.selectedItems()[0]):
             self.errorlabel.setText('')
             self.issuedialog.makedialog(self.booklist.currentItem())
         else:
@@ -148,8 +148,6 @@ Returned on {row[4]}''')
             item.setText(f" <ID: {row[0]}>  {row[1]} by {row[2]} - {row[4]}{rating}")
             self.booklist.insertItem(position, item)
             position = position + 1
-        if len(bookdata) != 0:
-            self.booklist.item(0).setSelected(True)
 
     def loadgenre(self):
         self.genrebox.clear()
