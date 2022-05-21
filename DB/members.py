@@ -53,6 +53,16 @@ def checkid(idtodisplay):
     else:
         return False
 
+def getname(idtodisplay):
+    connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))
+    cursor = connection.cursor()
+
+    cursor.execute("SELECT name FROM Members WHERE id = ?", (idtodisplay,))
+    data = cursor.fetchone()
+
+    connection.close()
+    return data
+
 
 def booksissuedbymem(idtodisplay, flag):
     connection = sqlite3.connect(os.path.join(os.path.expanduser("~"), '.LMSystem/library.sqlite'))

@@ -1,4 +1,4 @@
-from PySide6.QtCore import QSize
+from PySide6.QtCore import QSize, QTimer
 from PySide6.QtWidgets import QMainWindow, QListWidgetItem, QVBoxLayout
 
 import GeneratedUI.myapp as myapp
@@ -75,6 +75,11 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
         # Setting field margins
         self.idfield.setTextMargins(5, 0, 5, 0)
 
+        # Timer for timeouts
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(lambda: self.errorlabeldeposit.setText(''))
+
+
     def loadpwdadmin(self):
         if pwd.checkadmin():
             self.pwddialog.makedialog()
@@ -107,28 +112,41 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
         elif text.isnumeric() is False:
             self.errorlabeldeposit.setText('Error: Enter a number!')
         else:
-            self.errorlabeldeposit.setText('')
-            if DB.members.checkid(int(text)) and flag == 'norm':
+            if DB.members.checkid(int(text)) is False:
+                self.errorlabeldeposit.setText('Member not found in database!')
+                self.timer.start(3000)
+            elif flag == 'norm':
                 position = 0
-                for row in DB.members.booksissuedbymem(int(text), flag):
-                    self.errorlabeldeposit.setText(f"Viewing books issued by {row[1]}")
+                issuedata = DB.members.booksissuedbymem(int(text), flag)
+                name = DB.members.getname(int(text))[0]
+                if len(issuedata) == 0:
+                    self.errorlabeldeposit.setText(f"No books are currently issued by {name}")
+                    self.timer.start(3000)
+                    return
+                self.errorlabeldeposit.setText(f"Viewing books currently issued by {name}")
+                for row in issuedata:
                     item = QListWidgetItem()
                     item.setText(f'''<ID: {row[0]}> {row[2]}
 Issued on {row[3]}''')
                     self.returnbooklist.insertItem(position, item)
                     position = position + 1
-            elif DB.members.checkid(int(text)) and flag == 'hist':
+            elif flag == 'hist':
                 position = 0
-                for row in DB.members.booksissuedbymem(int(text), flag):
-                    self.errorlabeldeposit.setText(f"Viewing history of books issued by {row[1]}")
+                issuedata = DB.members.booksissuedbymem(int(text), flag)
+                name = DB.members.getname(int(text))[0]
+                if len(issuedata) == 0:
+                    name = DB.members.getname(int(text))[0]
+                    self.errorlabeldeposit.setText(f"No books are have ever been issued by {name}")
+                    self.timer.start(3000)
+                    return
+                for row in issuedata:
+                    self.errorlabeldeposit.setText(f"Viewing history of books issued by {name}")
                     item = QListWidgetItem()
                     item.setText(f'''<ID: {row[0]}> {row[2]}
 Issued on {row[3]}
 Returned on {row[4]}''')
                     self.returnbooklist.insertItem(position, item)
                     position = position + 1
-            else:
-                self.errorlabeldeposit.setText('Member not found in database!')
 
     def loadbooks(self):
         self.booklist.clear()
