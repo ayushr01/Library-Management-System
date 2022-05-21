@@ -17,14 +17,14 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>LM System</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="issuetab">
        <attribute name="title">
@@ -294,7 +294,7 @@ QPushButton#adminbutton:hover{
        <attribute name="title">
         <string>Deposit Book</string>
        </attribute>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="8,0,3">
         <item>
          <widget class="QListWidget" name="returnbooklist"/>
         </item>
@@ -306,97 +306,186 @@ QPushButton#adminbutton:hover{
          </widget>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="rightlayoutdeposit">
+         <layout class="QVBoxLayout" name="rightlayoutdeposit" stretch="0,10,0,1">
           <item>
-           <layout class="QVBoxLayout" name="memberlayout">
-            <item>
-             <layout class="QHBoxLayout" name="enterlayout">
-              <item>
-               <widget class="QLabel" name="memberlabel">
-                <property name="text">
-                 <string>Enter Member ID:</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="idfield"/>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <widget class="QLabel" name="errorlabeldeposit">
-              <property name="styleSheet">
-               <string notr="true"/>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="viewbookbutton">
-              <property name="text">
-               <string>View books issued</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="viewbookhistorybutton">
-              <property name="text">
-               <string>View history of books issued</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <widget class="QGroupBox" name="toprightbox">
+            <layout class="QVBoxLayout" name="memberlayout">
+             <property name="spacing">
+              <number>15</number>
+             </property>
+             <item>
+              <layout class="QHBoxLayout" name="enterlayout">
+               <property name="spacing">
+                <number>10</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="memberlabel">
+                 <property name="text">
+                  <string>Enter Member ID:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="idfield">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QLabel" name="errorlabeldeposit">
+               <property name="font">
+                <font>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: orange;</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="viewbookbutton">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton#viewbookbutton{
+	background-color: #3c73a6;
+	border-radius: 5px;
+	color: white;
+}
+
+QPushButton#viewbookbutton:hover{
+	border: 2px solid teal;
+}</string>
+               </property>
+               <property name="text">
+                <string>View books issued</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="viewbookhistorybutton">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton#viewbookhistorybutton{
+	background-color: #f2a240;
+	border-radius: 5px;
+	color: white;
+}
+
+QPushButton#viewbookhistorybutton:hover{
+	border: 2px solid teal;
+}</string>
+               </property>
+               <property name="text">
+                <string>View history</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
           </item>
           <item>
-           <layout class="QVBoxLayout" name="ratinglayout">
-            <item>
-             <widget class="QLabel" name="ratinglabel">
-              <property name="text">
-               <string>Leave a rating for the book:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QRadioButton" name="onestar">
-              <property name="text">
-               <string>⭐</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QRadioButton" name="twostar">
-              <property name="text">
-               <string>⭐⭐</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QRadioButton" name="threestar">
-              <property name="text">
-               <string>⭐⭐⭐</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QRadioButton" name="fourstar">
-              <property name="text">
-               <string>⭐⭐⭐⭐</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QRadioButton" name="fivestar">
-              <property name="text">
-               <string>⭐️⭐️⭐️⭐️⭐️</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="bottomrightbox">
+            <layout class="QVBoxLayout" name="ratinglayout">
+             <item>
+              <widget class="QLabel" name="ratinglabel">
+               <property name="text">
+                <string>Leave a rating for the book:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="onestar">
+               <property name="text">
+                <string>⭐</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="twostar">
+               <property name="text">
+                <string>⭐⭐</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="threestar">
+               <property name="text">
+                <string>⭐⭐⭐</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="fourstar">
+               <property name="text">
+                <string>⭐⭐⭐⭐</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="fivestar">
+               <property name="text">
+                <string>⭐️⭐️⭐️⭐️⭐️</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
           </item>
           <item>
            <widget class="QPushButton" name="returnbutton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>26</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton#returnbutton{
+	background-color: MediumSeaGreen;
+	border-radius: 5px;
+	color: white;
+}
+
+QPushButton#returnbutton:hover{
+	border: 2px solid teal;
+}</string>
+            </property>
             <property name="text">
              <string>Return Book</string>
             </property>

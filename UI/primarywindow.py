@@ -71,6 +71,9 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
         for child in self.genre.children():
             if not isinstance(child, QVBoxLayout):
                 child.setFont(font)
+        
+        # Setting field margins
+        self.idfield.setTextMargins(5, 0, 5, 0)
 
     def loadpwdadmin(self):
         if pwd.checkadmin():

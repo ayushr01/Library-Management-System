@@ -228,85 +228,132 @@ class Ui_MainWindow(object):
 
         self.rightlayoutdeposit = QVBoxLayout()
         self.rightlayoutdeposit.setObjectName(u"rightlayoutdeposit")
-        self.memberlayout = QVBoxLayout()
+        self.toprightbox = QGroupBox(self.deposittab)
+        self.toprightbox.setObjectName(u"toprightbox")
+        self.memberlayout = QVBoxLayout(self.toprightbox)
+        self.memberlayout.setSpacing(15)
         self.memberlayout.setObjectName(u"memberlayout")
         self.enterlayout = QHBoxLayout()
+        self.enterlayout.setSpacing(10)
         self.enterlayout.setObjectName(u"enterlayout")
-        self.memberlabel = QLabel(self.deposittab)
+        self.memberlabel = QLabel(self.toprightbox)
         self.memberlabel.setObjectName(u"memberlabel")
 
         self.enterlayout.addWidget(self.memberlabel)
 
-        self.idfield = QLineEdit(self.deposittab)
+        self.idfield = QLineEdit(self.toprightbox)
         self.idfield.setObjectName(u"idfield")
+        self.idfield.setMinimumSize(QSize(0, 30))
 
         self.enterlayout.addWidget(self.idfield)
 
 
         self.memberlayout.addLayout(self.enterlayout)
 
-        self.errorlabeldeposit = QLabel(self.deposittab)
+        self.errorlabeldeposit = QLabel(self.toprightbox)
         self.errorlabeldeposit.setObjectName(u"errorlabeldeposit")
-        self.errorlabeldeposit.setStyleSheet(u"")
+        self.errorlabeldeposit.setFont(font)
+        self.errorlabeldeposit.setStyleSheet(u"color: orange;")
+        self.errorlabeldeposit.setAlignment(Qt.AlignCenter)
 
         self.memberlayout.addWidget(self.errorlabeldeposit)
 
-        self.viewbookbutton = QPushButton(self.deposittab)
+        self.viewbookbutton = QPushButton(self.toprightbox)
         self.viewbookbutton.setObjectName(u"viewbookbutton")
+        self.viewbookbutton.setMinimumSize(QSize(0, 25))
+        self.viewbookbutton.setStyleSheet(u"QPushButton#viewbookbutton{\n"
+"	background-color: #3c73a6;\n"
+"	border-radius: 5px;\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton#viewbookbutton:hover{\n"
+"	border: 2px solid teal;\n"
+"}")
 
         self.memberlayout.addWidget(self.viewbookbutton)
 
-        self.viewbookhistorybutton = QPushButton(self.deposittab)
+        self.viewbookhistorybutton = QPushButton(self.toprightbox)
         self.viewbookhistorybutton.setObjectName(u"viewbookhistorybutton")
+        self.viewbookhistorybutton.setMinimumSize(QSize(0, 25))
+        self.viewbookhistorybutton.setStyleSheet(u"QPushButton#viewbookhistorybutton{\n"
+"	background-color: #f2a240;\n"
+"	border-radius: 5px;\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton#viewbookhistorybutton:hover{\n"
+"	border: 2px solid teal;\n"
+"}")
 
         self.memberlayout.addWidget(self.viewbookhistorybutton)
 
 
-        self.rightlayoutdeposit.addLayout(self.memberlayout)
+        self.rightlayoutdeposit.addWidget(self.toprightbox)
 
-        self.ratinglayout = QVBoxLayout()
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.rightlayoutdeposit.addItem(self.verticalSpacer_2)
+
+        self.bottomrightbox = QGroupBox(self.deposittab)
+        self.bottomrightbox.setObjectName(u"bottomrightbox")
+        self.ratinglayout = QVBoxLayout(self.bottomrightbox)
         self.ratinglayout.setObjectName(u"ratinglayout")
-        self.ratinglabel = QLabel(self.deposittab)
+        self.ratinglabel = QLabel(self.bottomrightbox)
         self.ratinglabel.setObjectName(u"ratinglabel")
 
         self.ratinglayout.addWidget(self.ratinglabel)
 
-        self.onestar = QRadioButton(self.deposittab)
+        self.onestar = QRadioButton(self.bottomrightbox)
         self.onestar.setObjectName(u"onestar")
 
         self.ratinglayout.addWidget(self.onestar)
 
-        self.twostar = QRadioButton(self.deposittab)
+        self.twostar = QRadioButton(self.bottomrightbox)
         self.twostar.setObjectName(u"twostar")
 
         self.ratinglayout.addWidget(self.twostar)
 
-        self.threestar = QRadioButton(self.deposittab)
+        self.threestar = QRadioButton(self.bottomrightbox)
         self.threestar.setObjectName(u"threestar")
 
         self.ratinglayout.addWidget(self.threestar)
 
-        self.fourstar = QRadioButton(self.deposittab)
+        self.fourstar = QRadioButton(self.bottomrightbox)
         self.fourstar.setObjectName(u"fourstar")
 
         self.ratinglayout.addWidget(self.fourstar)
 
-        self.fivestar = QRadioButton(self.deposittab)
+        self.fivestar = QRadioButton(self.bottomrightbox)
         self.fivestar.setObjectName(u"fivestar")
 
         self.ratinglayout.addWidget(self.fivestar)
 
 
-        self.rightlayoutdeposit.addLayout(self.ratinglayout)
+        self.rightlayoutdeposit.addWidget(self.bottomrightbox)
 
         self.returnbutton = QPushButton(self.deposittab)
         self.returnbutton.setObjectName(u"returnbutton")
+        self.returnbutton.setMinimumSize(QSize(0, 26))
+        self.returnbutton.setStyleSheet(u"QPushButton#returnbutton{\n"
+"	background-color: MediumSeaGreen;\n"
+"	border-radius: 5px;\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton#returnbutton:hover{\n"
+"	border: 2px solid teal;\n"
+"}")
 
         self.rightlayoutdeposit.addWidget(self.returnbutton)
 
+        self.rightlayoutdeposit.setStretch(1, 10)
+        self.rightlayoutdeposit.setStretch(3, 1)
 
         self.horizontalLayout_3.addLayout(self.rightlayoutdeposit)
 
+        self.horizontalLayout_3.setStretch(0, 8)
+        self.horizontalLayout_3.setStretch(2, 3)
         self.tabWidget.addTab(self.deposittab, "")
 
         self.verticalLayout.addWidget(self.tabWidget)
@@ -322,7 +369,7 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"LM System", None))
         self.errorlabel.setText("")
         self.viewmode.setTitle(QCoreApplication.translate("MainWindow", u"View mode:", None))
         self.avaiablebooksbutton.setText(QCoreApplication.translate("MainWindow", u"Books available", None))
@@ -341,7 +388,7 @@ class Ui_MainWindow(object):
         self.memberlabel.setText(QCoreApplication.translate("MainWindow", u"Enter Member ID:", None))
         self.errorlabeldeposit.setText("")
         self.viewbookbutton.setText(QCoreApplication.translate("MainWindow", u"View books issued", None))
-        self.viewbookhistorybutton.setText(QCoreApplication.translate("MainWindow", u"View history of books issued", None))
+        self.viewbookhistorybutton.setText(QCoreApplication.translate("MainWindow", u"View history", None))
         self.ratinglabel.setText(QCoreApplication.translate("MainWindow", u"Leave a rating for the book:", None))
         self.onestar.setText(QCoreApplication.translate("MainWindow", u"\u2b50", None))
         self.twostar.setText(QCoreApplication.translate("MainWindow", u"\u2b50\u2b50", None))
