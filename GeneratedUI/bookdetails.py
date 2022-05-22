@@ -24,15 +24,15 @@ class Ui_bookdetaildialog(object):
             bookdetaildialog.setObjectName(u"bookdetaildialog")
         bookdetaildialog.resize(400, 300)
         bookdetaildialog.setMinimumSize(QSize(400, 300))
-        bookdetaildialog.setMaximumSize(QSize(450, 300))
+        bookdetaildialog.setMaximumSize(QSize(400, 320))
         self.formLayout = QFormLayout(bookdetaildialog)
         self.formLayout.setObjectName(u"formLayout")
         self.formLayout.setLabelAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.formLayout.setFormAlignment(Qt.AlignCenter)
         self.formLayout.setHorizontalSpacing(15)
-        self.formLayout.setVerticalSpacing(15)
         self.idlabel = QLabel(bookdetaildialog)
         self.idlabel.setObjectName(u"idlabel")
+        self.idlabel.setMinimumSize(QSize(0, 30))
         font = QFont()
         font.setBold(True)
         self.idlabel.setFont(font)
@@ -41,90 +41,105 @@ class Ui_bookdetaildialog(object):
 
         self.ratinglabel = QLabel(bookdetaildialog)
         self.ratinglabel.setObjectName(u"ratinglabel")
+        self.ratinglabel.setMinimumSize(QSize(0, 30))
         self.ratinglabel.setFont(font)
 
         self.formLayout.setWidget(3, QFormLayout.LabelRole, self.ratinglabel)
 
         self.datelabel = QLabel(bookdetaildialog)
         self.datelabel.setObjectName(u"datelabel")
+        self.datelabel.setMinimumSize(QSize(0, 30))
         self.datelabel.setFont(font)
 
         self.formLayout.setWidget(5, QFormLayout.LabelRole, self.datelabel)
 
         self.totallabel = QLabel(bookdetaildialog)
         self.totallabel.setObjectName(u"totallabel")
+        self.totallabel.setMinimumSize(QSize(0, 30))
         self.totallabel.setFont(font)
 
         self.formLayout.setWidget(6, QFormLayout.LabelRole, self.totallabel)
 
         self.issuedlabel = QLabel(bookdetaildialog)
         self.issuedlabel.setObjectName(u"issuedlabel")
+        self.issuedlabel.setMinimumSize(QSize(0, 30))
         self.issuedlabel.setFont(font)
 
         self.formLayout.setWidget(7, QFormLayout.LabelRole, self.issuedlabel)
 
         self.titlelabel = QLabel(bookdetaildialog)
         self.titlelabel.setObjectName(u"titlelabel")
+        self.titlelabel.setMinimumSize(QSize(0, 30))
         self.titlelabel.setFont(font)
 
         self.formLayout.setWidget(1, QFormLayout.LabelRole, self.titlelabel)
 
         self.authorlabel = QLabel(bookdetaildialog)
         self.authorlabel.setObjectName(u"authorlabel")
+        self.authorlabel.setMinimumSize(QSize(0, 30))
         self.authorlabel.setFont(font)
 
         self.formLayout.setWidget(2, QFormLayout.LabelRole, self.authorlabel)
 
         self.genrelabel = QLabel(bookdetaildialog)
         self.genrelabel.setObjectName(u"genrelabel")
+        self.genrelabel.setMinimumSize(QSize(0, 30))
         self.genrelabel.setFont(font)
 
         self.formLayout.setWidget(4, QFormLayout.LabelRole, self.genrelabel)
 
         self.idfield = QLabel(bookdetaildialog)
         self.idfield.setObjectName(u"idfield")
+        self.idfield.setMinimumSize(QSize(0, 30))
         self.idfield.setWordWrap(True)
 
         self.formLayout.setWidget(0, QFormLayout.FieldRole, self.idfield)
 
         self.ratingfield = QLabel(bookdetaildialog)
         self.ratingfield.setObjectName(u"ratingfield")
+        self.ratingfield.setMinimumSize(QSize(0, 30))
         self.ratingfield.setWordWrap(True)
 
         self.formLayout.setWidget(3, QFormLayout.FieldRole, self.ratingfield)
 
         self.titlefield = QLabel(bookdetaildialog)
         self.titlefield.setObjectName(u"titlefield")
+        self.titlefield.setMinimumSize(QSize(0, 30))
         self.titlefield.setWordWrap(True)
 
         self.formLayout.setWidget(1, QFormLayout.FieldRole, self.titlefield)
 
         self.authorfield = QLabel(bookdetaildialog)
         self.authorfield.setObjectName(u"authorfield")
+        self.authorfield.setMinimumSize(QSize(0, 30))
         self.authorfield.setWordWrap(True)
 
         self.formLayout.setWidget(2, QFormLayout.FieldRole, self.authorfield)
 
         self.genrefield = QLabel(bookdetaildialog)
         self.genrefield.setObjectName(u"genrefield")
+        self.genrefield.setMinimumSize(QSize(0, 30))
         self.genrefield.setWordWrap(True)
 
         self.formLayout.setWidget(4, QFormLayout.FieldRole, self.genrefield)
 
         self.datefield = QLabel(bookdetaildialog)
         self.datefield.setObjectName(u"datefield")
+        self.datefield.setMinimumSize(QSize(0, 30))
         self.datefield.setWordWrap(True)
 
         self.formLayout.setWidget(5, QFormLayout.FieldRole, self.datefield)
 
         self.totalfield = QLabel(bookdetaildialog)
         self.totalfield.setObjectName(u"totalfield")
+        self.totalfield.setMinimumSize(QSize(0, 30))
         self.totalfield.setWordWrap(True)
 
         self.formLayout.setWidget(6, QFormLayout.FieldRole, self.totalfield)
 
         self.issuedfield = QLabel(bookdetaildialog)
         self.issuedfield.setObjectName(u"issuedfield")
+        self.issuedfield.setMinimumSize(QSize(0, 30))
         self.issuedfield.setWordWrap(True)
 
         self.formLayout.setWidget(7, QFormLayout.FieldRole, self.issuedfield)

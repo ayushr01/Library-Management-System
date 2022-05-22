@@ -18,8 +18,8 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>450</width>
-    <height>300</height>
+    <width>400</width>
+    <height>320</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -35,11 +35,14 @@
    <property name="horizontalSpacing">
     <number>15</number>
    </property>
-   <property name="verticalSpacing">
-    <number>15</number>
-   </property>
    <item row="0" column="0">
     <widget class="QLabel" name="idlabel">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
      <property name="font">
       <font>
        <bold>true</bold>
@@ -52,6 +55,12 @@
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="ratinglabel">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
      <property name="font">
       <font>
        <bold>true</bold>
@@ -64,6 +73,12 @@
    </item>
    <item row="5" column="0">
     <widget class="QLabel" name="datelabel">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
      <property name="font">
       <font>
        <bold>true</bold>
@@ -76,6 +91,12 @@
    </item>
    <item row="6" column="0">
     <widget class="QLabel" name="totallabel">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
      <property name="font">
       <font>
        <bold>true</bold>
@@ -88,6 +109,12 @@
    </item>
    <item row="7" column="0">
     <widget class="QLabel" name="issuedlabel">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
      <property name="font">
       <font>
        <bold>true</bold>
@@ -100,6 +127,12 @@
    </item>
    <item row="1" column="0">
     <widget class="QLabel" name="titlelabel">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
      <property name="font">
       <font>
        <bold>true</bold>
@@ -112,6 +145,12 @@
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="authorlabel">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
      <property name="font">
       <font>
        <bold>true</bold>
@@ -124,6 +163,12 @@
    </item>
    <item row="4" column="0">
     <widget class="QLabel" name="genrelabel">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
      <property name="font">
       <font>
        <bold>true</bold>
@@ -136,6 +181,12 @@
    </item>
    <item row="0" column="1">
     <widget class="QLabel" name="idfield">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
      <property name="text">
       <string/>
      </property>
@@ -146,6 +197,12 @@
    </item>
    <item row="3" column="1">
     <widget class="QLabel" name="ratingfield">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
      <property name="text">
       <string/>
      </property>
@@ -156,6 +213,12 @@
    </item>
    <item row="1" column="1">
     <widget class="QLabel" name="titlefield">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
      <property name="text">
       <string/>
      </property>
@@ -166,6 +229,12 @@
    </item>
    <item row="2" column="1">
     <widget class="QLabel" name="authorfield">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
      <property name="text">
       <string/>
      </property>
@@ -176,6 +245,12 @@
    </item>
    <item row="4" column="1">
     <widget class="QLabel" name="genrefield">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
      <property name="text">
       <string/>
      </property>
@@ -186,6 +261,12 @@
    </item>
    <item row="5" column="1">
     <widget class="QLabel" name="datefield">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
      <property name="text">
       <string/>
      </property>
@@ -196,6 +277,12 @@
    </item>
    <item row="6" column="1">
     <widget class="QLabel" name="totalfield">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
      <property name="text">
       <string/>
      </property>
@@ -206,6 +293,12 @@
    </item>
    <item row="7" column="1">
     <widget class="QLabel" name="issuedfield">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
      <property name="text">
       <string/>
      </property>

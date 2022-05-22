@@ -133,8 +133,10 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
                     return
                 self.errorlabeldeposit.setText(
                     f"Viewing books currently issued by {name}")
+                self.timer.start(3000)
                 for row in issuedata:
                     item = QListWidgetItem()
+                    item.setSizeHint(QSize(0, 50))
                     item.setText(f'''<ID: {row[0]}> {row[2]}
 Issued on {row[3]}''')
                     self.returnbooklist.insertItem(position, item)
@@ -153,6 +155,7 @@ Issued on {row[3]}''')
                     self.errorlabeldeposit.setText(
                         f"Viewing history of books issued by {name}")
                     item = QListWidgetItem()
+                    item.setSizeHint(QSize(0, 60))
                     item.setText(f'''<ID: {row[0]}> {row[2]}
 Issued on {row[3]}
 Returned on {row[4]}''')
