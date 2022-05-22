@@ -18,7 +18,7 @@ import DB.library
 def check(data, field):
     regex = {
         "title": "^[A-Za-z0-9\s\-,\.;:()]+$",
-        "author": "^[A-Z][a-z]+\s[A-Z][a-z]+$",
+        "author": "^[A-Za-z\s\-,\.()]+$",
         "genre": "^[A-Za-z\s\-]+$",
     }
     validate = re.search(regex[field], data)
@@ -108,7 +108,7 @@ class AddBookDialog(QDialog, GeneratedUI.addbooksdialog.Ui_addbookdialog):
             return
 
         if check(author, "author") is False:
-            self.error.setText("Error: Enter a valid First and Last Name!")
+            self.error.setText("Error: Enter a valid Author Name!")
             return
 
         if check(genre, "genre") is False:
