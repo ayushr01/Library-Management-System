@@ -2,13 +2,17 @@
 
 A library management system built using Python and Sqlite3 with PySide6 for the front end.
 
-**Only tested on MacOS, build available only for M1 Macs.**
+**Tested on MacOS and Windows, build available only for M1 Macs and Windows x64.**
 
-### To Build:
+### To Build (MacOS):
 
-pyinstaller app.py -y --windowed --clean --name "LM System" --icon "icon.icns" --distpath "./pyinstaller/dist" --workpath "./pyinstaller/build" --add-data "Fonts:Fonts"
+pyinstaller app.py -y --windowed --clean --name "LM System" --icon "icon.png" --distpath "./pyinstaller/dist" --workpath "./pyinstaller/build" --add-data "Assets:Assets"
 
-### Link to Download (Pending):
+### To Build (Windows):
+
+pyinstaller app.py -y --onefile --noconsole --clean --name "LM System" --icon "icon.png" --distpath "./pyinstaller/dist" --workpath "./pyinstaller/build" --add-data "Assets;Assets"
+
+### Link to Download:
 
 https://drive.google.com/drive/folders/1KwaN11ke53sPyp_n8JTCHFvoG02Af1EY?usp=sharing
 
