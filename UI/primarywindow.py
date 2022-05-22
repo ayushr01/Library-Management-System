@@ -61,6 +61,7 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
         self.sortby.setFont(font)
         self.viewmode.setFont(font)
         self.genre.setFont(font)
+        self.bottomrightbox.setFont(font)
 
         # Restore the font of each children to regular.
         font.setBold(False)
@@ -73,6 +74,9 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
             if not isinstance(child, QVBoxLayout):
                 child.setFont(font)
         for child in self.genre.children():
+            if not isinstance(child, QVBoxLayout):
+                child.setFont(font)
+        for child in self.bottomrightbox.children():
             if not isinstance(child, QVBoxLayout):
                 child.setFont(font)
 

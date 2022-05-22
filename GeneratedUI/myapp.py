@@ -240,6 +240,7 @@ class Ui_MainWindow(object):
         self.enterlayout.setObjectName(u"enterlayout")
         self.memberlabel = QLabel(self.toprightbox)
         self.memberlabel.setObjectName(u"memberlabel")
+        self.memberlabel.setFont(font)
 
         self.enterlayout.addWidget(self.memberlabel)
 
@@ -302,11 +303,6 @@ class Ui_MainWindow(object):
         self.bottomrightbox.setObjectName(u"bottomrightbox")
         self.ratinglayout = QVBoxLayout(self.bottomrightbox)
         self.ratinglayout.setObjectName(u"ratinglayout")
-        self.ratinglabel = QLabel(self.bottomrightbox)
-        self.ratinglabel.setObjectName(u"ratinglabel")
-
-        self.ratinglayout.addWidget(self.ratinglabel)
-
         self.onestar = QRadioButton(self.bottomrightbox)
         self.onestar.setObjectName(u"onestar")
 
@@ -392,7 +388,7 @@ class Ui_MainWindow(object):
         self.errorlabeldeposit.setText("")
         self.viewbookbutton.setText(QCoreApplication.translate("MainWindow", u"View books issued", None))
         self.viewbookhistorybutton.setText(QCoreApplication.translate("MainWindow", u"View history", None))
-        self.ratinglabel.setText(QCoreApplication.translate("MainWindow", u"Leave a rating for the book:", None))
+        self.bottomrightbox.setTitle(QCoreApplication.translate("MainWindow", u"Leave a rating for the book:", None))
         self.onestar.setText(QCoreApplication.translate("MainWindow", u"\u2606", None))
         self.twostar.setText(QCoreApplication.translate("MainWindow", u"\u2606\u2606", None))
         self.threestar.setText(QCoreApplication.translate("MainWindow", u"\u2606\u2606\u2606", None))

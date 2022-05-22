@@ -328,6 +328,11 @@ QPushButton#adminbutton:hover{
                </property>
                <item>
                 <widget class="QLabel" name="memberlabel">
+                 <property name="font">
+                  <font>
+                   <bold>true</bold>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>Enter Member ID:</string>
                  </property>
@@ -432,14 +437,10 @@ QPushButton#viewbookhistorybutton:hover{
           </item>
           <item>
            <widget class="QGroupBox" name="bottomrightbox">
+            <property name="title">
+             <string>Leave a rating for the book:</string>
+            </property>
             <layout class="QVBoxLayout" name="ratinglayout">
-             <item>
-              <widget class="QLabel" name="ratinglabel">
-               <property name="text">
-                <string>Leave a rating for the book:</string>
-               </property>
-              </widget>
-             </item>
              <item>
               <widget class="QRadioButton" name="onestar">
                <property name="text">
