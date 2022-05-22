@@ -47,20 +47,20 @@ class AddMemberDialog(QDialog, GeneratedUI.addmembersdialog.Ui_addmemdialog):
         self.exec()  # Runs the dialog window
 
     def clearfields(self):
-        self.inputname.setText('')
-        self.error.setText('')
+        self.inputname.setText("")
+        self.error.setText("")
         self.datepicker.setDateTime(self.defaultdate)
 
     def getfields(self):
         name = self.inputname.text()
         if namecheck(name):
-            self.error.setText('')
-            dob = self.datepicker.date().toPython().strftime('%d-%m-%Y')
+            self.error.setText("")
+            dob = self.datepicker.date().toPython().strftime("%d-%m-%Y")
             DB.members.insert(name, dob)
             self.adminwindow.loadmem()  # Refreshes the member table after adding memberss
             self.close()
         else:
-            self.error.setText('Error: Enter a valid First and Last Name!')
+            self.error.setText("Error: Enter a valid First and Last Name!")
 
 
 # Dialog window to Remove users from the member table
@@ -79,11 +79,11 @@ class DeleteMemberDialog(QDialog, GeneratedUI.deletemembersdialog.Ui_deletememdi
 
         # Timer for timeouts
         self.timer = QTimer(self)
-        self.timer.timeout.connect(lambda: self.errorlabel.setText(''))
+        self.timer.timeout.connect(lambda: self.errorlabel.setText(""))
 
     def makedialog(self):
         self.getlist()  # Populates the list as soon as the dialog box is displayed
-        self.errorlabel.setText('')
+        self.errorlabel.setText("")
         self.exec()  # Runs the dialog window
 
     def getlist(self):
@@ -92,8 +92,7 @@ class DeleteMemberDialog(QDialog, GeneratedUI.deletemembersdialog.Ui_deletememdi
         if len(memdata) != 0:
             position = 0
             for row in memdata:
-                self.memlist.insertItem(
-                    position, f"{row[0]} - {row[1]} - ({row[2]})")
+                self.memlist.insertItem(position, f"{row[0]} - {row[1]} - ({row[2]})")
                 position = position + 1
 
     def deletemember(self):
@@ -102,14 +101,13 @@ class DeleteMemberDialog(QDialog, GeneratedUI.deletemembersdialog.Ui_deletememdi
             self.errorlabel.setText(f"Error: No member selected!")
             self.timer.start(3000)
         else:
-            self.errorlabel.setText('')
+            self.errorlabel.setText("")
             member = memdata[0].text()
-            idtodelete = member.split('-')[0].rstrip()
+            idtodelete = member.split("-")[0].rstrip()
             if DB.members.delete(idtodelete) is False:
-                self.errorlabel.setText('Error: Book issued in their name!')
+                self.errorlabel.setText("Error: Book issued in their name!")
                 self.timer.start(3000)
                 return
             self.getlist()
             self.adminwindow.loadmem()  # Refreshes the member table after deleting memberss
-            self.errorlabel.setText(
-                f"{member.split('-')[1].strip()} has been deleted!")
+            self.errorlabel.setText(f"{member.split('-')[1].strip()} has been deleted!")

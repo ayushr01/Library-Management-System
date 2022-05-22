@@ -40,16 +40,16 @@ class PwdDialog(QDialog, GeneratedUI.pwddialog.Ui_passworddialog):
         self.exec()  # Runs the dialog window
 
     def clearfields(self):
-        self.userfield.setText('')
-        self.pwdfield.setText('')
-        self.error.setText('')
+        self.userfield.setText("")
+        self.pwdfield.setText("")
+        self.error.setText("")
 
     def getfields(self):
         if checkusrpwd(self.userfield.text(), self.pwdfield.text()):
             self.mainwindow.isAuthenticated = True
             self.close()
         else:
-            self.error.setText('Error: Username or Password is incorrect!')
+            self.error.setText("Error: Username or Password is incorrect!")
 
 
 class PwdDialogNew(QDialog, GeneratedUI.pwddialognew.Ui_passworddialog):
@@ -87,39 +87,39 @@ class PwdDialogNew(QDialog, GeneratedUI.pwddialognew.Ui_passworddialog):
         self.exec()  # Runs the dialog window
 
     def clearfields(self):
-        self.userfield.setText('')
-        self.pwdfield.setText('')
-        self.pwdfieldconfirm.setText('')
-        self.error.setText('')
+        self.userfield.setText("")
+        self.pwdfield.setText("")
+        self.pwdfieldconfirm.setText("")
+        self.error.setText("")
 
     def getfields(self):
-        if self.userfield.text() == '':
-            self.error.setText('Error: Enter a username!')
+        if self.userfield.text() == "":
+            self.error.setText("Error: Enter a username!")
             return
         else:
-            self.error.setText('')
+            self.error.setText("")
 
-        if self.pwdfield.text() == '':
-            self.error.setText('Error: Enter a password!')
+        if self.pwdfield.text() == "":
+            self.error.setText("Error: Enter a password!")
             return
         else:
-            self.error.setText('')
+            self.error.setText("")
 
-        if self.pwdfieldconfirm.text() == '':
-            self.error.setText('Error: Confirm your password!')
+        if self.pwdfieldconfirm.text() == "":
+            self.error.setText("Error: Confirm your password!")
             return
         else:
-            self.error.setText('')
+            self.error.setText("")
             if self.pwdfield.text() == self.pwdfieldconfirm.text():
                 setusrpwd(self.userfield.text(), self.pwdfield.text())
                 self.mainwindow.isAuthenticated = True
                 self.close()
             else:
-                self.error.setText('Error: The passwords do not match!')
+                self.error.setText("Error: The passwords do not match!")
 
 
 def checkadmin():
-    if os.path.isfile(os.path.join(os.path.expanduser("~"), '.LMSystem/pwd.json')):
+    if os.path.isfile(os.path.join(os.path.expanduser("~"), ".LMSystem/pwd.json")):
         return True
     else:
         return False
@@ -127,21 +127,19 @@ def checkadmin():
 
 def setusrpwd(username, password):
     data = dict()
-    data['username'] = username
-    data['password'] = password
+    data["username"] = username
+    data["password"] = password
 
-    file = open(os.path.join(os.path.expanduser(
-        "~"), '.LMSystem/pwd.json'), 'w')
+    file = open(os.path.join(os.path.expanduser("~"), ".LMSystem/pwd.json"), "w")
     json.dump(data, file)
 
     file.close()
 
 
 def checkusrpwd(username, password):
-    file = open(os.path.join(os.path.expanduser(
-        "~"), '.LMSystem/pwd.json'), 'r')
+    file = open(os.path.join(os.path.expanduser("~"), ".LMSystem/pwd.json"), "r")
     data = json.load(file)
-    if data['username'] == username and data['password'] == password:
+    if data["username"] == username and data["password"] == password:
         return True
     else:
         return False

@@ -17,9 +17,9 @@ import DB.library
 # Validator
 def check(data, field):
     regex = {
-        'title': "^[A-Za-z0-9\s\-,\.;:()]+$",
-        'author': "^[A-Z][a-z]+\s[A-Z][a-z]+$",
-        'genre': "^[A-Za-z\s\-]+$"
+        "title": "^[A-Za-z0-9\s\-,\.;:()]+$",
+        "author": "^[A-Z][a-z]+\s[A-Z][a-z]+$",
+        "genre": "^[A-Za-z\s\-]+$",
     }
     validate = re.search(regex[field], data)
     if validate is None:
@@ -83,19 +83,19 @@ class AddBookDialog(QDialog, GeneratedUI.addbooksdialog.Ui_addbookdialog):
         self.exec()  # Runs the dialog window
 
     def clearfields(self):
-        self.inputtitle.setText('')
-        self.inputauthor.setText('')
-        self.inputgenre.setText('')
-        self.inputtotal.setText('')
-        self.error.setText('')
+        self.inputtitle.setText("")
+        self.inputauthor.setText("")
+        self.inputgenre.setText("")
+        self.inputtotal.setText("")
+        self.error.setText("")
 
     def clearfieldsisbn(self):
-        self.isbnfield.setText('')
-        self.authorisbn.setText('-')
-        self.titleisbn.setText('-')
-        self.publisherisbn.setText('-')
-        self.errorisbn.setText('')
-        self.totalfieldisbn.setText('')
+        self.isbnfield.setText("")
+        self.authorisbn.setText("-")
+        self.titleisbn.setText("-")
+        self.publisherisbn.setText("-")
+        self.errorisbn.setText("")
+        self.totalfieldisbn.setText("")
 
     def getfields(self):
         title = self.inputtitle.text()
@@ -103,28 +103,28 @@ class AddBookDialog(QDialog, GeneratedUI.addbooksdialog.Ui_addbookdialog):
         genre = self.inputgenre.text()
         totalcopies = self.inputtotal.text()
 
-        if check(title, 'title') is False:
-            self.error.setText('Error: Enter a valid title!')
+        if check(title, "title") is False:
+            self.error.setText("Error: Enter a valid title!")
             return
 
-        if check(author, 'author') is False:
-            self.error.setText('Error: Enter a valid First and Last Name!')
+        if check(author, "author") is False:
+            self.error.setText("Error: Enter a valid First and Last Name!")
             return
 
-        if check(genre, 'genre') is False:
-            self.error.setText('Error: Enter a valid genre!')
+        if check(genre, "genre") is False:
+            self.error.setText("Error: Enter a valid genre!")
             return
 
         if totalcopies.isnumeric() is False:
-            self.error.setText('Error: Enter a number for total copies!')
+            self.error.setText("Error: Enter a number for total copies!")
             return
 
         totalcopies = int(totalcopies)
         if totalcopies < 1 or totalcopies > 100:
-            self.error.setText('Error: Enter in the range 1-100')
+            self.error.setText("Error: Enter in the range 1-100")
             return
 
-        self.error.setText('')
+        self.error.setText("")
 
         DB.books.insert(title, author, genre, totalcopies)
         self.adminwindow.loadbook()  # Refreshes the book table after adding books
@@ -134,67 +134,70 @@ class AddBookDialog(QDialog, GeneratedUI.addbooksdialog.Ui_addbookdialog):
     def getsearchresultsisbn(self):
         isbn = self.isbnfield.text()
         if isbn.isnumeric() is False:
-            self.errorisbn.setText('Error: Invalid ISBN!')
+            self.errorisbn.setText("Error: Invalid ISBN!")
             return
-        self.errorisbn.setText('')
+        self.errorisbn.setText("")
 
-        link = 'https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn
+        link = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn
 
         try:
             response = requests.get(link, timeout=2)
         except (requests.ConnectionError, requests.Timeout):
-            self.errorisbn.setText('Error: Unable to search - Network issue')
+            self.errorisbn.setText("Error: Unable to search - Network issue")
             return
 
         if response.status_code != 200:
-            self.errorisbn.setText('Error: Unable to search for book!')
+            self.errorisbn.setText("Error: Unable to search for book!")
             return
 
-        if response.json()['totalItems'] == 0:
-            self.errorisbn.setText('Error: Could not find book!')
+        if response.json()["totalItems"] == 0:
+            self.errorisbn.setText("Error: Could not find book!")
             return
 
-        self.errorisbn.setText('')
+        self.errorisbn.setText("")
 
-        book = response.json()['items'][0]
+        book = response.json()["items"][0]
 
         self.isbndata = dict()
-        keys = ['title', 'authors', 'publisher', 'categories']
+        keys = ["title", "authors", "publisher", "categories"]
         for key in keys:
             try:
-                if isinstance(book['volumeInfo'][key], list):
-                    self.isbndata[key] = ', '.join(book['volumeInfo'][key])
+                if isinstance(book["volumeInfo"][key], list):
+                    self.isbndata[key] = ", ".join(book["volumeInfo"][key])
                 else:
-                    self.isbndata[key] = book['volumeInfo'][key]
+                    self.isbndata[key] = book["volumeInfo"][key]
             except KeyError as err:
-                self.isbndata[key] = '🤷🏻‍'
+                self.isbndata[key] = "🤷🏻‍"
 
-        self.titleisbn.setText(self.isbndata['title'])
-        self.authorisbn.setText('By: ' + self.isbndata['authors'])
-        self.publisherisbn.setText(
-            'Published by: ' + self.isbndata['publisher'])
+        self.titleisbn.setText(self.isbndata["title"])
+        self.authorisbn.setText("By: " + self.isbndata["authors"])
+        self.publisherisbn.setText("Published by: " + self.isbndata["publisher"])
 
     def addisbnbook(self):
         if self.isbndata is None:
-            self.errorisbn.setText('Error: Search for the book first!')
+            self.errorisbn.setText("Error: Search for the book first!")
             return
         else:
-            self.errorisbn.setText('')
+            self.errorisbn.setText("")
 
         totalcopies = self.totalfieldisbn.text()
         if totalcopies.isnumeric() is False:
-            self.errorisbn.setText('Error: Enter a number for total copies!')
+            self.errorisbn.setText("Error: Enter a number for total copies!")
             return
         else:
             totalcopies = int(totalcopies)
             if totalcopies < 1 or totalcopies > 100:
-                self.errorisbn.setText('Error: Enter in the range 1-100')
+                self.errorisbn.setText("Error: Enter in the range 1-100")
                 return
             else:
-                self.errorisbn.setText('')
+                self.errorisbn.setText("")
 
-        DB.books.insert(self.isbndata['title'], self.isbndata['authors'],
-                        self.isbndata['categories'], totalcopies)
+        DB.books.insert(
+            self.isbndata["title"],
+            self.isbndata["authors"],
+            self.isbndata["categories"],
+            totalcopies,
+        )
         self.isbndata = None  # Invalidating it for future entries
         self.adminwindow.loadbook()  # Refreshes the book table after adding books
         self.adminwindow.mainwindow.loadbooks()  # Refreshes the mainwindow book list
@@ -216,11 +219,11 @@ class DeleteBookDialog(QDialog, GeneratedUI.deletebooksdialog.Ui_deletebookdialo
 
         # Timer for timeouts
         self.timer = QTimer(self)
-        self.timer.timeout.connect(lambda: self.errorlabel.setText(''))
+        self.timer.timeout.connect(lambda: self.errorlabel.setText(""))
 
     def makedialog(self):
         self.getlist()  # Populates the list as soon as the dialog box is displayed
-        self.errorlabel.setText('')
+        self.errorlabel.setText("")
         self.exec()  # Runs the dialog window
 
     def getlist(self):
@@ -229,8 +232,7 @@ class DeleteBookDialog(QDialog, GeneratedUI.deletebooksdialog.Ui_deletebookdialo
         if len(bookdata) != 0:
             position = 0
             for row in bookdata:
-                self.booklist.insertItem(
-                    position, f"{row[0]} - {row[1]} by {row[2]}")
+                self.booklist.insertItem(position, f"{row[0]} - {row[1]} by {row[2]}")
                 position = position + 1
 
     def deletebook(self):
@@ -240,17 +242,16 @@ class DeleteBookDialog(QDialog, GeneratedUI.deletebooksdialog.Ui_deletebookdialo
             self.timer.start(3000)
             return
         else:
-            self.errorlabel.setText('')
+            self.errorlabel.setText("")
             book = bookdata[0].text()
-            idtodelete = book.split('-')[0].rstrip()
+            idtodelete = book.split("-")[0].rstrip()
             if DB.books.delete(idtodelete) is False:
-                self.errorlabel.setText('Error: Book issued by a member!')
+                self.errorlabel.setText("Error: Book issued by a member!")
                 self.timer.start(3000)
                 return
             self.getlist()
             self.adminwindow.loadbook()  # Refreshes the book table after deleting books
-            self.errorlabel.setText(
-                f"{book.split('-')[1].strip()} has been deleted!")
+            self.errorlabel.setText(f"{book.split('-')[1].strip()} has been deleted!")
             self.adminwindow.mainwindow.loadbooks()  # Refreshes the mainwindow book list
 
 
@@ -267,8 +268,8 @@ class BookDetailsDialog(QDialog, GeneratedUI.bookdetails.Ui_bookdetaildialog):
 
     def setfields(self, item):
         text = item.text()
-        beg = text.find('<') + 5
-        end = text.find('>')
+        beg = text.find("<") + 5
+        end = text.find(">")
         idtodisplay = int(text[beg:end])
         data = DB.books.readwithid(idtodisplay)
         self.idfield.setText(str(data[0][0]))
@@ -296,16 +297,17 @@ class IssueBooksDialog(QDialog, GeneratedUI.issuebook.Ui_issuebookdialog):
 
         # Timer for timeouts
         self.timer = QTimer(self)
-        self.timer.timeout.connect(lambda: self.issuelabel.setText(''))
+        self.timer.timeout.connect(lambda: self.issuelabel.setText(""))
 
     def makedialog(self, item):
         self.item = item
         self.getlist()  # Populates the list as soon as the dialog box is displayed
-        self.issuelabel.setText('')
+        self.issuelabel.setText("")
 
         # Enabling issue button
         self.issuebutton.setDisabled(False)
-        self.issuebutton.setStyleSheet('''
+        self.issuebutton.setStyleSheet(
+            """
 QPushButton#issuebutton{
 	background-color: FireBrick;
 	border-radius: 5px;
@@ -315,7 +317,8 @@ QPushButton#issuebutton{
 QPushButton#issuebutton:hover{
 	border: 2px solid teal;
 }
-        ''')
+        """
+        )
 
         self.exec()  # Runs the dialog window
 
@@ -325,8 +328,7 @@ QPushButton#issuebutton:hover{
         if len(memdata) != 0:
             position = 0
             for row in memdata:
-                self.memlist.insertItem(
-                    position, f"{row[0]} - {row[1]} - ({row[2]})")
+                self.memlist.insertItem(position, f"{row[0]} - {row[1]} - ({row[2]})")
                 position = position + 1
 
     def issuebook(self):
@@ -337,18 +339,19 @@ QPushButton#issuebutton:hover{
             return
         else:
             text = self.item.text()
-            beg = text.find('<') + 5
-            end = text.find('>')
+            beg = text.find("<") + 5
+            end = text.find(">")
             bookid = int(text[beg:end])
             text = memdata[0].text()
-            splittext = text.split('-')
+            splittext = text.split("-")
             memid = int(splittext[0])
             DB.library.insert(memid, bookid)
-            self.issuelabel.setText(f'Book issued to {splittext[1].strip()}')
+            self.issuelabel.setText(f"Book issued to {splittext[1].strip()}")
 
         # Disabling button till dialog is reopened
         self.issuebutton.setDisabled(True)
-        self.issuebutton.setStyleSheet('''
+        self.issuebutton.setStyleSheet(
+            """
 QPushButton#issuebutton{
 	background-color: #656565;
 	border-radius: 5px;
@@ -358,4 +361,5 @@ QPushButton#issuebutton{
 QPushButton#issuebutton:hover{
 	border: 2px solid teal;
 }
-        ''')
+        """
+        )

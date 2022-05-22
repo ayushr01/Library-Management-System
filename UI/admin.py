@@ -20,8 +20,7 @@ class AdminWindow(QDialog, GeneratedUI.adminui.Ui_AdminWindow):
 
         # Member tab
         self.addmemberdialog = UI.members.AddMemberDialog(adminwindow=self)
-        self.deletememberdialog = UI.members.DeleteMemberDialog(
-            adminwindow=self)
+        self.deletememberdialog = UI.members.DeleteMemberDialog(adminwindow=self)
 
         self.addmem.clicked.connect(self.addmemberdialog.makedialog)
         self.refreshmem.clicked.connect(self.loadmem)
