@@ -283,9 +283,11 @@ class BookDetailsDialog(QDialog, GeneratedUI.bookdetails.Ui_bookdetaildialog):
 
 
 class IssueBooksDialog(QDialog, GeneratedUI.issuebook.Ui_issuebookdialog):
-    def __init__(self):
+    def __init__(self, mainwindow):
         super().__init__()
 
+        # Used to launch the admin window after closing the dialog
+        self.mainwindow = mainwindow
         # Calls the function to create all the elements in the dialog window
         self.setupUi(self)
 
@@ -347,6 +349,8 @@ QPushButton#issuebutton:hover{
             memid = int(splittext[0])
             DB.library.insert(memid, bookid)
             self.issuelabel.setText(f"Book issued to {splittext[1].strip()}")
+            # Refreshing book list after issuing a book
+            self.mainwindow.loadbooks()
 
         # Disabling button till dialog is reopened
         self.issuebutton.setDisabled(True)

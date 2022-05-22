@@ -77,10 +77,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.setSpacing(10)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(6, -1, 6, -1)
-        self.avaiablebooksbutton = QRadioButton(self.viewmode)
-        self.avaiablebooksbutton.setObjectName(u"avaiablebooksbutton")
+        self.availablebooksbutton = QRadioButton(self.viewmode)
+        self.availablebooksbutton.setObjectName(u"availablebooksbutton")
 
-        self.verticalLayout_2.addWidget(self.avaiablebooksbutton)
+        self.verticalLayout_2.addWidget(self.availablebooksbutton)
 
         self.allbooksbutton = QRadioButton(self.viewmode)
         self.allbooksbutton.setObjectName(u"allbooksbutton")
@@ -97,6 +97,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setSpacing(10)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(6, -1, 6, -1)
+        self.idbutton = QRadioButton(self.sortby)
+        self.idbutton.setObjectName(u"idbutton")
+
+        self.verticalLayout_3.addWidget(self.idbutton)
+
         self.titlebutton = QRadioButton(self.sortby)
         self.titlebutton.setObjectName(u"titlebutton")
 
@@ -186,7 +191,7 @@ class Ui_MainWindow(object):
         self.adminbutton.setObjectName(u"adminbutton")
         self.adminbutton.setMinimumSize(QSize(0, 25))
         self.adminbutton.setStyleSheet(u"QPushButton#adminbutton{\n"
-"	background-color: #ed7868;\n"
+"	background-color: #dd9a7f;\n"
 "	border-radius: 5px;\n"
 "	color: white;\n"
 "}\n"
@@ -204,7 +209,7 @@ class Ui_MainWindow(object):
         self.rightlayout.setStretch(1, 5)
         self.rightlayout.setStretch(2, 2)
         self.rightlayout.setStretch(3, 10)
-        self.rightlayout.setStretch(4, 4)
+        self.rightlayout.setStretch(4, 5)
 
         self.horizontalLayout.addLayout(self.rightlayout)
 
@@ -371,9 +376,10 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"LM System", None))
         self.errorlabel.setText("")
         self.viewmode.setTitle(QCoreApplication.translate("MainWindow", u"View mode:", None))
-        self.avaiablebooksbutton.setText(QCoreApplication.translate("MainWindow", u"Books available", None))
+        self.availablebooksbutton.setText(QCoreApplication.translate("MainWindow", u"Books available", None))
         self.allbooksbutton.setText(QCoreApplication.translate("MainWindow", u"All books", None))
         self.sortby.setTitle(QCoreApplication.translate("MainWindow", u"Sort by:", None))
+        self.idbutton.setText(QCoreApplication.translate("MainWindow", u"ID", None))
         self.titlebutton.setText(QCoreApplication.translate("MainWindow", u"Title", None))
         self.authorbutton.setText(QCoreApplication.translate("MainWindow", u"Author", None))
         self.ratingbutton.setText(QCoreApplication.translate("MainWindow", u"Rating", None))

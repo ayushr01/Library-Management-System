@@ -79,6 +79,8 @@ def readsorted(sortingdata):
         sortconstraint = sortconstraint + "author"
     elif sortingdata[1]["rating"]:
         sortconstraint = sortconstraint + "rating DESC"
+    elif sortingdata[1]["id"]:
+        sortconstraint = sortconstraint + "id"
 
     maincommand = "SELECT * FROM Books"
     command = maincommand + constraint + sortconstraint

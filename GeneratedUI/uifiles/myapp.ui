@@ -65,7 +65,7 @@
          </widget>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="rightlayout" stretch="4,5,2,10,4">
+         <layout class="QVBoxLayout" name="rightlayout" stretch="4,5,2,10,5">
           <property name="spacing">
            <number>20</number>
           </property>
@@ -93,7 +93,7 @@
               <number>6</number>
              </property>
              <item>
-              <widget class="QRadioButton" name="avaiablebooksbutton">
+              <widget class="QRadioButton" name="availablebooksbutton">
                <property name="text">
                 <string>Books available</string>
                </property>
@@ -127,6 +127,13 @@
              <property name="rightMargin">
               <number>6</number>
              </property>
+             <item>
+              <widget class="QRadioButton" name="idbutton">
+               <property name="text">
+                <string>ID</string>
+               </property>
+              </widget>
+             </item>
              <item>
               <widget class="QRadioButton" name="titlebutton">
                <property name="text">
@@ -273,7 +280,7 @@ QPushButton#detailsbutton:hover{
                </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton#adminbutton{
-	background-color: #ed7868;
+	background-color: #dd9a7f;
 	border-radius: 5px;
 	color: white;
 }

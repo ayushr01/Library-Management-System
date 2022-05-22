@@ -1,5 +1,6 @@
 from PySide6.QtCore import QSize, QTimer
 from PySide6.QtWidgets import QMainWindow, QListWidgetItem, QVBoxLayout
+from PySide6.QtGui import QColor
 
 import GeneratedUI.myapp as myapp
 
@@ -22,7 +23,7 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
         self.pwddialog = pwd.PwdDialog(mainwindow=self)
         self.pwddialognew = pwd.PwdDialogNew(mainwindow=self)
         self.bookdialog = book.BookDetailsDialog()
-        self.issuedialog = book.IssueBooksDialog()
+        self.issuedialog = book.IssueBooksDialog(mainwindow=self)
 
         # Button actions
         self.adminbutton.clicked.connect(self.loadpwdadmin)
@@ -31,8 +32,8 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
         self.issuebutton.clicked.connect(self.loadissue)
 
         # Radio buttons
-        self.avaiablebooksbutton.setChecked(True)
-        self.titlebutton.setChecked(True)
+        self.availablebooksbutton.setChecked(True)
+        self.idbutton.setChecked(True)
 
         # Creates the admin window on launch
         self.adminwindow = admin.AdminWindow(self)
@@ -77,6 +78,15 @@ class MainWindow(QMainWindow, myapp.Ui_MainWindow):
         for child in self.bottomrightbox.children():
             if not isinstance(child, QVBoxLayout):
                 child.setFont(font)
+
+        # Refreshing book list automatically after choosing filtering
+        self.availablebooksbutton.clicked.connect(self.loadbooks)
+        self.allbooksbutton.clicked.connect(self.loadbooks)
+        self.titlebutton.clicked.connect(self.loadbooks)
+        self.authorbutton.clicked.connect(self.loadbooks)
+        self.ratingbutton.clicked.connect(self.loadbooks)
+        self.genrebox.currentTextChanged.connect(self.loadbooks)
+        self.idbutton.clicked.connect(self.loadbooks)
 
         # Setting field margins
         self.idfield.setTextMargins(5, 0, 5, 0)
@@ -183,6 +193,10 @@ Returned on {row[4]}"""
             item.setSizeHint(QSize(0, 50))
             item.setText(f" <ID: {row[0]}>  {row[1]} by {row[2]} - {row[4]}{rating}")
             self.booklist.insertItem(position, item)
+            if row[6] - row[7] == 0:
+                # Book is out of stock
+                self.booklist.item(position).setBackground(QColor(237,119,104))
+                item.text
             position = position + 1
 
     def loadgenre(self):
@@ -195,9 +209,10 @@ Returned on {row[4]}"""
     def filters(self):
         viewfilter = {
             "all": self.allbooksbutton.isChecked(),
-            "available": self.avaiablebooksbutton.isChecked(),
+            "available": self.availablebooksbutton.isChecked(),
         }
         sortfilter = {
+            "id": self.idbutton.isChecked(),
             "title": self.titlebutton.isChecked(),
             "author": self.authorbutton.isChecked(),
             "rating": self.ratingbutton.isChecked(),
@@ -230,3 +245,4 @@ Returned on {row[4]}"""
             DB.library.setrating(bookid, rating)
             DB.library.returnbook(memid, bookid, dateissued)
             self.loadissuedbooks("norm")
+            self.loadbooks()
