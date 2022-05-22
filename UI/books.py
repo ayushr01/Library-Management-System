@@ -76,7 +76,7 @@ class AddBookDialog(QDialog, GeneratedUI.addbooksdialog.Ui_addbookdialog):
 
         font = self.publisherisbn.font()
         font.setPixelSize(12)
-        self.authorisbn.setFont(font)
+        self.publisherisbn.setFont(font)
 
     def makedialog(self):
         self.clearfields()  # Clears the fields before opening up the dialog window
