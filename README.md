@@ -1,16 +1,30 @@
 # Library-Management-System
 
-A library management system built using Python and Sqlite3 with PySide6 for the front end.
+A Library Management System app built using PySide6 and SQLite3.
+
+Supports adding/deleting members and books, adding books using just ISBN number (Uses Google books API), issuing books (with filtering to find the right book), depositing books, viewing history of issued books and a rating system to rate books read.
 
 **Tested on MacOS and Windows, build available only for M1 Macs and Windows x64.**
 
+### Before building create a venv and install dependencies:
+```
+pip install virtualenv
+virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
 ### To Build (MacOS):
 
+```
 pyinstaller app.py -y --windowed --clean --name "LM System" --icon "icon.png" --distpath "./pyinstaller/dist" --workpath "./pyinstaller/build" --add-data "Assets:Assets"
+```
 
 ### To Build (Windows):
 
+```
 pyinstaller app.py -y --onefile --noconsole --clean --name "LM System" --icon "icon.png" --distpath "./pyinstaller/dist" --workpath "./pyinstaller/build" --add-data "Assets;Assets"
+```
 
 ### Link to Download:
 
