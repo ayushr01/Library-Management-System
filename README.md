@@ -28,7 +28,7 @@ pyinstaller app.py -y --onefile --noconsole --clean --name "LM System" --icon "i
 
 ### Link to Download:
 
-https://drive.google.com/drive/folders/1KwaN11ke53sPyp_n8JTCHFvoG02Af1EY?usp=sharing
+https://1drv.ms/u/s!AoNKM5gi35IWhbpABcLciUankvAEvA?e=i6NWat
 
 ### Tables used:
 
