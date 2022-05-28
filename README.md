@@ -6,6 +6,11 @@ Supports adding/deleting members and books, adding books using just ISBN number 
 
 **Tested on MacOS and Windows, build available only for M1 Macs and Windows x64.**
 
+## Link to Download:
+
+https://1drv.ms/u/s!AoNKM5gi35IWhbpABcLciUankvAEvA?e=i6NWat
+
+## Build Instructions:
 ### Before building create a venv and install dependencies:
 ```
 pip install virtualenv
@@ -26,11 +31,7 @@ pyinstaller app.py -y --windowed --clean --name "LM System" --icon "icon.png" --
 pyinstaller app.py -y --onefile --noconsole --clean --name "LM System" --icon "icon.png" --distpath "./pyinstaller/dist" --workpath "./pyinstaller/build" --add-data "Assets;Assets"
 ```
 
-### Link to Download:
-
-https://1drv.ms/u/s!AoNKM5gi35IWhbpABcLciUankvAEvA?e=i6NWat
-
-### Tables used:
+## Tables used:
 
 #### Books:
 
@@ -62,28 +63,28 @@ https://1drv.ms/u/s!AoNKM5gi35IWhbpABcLciUankvAEvA?e=i6NWat
 - id_book (Foreign from Books)
 - rating
 
-### Demo:
+## Demo:
 
-#### Password Prompt:
+### Password Prompt:
 
 ![](Videos/1_pwdprompt.gif)
 
-#### Admin Window (Adding & Deleting):
+### Admin Window (Adding & Deleting):
 
 ![](Videos/2_adminwindow.gif)
 
-#### Searching book online using ISBN:
+### Searching book online using ISBN:
 
 ![](Videos/3_addisbn.gif)
 
-#### Issue Feature:
+### Issue Feature:
 
 ![](Videos/4_issue.gif)
 
-#### Deposit Feature:
+### Deposit Feature:
 
 ![](Videos/5_deposit.gif)
 
-#### Prevention of Deletion:
+### Prevention of Deletion:
 
 ![](Videos/6_prevention.gif)
