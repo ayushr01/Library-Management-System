@@ -1,5 +1,5 @@
-import sqlite3
 import os
+import sqlite3
 
 
 def insert(id_user, id_book):

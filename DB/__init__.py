@@ -1,5 +1,5 @@
-import sqlite3
 import os
+import sqlite3
 
 connection = sqlite3.connect(
     os.path.join(os.path.expanduser("~"), ".LMSystem/library.sqlite")

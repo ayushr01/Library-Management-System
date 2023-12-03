@@ -3,10 +3,9 @@ import re
 from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import QDialog
 
+import DB.members
 import GeneratedUI.addmembersdialog
 import GeneratedUI.deletemembersdialog
-
-import DB.members
 
 
 # Validator

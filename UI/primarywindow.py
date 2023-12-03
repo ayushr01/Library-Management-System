@@ -1,16 +1,14 @@
 from PySide6.QtCore import QSize, QTimer
-from PySide6.QtWidgets import QMainWindow, QListWidgetItem, QVBoxLayout
 from PySide6.QtGui import QColor
-
-import GeneratedUI.myapp as myapp
-
-import UI.pwd as pwd
-import UI.admin as admin
-import UI.books as book
+from PySide6.QtWidgets import QListWidgetItem, QMainWindow, QVBoxLayout
 
 import DB.books
-import DB.members
 import DB.library
+import DB.members
+import GeneratedUI.myapp as myapp
+import UI.admin as admin
+import UI.books as book
+import UI.pwd as pwd
 
 
 class MainWindow(QMainWindow, myapp.Ui_MainWindow):
@@ -195,7 +193,7 @@ Returned on {row[4]}"""
             self.booklist.insertItem(position, item)
             if row[6] - row[7] == 0:
                 # Book is out of stock
-                self.booklist.item(position).setBackground(QColor(237,119,104))
+                self.booklist.item(position).setBackground(QColor(237, 119, 104))
                 item.text
             position = position + 1
 

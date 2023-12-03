@@ -1,12 +1,10 @@
 from PySide6.QtWidgets import QDialog, QTableWidgetItem
 
-import GeneratedUI.adminui
-
-import UI.members
-import UI.books
-
 import DB.books
 import DB.members
+import GeneratedUI.adminui
+import UI.books
+import UI.members
 
 
 # Admin window with 2 tabs

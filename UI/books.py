@@ -1,17 +1,16 @@
-import requests
 import re
 
+import requests
 from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import QDialog
 
-import GeneratedUI.addbooksdialog
-import GeneratedUI.deletebooksdialog
-import GeneratedUI.bookdetails
-import GeneratedUI.issuebook
-
-import DB.members
 import DB.books
 import DB.library
+import DB.members
+import GeneratedUI.addbooksdialog
+import GeneratedUI.bookdetails
+import GeneratedUI.deletebooksdialog
+import GeneratedUI.issuebook
 
 
 # Validator
