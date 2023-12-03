@@ -17,9 +17,9 @@ import DB.library
 # Validator
 def check(data, field):
     regex = {
-        "title": "^[A-Za-z0-9\s\-,\.;:()]+$",
-        "author": "^[A-Za-z\s\-,\.()]+$",
-        "genre": "^[A-Za-z\s\-]+$",
+        "title": r"^[A-Za-z0-9\s\-,\.;:()]+$",
+        "author": r"^[A-Za-z\s\-,\.()]+$",
+        "genre": r"^[A-Za-z\s\-]+$",
     }
     validate = re.search(regex[field], data)
     if validate is None:

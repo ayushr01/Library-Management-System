@@ -11,7 +11,7 @@ import DB.members
 
 # Validator
 def namecheck(name):
-    validate = re.search("^[A-Z][a-z]+\s[A-Z][a-z]+$", name)
+    validate = re.search(r"^[A-Z][a-z]+\s[A-Z][a-z]+$", name)
     if validate is None:
         return False
     else:
